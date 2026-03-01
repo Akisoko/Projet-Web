@@ -9,14 +9,16 @@
 </head>
 <body>
 <div class="container">
-    <aside class="sidebar">
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
         <div class="logo">
             <img src="https://images.seeklogo.com/logo-png/15/2/world-of-warcraft-horde-pvp-logo-png_seeklogo-153902.png" alt="Kezan Logo" class="logo-img">
             <span class="logo-text">Kezan</span>
         </div>
 
         <nav class="nav-menu">
-            <a href="#" class="nav-item">
+            <a href="accueil.html" class="nav-item">
                 <i class="fa-solid fa-house"></i>
                 <span>Accueil</span>
             </a>
@@ -43,6 +45,10 @@
                 <i class="fa-solid fa-gear"></i>
                 <span>Paramètres</span>
             </a>
+            <a href="mentions.html" class="nav-item">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Mentions Légales</span>
+            </a>
             <a href="#" class="nav-item">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Deconnexion</span>
@@ -50,36 +56,42 @@
         </div>
     </aside>
 
+    <!-- Main Content -->
     <main class="main-content">
         <header class="header">
-            <h1>Profil</h1>
+            <div class="header-left">
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h1>Profil</h1>
+            </div>
             <div class="user-info">
-                <span>Cisco Ninja</span>
+                <span>Jonathan Cesar</span>
                 <div class="user-avatar">
                     <i class="fa-solid fa-user"></i>
                 </div>
             </div>
         </header>
 
-        <div class="profile-card">
-            <div class="profile-header">
-                <div class="profile-avatar">
+        <div class="profil-card">
+            <div class="profil-header">
+                <div class="profil-avatar">
                     <i class="fa-solid fa-user fa-3x"></i>
                     <button class="edit-avatar">
                         <i class="fa-solid fa-pen"></i>
                     </button>
                 </div>
-                <h2>Bysau Sinja</h2>
+                <h2>Jonathan CESAR</h2>
             </div>
 
             <div class="stats-container">
                 <div class="stat-card">
                     <h3>Offres<br>postulées</h3>
-                    <div class="stat-number">0 mdr pas de stage</div>
+                    <div class="stat-number">39</div>
                 </div>
                 <div class="stat-card">
                     <h3>Réponse<br>Offres</h3>
-                    <div class="stat-number">Crois le</div>
+                    <div class="stat-number">0</div>
                 </div>
             </div>
 
@@ -112,5 +124,7 @@
         </div>
     </main>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>
