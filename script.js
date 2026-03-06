@@ -57,3 +57,29 @@ if (applyFilters) {
         console.log('Filtres appliqués');
     });
 }
+
+// Landing page - Transition entre les écrans
+const welcomeScreen = document.getElementById('welcomeScreen');
+const loginScreen = document.getElementById('loginScreen');
+const startBtn = document.getElementById('startBtn');
+
+function goToLoginScreen() {
+    if (welcomeScreen && loginScreen) {
+        welcomeScreen.classList.add('fade-out');
+
+        setTimeout(() => {
+            welcomeScreen.classList.add('hidden');
+            loginScreen.classList.remove('hidden');
+            loginScreen.classList.add('fade-in');
+        }, 1000);
+    }
+}
+
+if (startBtn) {
+    startBtn.addEventListener('click', goToLoginScreen);
+}
+
+// Option : Transition automatique après 3 secondes (décommenter si souhaité)
+// if (welcomeScreen) {
+//     setTimeout(goToLoginScreen, 3000);
+// }
