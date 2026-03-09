@@ -79,7 +79,32 @@ if (startBtn) {
     startBtn.addEventListener('click', goToLoginScreen);
 }
 
-// Option : Transition automatique après 3 secondes (décommenter si souhaité)
-// if (welcomeScreen) {
-//     setTimeout(goToLoginScreen, 3000);
-// }
+// Wishlist - Sélection d'items
+const wishlistItems = document.querySelectorAll('.wishlist-item');
+const detailPlaceholder = document.querySelector('.detail-placeholder');
+const detailContent = document.querySelector('.detail-content');
+
+wishlistItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Retirer la classe active de tous les items
+        wishlistItems.forEach(i => i.classList.remove('active'));
+        // Ajouter la classe active à l'item cliqué
+        this.classList.add('active');
+
+        // Masquer le placeholder et afficher le contenu
+        if (detailPlaceholder) {
+            detailPlaceholder.style.display = 'none';
+        }
+        if (detailContent) {
+            detailContent.classList.remove('hidden');
+        }
+
+        // Ici tu pourras charger les détails de l'offre avec le backend
+        const itemId = this.dataset.id;
+        console.log('Offre sélectionnée:', itemId);
+
+        // Exemple de mise à jour des détails (à remplacer par les vraies données du backend)
+        // document.getElementById('detailEntreprise').textContent = 'Nom entreprise';
+        // document.getElementById('detailOffre').textContent = 'Nom de l\'offre';
+    });
+});
