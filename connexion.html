@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Kezan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-page">
+<div class="auth-container">
+    <div class="auth-logo-side">
+        <div class="logo-container">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
+        </div>
+        <h1 class="brand-name">Kezan</h1>
+    </div>
+
+    <div class="auth-form-side">
+        <div class="auth-form-card">
+            <h2>Connexion</h2>
+            <p class="auth-subtitle">Connectez vous pour commencer</p>
+
+            <form class="auth-form" onsubmit="event.preventDefault(); window.location.href='accueil.html'">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" required>
+                </div>
+
+                <button type="submit" class="btn-primary auth-submit">Se Connecter</button>
+            </form>
+
+            <p class="auth-footer">
+                Pas encore de compte ? <a href="inscription.html">Créer un compte</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
