@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification Documents - Kezan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
+            <span class="logo-text">Kezan</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="recherche.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Recherche de Profil</span>
+            </a>
+            <a href="offres.html" class="nav-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Offres</span>
+            </a>
+            <a href="entreprises.html" class="nav-item">
+                <i class="fa-solid fa-building"></i>
+                <span>Entreprises</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Statistiques</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </a>
+            <a href="mentions.html" class="nav-item">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Terms & Conditions</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Deconnexion</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="back-button">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h1>Modification Documents</h1>
+            </div>
+            <div class="header-right">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="profil.html" class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="documents-content">
+            <div class="document-section">
+                <div class="document-action-card">
+                    <div class="document-text">
+                        <h3>Télécharger</h3>
+                        <p>CV, Lettre de motivation</p>
+                    </div>
+                    <button class="document-btn" id="downloadBtn">
+                        <i class="fa-solid fa-download fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="document-section">
+                <div class="document-action-card">
+                    <div class="document-text">
+                        <h3>Importer</h3>
+                        <p>CV, Lettre de motivation</p>
+                    </div>
+                    <label for="fileUpload" class="document-btn">
+                        <i class="fa-solid fa-upload fa-2x"></i>
+                    </label>
+                    <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" style="display: none;">
+                </div>
+                <div id="fileName" class="file-name"></div>
+            </div>
+
+            <div class="document-section">
+                <div class="document-action-card">
+                    <div class="document-text">
+                        <h3>Aperçu</h3>
+                        <p>Prévisualiser vos documents</p>
+                    </div>
+                    <button class="document-btn" id="previewBtn">
+                        <i class="fa-solid fa-search fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-zone hidden" id="previewZone">
+                <div class="preview-header">
+                    <h3>Aperçu du document</h3>
+                    <button class="close-preview" id="closePreview">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="preview-container">
+                    <div class="preview-placeholder">
+                        <i class="fa-solid fa-file-lines fa-3x"></i>
+                        <p>Aperçu du document</p>
+                        <small>Le document s'affichera ici</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
