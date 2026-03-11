@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une offre - Kezan</title>
+    <title>Détail de l'offre - Kezan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -65,7 +65,7 @@
                 <button class="back-button" onclick="window.location.href='liste_offre.html'">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
-                <h1>Ajouter une offre</h1>
+                <h1>Detail de l'offre</h1>
             </div>
             <div class="header-right">
                 <button class="menu-dots">
@@ -77,45 +77,42 @@
             </div>
         </header>
 
-        <div class="add-content">
-            <form class="add-form">
-                <div class="form-group">
-                    <label>Nom responsable</label>
-                    <input type="text" required>
+        <div class="detail-content">
+            <div class="detail-card">
+                <div class="detail-actions">
+                    <button class="detail-action-btn delete">
+                        <span>Supprimer l'offre</span>
+                    </button>
+                    <button class="detail-action-btn edit">
+                        <span>Modifier l'offre</span>
+                    </button>
                 </div>
 
-                <div class="form-group">
-                    <label>Prénom responsable</label>
-                    <input type="text" required>
+                <div class="detail-section">
+                    <h3>Informations générales :</h3>
+                    <div class="detail-lines">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>E-mail responsable</label>
-                    <input type="email" required>
+                <div class="detail-section">
+                    <h3>Détails :</h3>
+                    <div class="detail-lines">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Nom entreprise</label>
-                    <input type="text" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Profil recherché</label>
-                    <input type="text" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Domaine de l'offre</label>
-                    <input type="text" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Description de l'offre</label>
-                    <textarea rows="5" required></textarea>
-                </div>
-
-                <button type="submit" class="btn-primary add-submit">Ajouter</button>
-            </form>
+                <button class="btn-primary detail-submit" onclick="window.location.href='postuler_offre.html'">Postuler</button>
+            </div>
         </div>
     </main>
 </div>
