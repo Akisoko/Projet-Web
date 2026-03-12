@@ -1,1 +1,125 @@
-+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales</title>
+    <style>
+        /* Reset + Mobile-first base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; 
+            color: #333; 
+            background: #f8f9fa; 
+            padding: 1rem; 
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .title { font-size: 1.5rem; font-weight: 600; }
+        .menu-btn { 
+            background: none; 
+            border: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            padding: 0.5rem;
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .content {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+        
+        h1 { 
+            font-size: 1.75rem; 
+            margin-bottom: 1.5rem; 
+            color: #212529;
+        }
+        h2 { 
+            font-size: 1.25rem; 
+            margin: 2rem 0 1rem; 
+            color: #495057;
+        }
+        p, li {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        ul { padding-left: 1.5rem; }
+        strong { color: #212529; }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        /* Tablette + Desktop */
+        @media (min-width: 768px) {
+            body { padding: 2rem; }
+            .content { padding: 3rem; max-width: 800px; margin: 0 auto 3rem; }
+            h1 { font-size: 2rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            .content { padding: 4rem; max-width: 900px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Mentions Légales</h1>
+        <button class="menu-btn" aria-label="Menu">☰</button>
+    </header>
+    
+    <div class="container">
+        <article class="content">
+            <h1>Mentions Légales</h1>
+            
+            <h2>1. Informations légales</h2>
+            <p><strong>Nom de l'entreprise :</strong> [Ton Nom/Entreprise]</p>
+            <p><strong>Forme juridique :</strong> [Auto-entrepreneur/SAS/etc.]</p>
+            <p><strong>Siège social :</strong> [Adresse complète]</p>
+            <p><strong>SIRET :</strong> [Ton numéro SIRET]</p>
+            <p><strong>Téléphone :</strong> [Ton numéro]</p>
+            <p><strong>Email :</strong> [contact@tonsite.fr]</p>
+            
+            <h2>2. Directeur de publication</h2>
+            <p>[Ton nom], en qualité de [rôle].</p>
+            
+            <h2>3. Hébergement</h2>
+            <p>Hébergeur : [OVH, AWS, etc.]<br>
+            Adresse : [Adresse hébergeur]<br>
+            Téléphone : [Numéro hébergeur]</p>
+            
+            <h2>4. Développement</h2>
+            <p>Développé par : [Ton nom ou équipe]</p>
+            
+            <h2>5. Propriété intellectuelle</h2>
+            <p>L'ensemble de ce site et des œuvres qui y sont publiées relèvent de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques.</p>
+        </article>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2026 [Kezan]. Tous droits réservés. | <a href="#">Confidentialité</a></p>
+    </footer>
+</body>
+</html>
