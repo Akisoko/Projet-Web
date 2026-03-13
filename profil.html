@@ -41,7 +41,7 @@
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="#" class="nav-item">
+            <a href="modifier_profil.html" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
                 <span>Paramètres</span>
             </a>
@@ -49,7 +49,7 @@
                 <i class="fa-solid fa-file-contract"></i>
                 <span>Mentions Légales</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="accueil.html" class="nav-item">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Deconnexion</span>
             </a>
@@ -62,51 +62,119 @@
                 <button class="burger-menu" id="burgerMenu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h1>Profil</h1>
+                <h1>Mon Profil</h1>
             </div>
-            <div class="user-info">
-                <span>Jonathan Cesar</span>
+            <div class="header-right">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div class="user-avatar">
                     <i class="fa-solid fa-user"></i>
                 </div>
             </div>
         </header>
 
-        <div class="profil-card">
-            <div class="profil-header">
-                <div class="profil-avatar">
-                    <i class="fa-solid fa-user fa-3x"></i>
-                    <button class="edit-avatar">
+        <div class="profile-content">
+            <div class="profile-cover">
+                <button class="edit-cover-btn">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
+            </div>
+
+            <div class="profile-main">
+                <div class="profile-top">
+                    <div class="profile-avatar-section">
+                        <div class="profile-avatar large">
+                            <i class="fa-solid fa-user fa-3x"></i>
+                        </div>
+                        <button class="edit-avatar-btn">
+                            <i class="fa-solid fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h2>Jonathan CESAR</h2>
+                        <p class="profile-role">Développeur Full Stack</p>
+                        <p class="profile-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Paris, France
+                        </p>
+                    </div>
+                    <button class="btn-edit-profile" onclick="window.location.href='modifier_profil.html'">
                         <i class="fa-solid fa-pen"></i>
+                        Modifier le profil
                     </button>
                 </div>
-                <h2>Jonathan CESAR</h2>
-            </div>
 
-            <div class="stats-container">
-                <div class="stat-card">
-                    <h3>Offres<br>postulées</h3>
-                    <div class="stat-number">39</div>
+                <div class="profile-bio">
+                    <h3>À propos</h3>
+                    <p>Passionné par le développement web et les nouvelles technologies. Toujours à la recherche de nouveaux défis et opportunités pour développer mes compétences.</p>
                 </div>
-                <div class="stat-card">
-                    <h3>Réponse<br>Offres</h3>
-                    <div class="stat-number">0</div>
-                </div>
-            </div>
 
-            <div class="actions-grid">
-                <button class="action-btn" onclick="window.location.href='importDocuments.html'">
-                    <i class="fa-solid fa-file-lines fa-2x"></i>
-                    <span>Modif CV</span>
-                </button>
-                <button class="action-btn" onclick="window.location.href='importDocuments.html'">
-                    <i class="fa-solid fa-envelope fa-2x"></i>
-                    <span>Modif LM</span>
-                </button>
-                <button class="action-btn" onclick="window.location.href='wishlist.html'">
-                    <i class="fa-solid fa-heart fa-2x"></i>
-                    <span>Wishlist</span>
-                </button>
+                <div class="profile-stats">
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">39</div>
+                            <div class="stat-label">Candidatures envoyées</div>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-envelope-open"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Réponses reçues</div>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Offres favorites</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <h3>Actions rapides</h3>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="window.location.href='documents.html'">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>Mon CV</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="window.location.href='documents.html'">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Lettre de motivation</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="window.location.href='wishlist.html'">
+                            <i class="fa-solid fa-heart"></i>
+                            <span>Ma Wishlist</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="profile-contact">
+                    <h3>Informations de contact</h3>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>jonathan.cesar@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+33 6 12 34 56 78</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-linkedin"></i>
+                            <span>linkedin.com/in/jonathancesar</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

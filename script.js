@@ -208,3 +208,54 @@ if (lmUpload) {
         }
     });
 }
+
+// Rating stars
+const starRatings = document.querySelectorAll('.star-rating');
+
+starRatings.forEach(rating => {
+    const stars = rating.querySelectorAll('i');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const ratingValue = parseInt(this.dataset.rating);
+
+            // Reset all stars in this rating group
+            stars.forEach(s => {
+                s.classList.remove('fa-solid', 'active');
+                s.classList.add('fa-regular');
+            });
+
+            // Activate stars up to clicked one
+            for (let i = 0; i < ratingValue; i++) {
+                stars[i].classList.remove('fa-regular');
+                stars[i].classList.add('fa-solid', 'active');
+            }
+
+            console.log(`Note attribuée: ${ratingValue}/5 pour ${rating.id}`);
+        });
+
+        // Hover effect
+        star.addEventListener('mouseenter', function() {
+            const ratingValue = parseInt(this.dataset.rating);
+            stars.forEach((s, index) => {
+                if (index < ratingValue) {
+                    s.classList.add('fa-solid');
+                    s.classList.remove('fa-regular');
+                } else {
+                    s.classList.remove('fa-solid');
+                    s.classList.add('fa-regular');
+                }
+            });
+        });
+    });
+
+    // Reset on mouse leave
+    rating.addEventListener('mouseleave', function() {
+        stars.forEach(s => {
+            if (!s.classList.contains('active')) {
+                s.classList.remove('fa-solid');
+                s.classList.add('fa-regular');
+            }
+        });
+    });
+});

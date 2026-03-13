@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noter l'entreprise - Kezan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
+            <span class="logo-text">Kezan</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="recherche.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Recherche de Profil</span>
+            </a>
+            <a href="offres.html" class="nav-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Offres</span>
+            </a>
+            <a href="entreprises.html" class="nav-item active">
+                <i class="fa-solid fa-building"></i>
+                <span>Entreprises</span>
+            </a>
+            <a href="statistiques.html" class="nav-item">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Statistiques</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="modifier_profil.html" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </a>
+            <a href="mentions.html" class="nav-item">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Terms & Conditions</span>
+            </a>
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Deconnexion</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="back-button" onclick="window.location.href='detail_entreprise.html'">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h1>Noter l'entreprise</h1>
+            </div>
+            <div class="header-right">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="profil.html" class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="add-content">
+            <div class="rating-card">
+                <div class="rating-header">
+                    <div class="company-logo large">Logo<br>Entreprise</div>
+                    <div class="rating-title">
+                        <h2>Nom de l'entreprise</h2>
+                        <p>Partagez votre expérience</p>
+                    </div>
+                </div>
+
+                <form class="rating-form">
+                    <div class="form-group">
+                        <label>Note globale</label>
+                        <div class="star-rating" id="globalRating">
+                            <i class="fa-regular fa-star" data-rating="1"></i>
+                            <i class="fa-regular fa-star" data-rating="2"></i>
+                            <i class="fa-regular fa-star" data-rating="3"></i>
+                            <i class="fa-regular fa-star" data-rating="4"></i>
+                            <i class="fa-regular fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ambiance de travail</label>
+                        <div class="star-rating" id="ambianceRating">
+                            <i class="fa-regular fa-star" data-rating="1"></i>
+                            <i class="fa-regular fa-star" data-rating="2"></i>
+                            <i class="fa-regular fa-star" data-rating="3"></i>
+                            <i class="fa-regular fa-star" data-rating="4"></i>
+                            <i class="fa-regular fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rémunération</label>
+                        <div class="star-rating" id="salaireRating">
+                            <i class="fa-regular fa-star" data-rating="1"></i>
+                            <i class="fa-regular fa-star" data-rating="2"></i>
+                            <i class="fa-regular fa-star" data-rating="3"></i>
+                            <i class="fa-regular fa-star" data-rating="4"></i>
+                            <i class="fa-regular fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Évolution de carrière</label>
+                        <div class="star-rating" id="evolutionRating">
+                            <i class="fa-regular fa-star" data-rating="1"></i>
+                            <i class="fa-regular fa-star" data-rating="2"></i>
+                            <i class="fa-regular fa-star" data-rating="3"></i>
+                            <i class="fa-regular fa-star" data-rating="4"></i>
+                            <i class="fa-regular fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Titre de votre avis</label>
+                        <input type="text" placeholder="Résumez votre expérience en quelques mots" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Votre avis détaillé</label>
+                        <textarea rows="6" placeholder="Décrivez votre expérience dans cette entreprise..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Points positifs</label>
+                        <textarea rows="3" placeholder="Qu'avez-vous apprécié ?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Points à améliorer</label>
+                        <textarea rows="3" placeholder="Que pourrait améliorer l'entreprise ?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required>
+                            <span>J'atteste que cet avis est basé sur ma propre expérience</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary add-submit">Publier mon avis</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

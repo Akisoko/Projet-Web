@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le profil - Kezan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
+            <span class="logo-text">Kezan</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="recherche.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Recherche de Profil</span>
+            </a>
+            <a href="offres.html" class="nav-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Offres</span>
+            </a>
+            <a href="entreprises.html" class="nav-item">
+                <i class="fa-solid fa-building"></i>
+                <span>Entreprises</span>
+            </a>
+            <a href="statistiques.html" class="nav-item">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Statistiques</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="modifier_profil.html" class="nav-item active">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </a>
+            <a href="mentions.html" class="nav-item">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Terms & Conditions</span>
+            </a>
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Deconnexion</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="back-button" onclick="window.location.href='profil.html'">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h1>Modifier le profil</h1>
+            </div>
+            <div class="header-right">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="profil.html" class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="add-content">
+            <form class="add-form">
+                <div class="form-group">
+                    <label>Photo de profil</label>
+                    <div class="profile-photo-upload">
+                        <div class="profile-avatar">
+                            <i class="fa-solid fa-user fa-3x"></i>
+                        </div>
+                        <label for="photoUpload" class="file-upload-btn large">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Changer la photo</span>
+                        </label>
+                        <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" value="CESAR" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" value="Jonathan" required>
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" value="jonathan.cesar@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" value="+33 6 12 34 56 78" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Adresse</label>
+                    <input type="text" value="Paris, France">
+                </div>
+
+                <div class="form-group">
+                    <label>Bio / Présentation</label>
+                    <textarea rows="4" placeholder="Parlez-nous de vous..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Mot de passe actuel</label>
+                    <input type="password" placeholder="Laisser vide pour ne pas changer">
+                </div>
+
+                <div class="form-group">
+                    <label>Nouveau mot de passe</label>
+                    <input type="password" placeholder="Nouveau mot de passe">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmer le mot de passe</label>
+                    <input type="password" placeholder="Confirmer le nouveau mot de passe">
+                </div>
+
+                <button type="submit" class="btn-primary add-submit">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

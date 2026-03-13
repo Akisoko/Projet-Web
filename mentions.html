@@ -3,123 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales</title>
-    <style>
-        /* Reset + Mobile-first base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6; 
-            color: #333; 
-            background: #f8f9fa; 
-            padding: 1rem; 
-            min-height: 100vh;
-        }
-        
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #e9ecef;
-        }
-        .title { font-size: 1.5rem; font-weight: 600; }
-        .menu-btn { 
-            background: none; 
-            border: none; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            padding: 0.5rem;
-        }
-        
-        /* Contenu principal */
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        .content {
-            background: white;
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 2rem;
-        }
-        
-        h1 { 
-            font-size: 1.75rem; 
-            margin-bottom: 1.5rem; 
-            color: #212529;
-        }
-        h2 { 
-            font-size: 1.25rem; 
-            margin: 2rem 0 1rem; 
-            color: #495057;
-        }
-        p, li {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-        ul { padding-left: 1.5rem; }
-        strong { color: #212529; }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 1rem;
-            color: #6c757d;
-            font-size: 0.875rem;
-        }
-        
-        /* Tablette + Desktop */
-        @media (min-width: 768px) {
-            body { padding: 2rem; }
-            .content { padding: 3rem; max-width: 800px; margin: 0 auto 3rem; }
-            h1 { font-size: 2rem; }
-        }
-        
-        @media (min-width: 1024px) {
-            .content { padding: 4rem; max-width: 900px; }
-        }
-    </style>
+    <title>Mentions légales - Kezan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">Mentions Légales</h1>
-        <button class="menu-btn" aria-label="Menu">☰</button>
-    </header>
-    
-    <div class="container">
-        <article class="content">
-            <h1>Mentions Légales</h1>
-            
-            <h2>1. Informations légales</h2>
-            <p><strong>Nom de l'entreprise :</strong> [Ton Nom/Entreprise]</p>
-            <p><strong>Forme juridique :</strong> [Auto-entrepreneur/SAS/etc.]</p>
-            <p><strong>Siège social :</strong> [Adresse complète]</p>
-            <p><strong>SIRET :</strong> [Ton numéro SIRET]</p>
-            <p><strong>Téléphone :</strong> [Ton numéro]</p>
-            <p><strong>Email :</strong> [contact@tonsite.fr]</p>
-            
-            <h2>2. Directeur de publication</h2>
-            <p>[Ton nom], en qualité de [rôle].</p>
-            
-            <h2>3. Hébergement</h2>
-            <p>Hébergeur : [OVH, AWS, etc.]<br>
-            Adresse : [Adresse hébergeur]<br>
-            Téléphone : [Numéro hébergeur]</p>
-            
-            <h2>4. Développement</h2>
-            <p>Développé par : [Ton nom ou équipe]</p>
-            
-            <h2>5. Propriété intellectuelle</h2>
-            <p>L'ensemble de ce site et des œuvres qui y sont publiées relèvent de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques.</p>
-        </article>
-    </div>
-    
-    <footer class="footer">
-        <p>© 2026 [Kezan]. Tous droits réservés. | <a href="#">Confidentialité</a></p>
-    </footer>
+<div class="container">
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
+            <span class="logo-text">Kezan</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="recherche.html" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Recherche de Profil</span>
+            </a>
+            <a href="offres.html" class="nav-item">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Offres</span>
+            </a>
+            <a href="entreprises.html" class="nav-item">
+                <i class="fa-solid fa-building"></i>
+                <span>Entreprises</span>
+            </a>
+            <a href="statistiques.html" class="nav-item">
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Statistiques</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="modifier_profil.html" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Paramètres</span>
+            </a>
+            <a href="mentions.html" class="nav-item active">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>Terms & Conditions</span>
+            </a>
+            <a href="accueil.html" class="nav-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Deconnexion</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <button class="burger-menu" id="burgerMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="back-button">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <h1>Mentions légales</h1>
+            </div>
+            <div class="header-right">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="profil.html" class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="legal-content">
+            <div class="legal-section">
+                <h2>1. Éditeur du site</h2>
+                <p>Le site Kezan est édité par [Nom de l'entreprise], société [forme juridique] au capital de [montant] €, immatriculée au RCS de [ville] sous le numéro [numéro].</p>
+                <p><strong>Siège social :</strong> [Adresse complète]</p>
+                <p><strong>Directeur de publication :</strong> [Nom Prénom]</p>
+                <p><strong>Contact :</strong> contact@kezan.fr</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>2. Hébergeur</h2>
+                <p>Le site est hébergé par [Nom de l'hébergeur]</p>
+                <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
+                <p><strong>Téléphone :</strong> [Numéro]</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>3. Propriété intellectuelle</h2>
+                <p>L'ensemble du contenu de ce site (textes, images, vidéos, etc.) est protégé par le droit d'auteur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>4. Données personnelles</h2>
+                <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à : privacy@kezan.fr</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>5. Cookies</h2>
+                <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur le site, vous acceptez leur utilisation.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>6. Conditions générales d'utilisation</h2>
+                <p>L'utilisation de ce site implique l'acceptation pleine et entière des conditions générales d'utilisation décrites ci-après.</p>
+                <p>Ces conditions d'utilisation sont susceptibles d'être modifiées ou complétées à tout moment.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>7. Responsabilité</h2>
+                <p>Kezan ne saurait être tenu responsable des erreurs ou omissions dans le contenu du site, ni des dommages directs ou indirects résultant de l'utilisation du site.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>8. Liens hypertextes</h2>
+                <p>Le site peut contenir des liens vers d'autres sites. Kezan n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+            </div>
+
+            <div class="legal-section">
+                <h2>9. Droit applicable</h2>
+                <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+            </div>
+
+            <div class="legal-footer">
+                <p><em>Dernière mise à jour : [Date]</em></p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

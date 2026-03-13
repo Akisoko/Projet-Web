@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modification Documents - Kezan</title>
+    <title>Modifier l'offre - Kezan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Recherche de Profil</span>
             </a>
-            <a href="offres.html" class="nav-item">
+            <a href="offres.html" class="nav-item active">
                 <i class="fa-solid fa-briefcase"></i>
                 <span>Offres</span>
             </a>
@@ -43,7 +43,7 @@
         <div class="sidebar-bottom">
             <a href="modifier_profil.html" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
-                <span>Parametrises</span>
+                <span>Paramètres</span>
             </a>
             <a href="mentions.html" class="nav-item">
                 <i class="fa-solid fa-file-contract"></i>
@@ -62,10 +62,10 @@
                 <button class="burger-menu" id="burgerMenu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <button class="back-button">
+                <button class="back-button" onclick="window.location.href='detail_offre.html'">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
-                <h1>Modification Documents</h1>
+                <h1>Modifier l'offre</h1>
             </div>
             <div class="header-right">
                 <button class="menu-dots">
@@ -77,60 +77,45 @@
             </div>
         </header>
 
-        <div class="documents-content">
-            <div class="document-section">
-                <div class="document-action-card">
-                    <div class="document-text">
-                        <h3>Télécharger</h3>
-                        <p>CV, Lettre de motivation</p>
-                    </div>
-                    <button class="document-btn" id="downloadBtn">
-                        <i class="fa-solid fa-download fa-2x"></i>
-                    </button>
+        <div class="add-content">
+            <form class="add-form">
+                <div class="form-group">
+                    <label>Nom responsable</label>
+                    <input type="text" value="Dupont" required>
                 </div>
-            </div>
 
-            <div class="document-section">
-                <div class="document-action-card">
-                    <div class="document-text">
-                        <h3>Importer</h3>
-                        <p>CV, Lettre de motivation</p>
-                    </div>
-                    <label for="fileUpload" class="document-btn">
-                        <i class="fa-solid fa-upload fa-2x"></i>
-                    </label>
-                    <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" style="display: none;">
+                <div class="form-group">
+                    <label>Prénom responsable</label>
+                    <input type="text" value="Marie" required>
                 </div>
-                <div id="fileName" class="file-name"></div>
-            </div>
 
-            <div class="document-section">
-                <div class="document-action-card">
-                    <div class="document-text">
-                        <h3>Aperçu</h3>
-                        <p>Prévisualiser vos documents</p>
-                    </div>
-                    <button class="document-btn" id="previewBtn">
-                        <i class="fa-solid fa-search fa-2x"></i>
-                    </button>
+                <div class="form-group">
+                    <label>E-mail responsable</label>
+                    <input type="email" value="marie.dupont@entreprise.com" required>
                 </div>
-            </div>
 
-            <div class="preview-zone hidden" id="previewZone">
-                <div class="preview-header">
-                    <h3>Aperçu du document</h3>
-                    <button class="close-preview" id="closePreview">
-                        <i class="fa-solid fa-  xmark"></i>
-                    </button>
+                <div class="form-group">
+                    <label>Nom entreprise</label>
+                    <input type="text" value="Entreprise XYZ" required>
                 </div>
-                <div class="preview-container">
-                    <div class="preview-placeholder">
-                        <i class="fa-solid fa-file-lines fa-3x"></i>
-                        <p>Aperçu du document</p>
-                        <small>Le document s'affichera ici</small>
-                    </div>
+
+                <div class="form-group">
+                    <label>Profil recherché</label>
+                    <input type="text" value="Développeur Full Stack" required>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label>Domaine de l'offre</label>
+                    <input type="text" value="Informatique / Développement Web" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Description de l'offre</label>
+                    <textarea rows="5" required>Nous recherchons un développeur Full Stack pour rejoindre notre équipe...</textarea>
+                </div>
+
+                <button type="submit" class="btn-primary add-submit">Enregistrer les modifications</button>
+            </form>
         </div>
     </main>
 </div>
