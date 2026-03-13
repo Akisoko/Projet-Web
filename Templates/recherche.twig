@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist - Kezan</title>
+    <title>Recherche de profil - Kezan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <div class="container">
@@ -18,38 +18,38 @@
         </div>
 
         <nav class="nav-menu">
-            <a href="accueil.html" class="nav-item">
+            <a href="accueil.twig" class="nav-item">
                 <i class="fa-solid fa-house"></i>
                 <span>Accueil</span>
             </a>
-            <a href="recherche.html" class="nav-item">
+            <a href="recherche.html" class="nav-item active">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Recherche de Profil</span>
             </a>
-            <a href="offres.html" class="nav-item">
+            <a href="offres.twig" class="nav-item">
                 <i class="fa-solid fa-briefcase"></i>
                 <span>Offres</span>
             </a>
-            <a href="entreprises.html" class="nav-item">
+            <a href="entreprises.twig" class="nav-item">
                 <i class="fa-solid fa-building"></i>
                 <span>Entreprises</span>
             </a>
-            <a href="statistiques.html" class="nav-item">
+            <a href="statistiques.twig" class="nav-item">
                 <i class="fa-solid fa-chart-bar"></i>
                 <span>Statistiques</span>
             </a>
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="modifier_profil.html" class="nav-item">
+            <a href="modifier_profil.twig" class="nav-item">
                 <i class="fa-solid fa-gear"></i>
                 <span>Paramètres</span>
             </a>
-            <a href="mentions.html" class="nav-item">
+            <a href="mentions.twig" class="nav-item">
                 <i class="fa-solid fa-file-contract"></i>
                 <span>Terms & Conditions</span>
             </a>
-            <a href="accueil.html" class="nav-item">
+            <a href="accueil.twig" class="nav-item">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Deconnexion</span>
             </a>
@@ -65,21 +65,23 @@
                 <button class="back-button">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
-                <h1>Wishlist</h1>
+                <h1>Recherche de profil</h1>
             </div>
             <div class="header-right">
-                <span>Jonathan Cesar</span>
-                <a href="profil.html" class="user-avatar">
+                <button class="menu-dots">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="profil.twig" class="user-avatar">
                     <i class="fa-solid fa-user"></i>
                 </a>
             </div>
         </header>
 
-        <div class="wishlist-content">
+        <div class="search-content">
             <div class="search-bar-container">
                 <div class="search-input-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Recherchez par entreprise, mot-clé...">
+                    <input type="text" class="search-input" placeholder="Recherchez par nom, prénom, mot-clé...">
                 </div>
                 <button class="filter-btn" id="filterBtn">
                     <i class="fa-solid fa-sliders"></i>
@@ -99,8 +101,17 @@
                         <input type="text" placeholder="Ville, région...">
                     </div>
                     <div class="filter-group">
-                        <label>Secteur</label>
-                        <input type="text" placeholder="Ex: Tech, Marketing...">
+                        <label>Expérience</label>
+                        <select>
+                            <option value="">Toutes</option>
+                            <option value="0-2">0-2 ans</option>
+                            <option value="2-5">2-5 ans</option>
+                            <option value="5+">5+ ans</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Compétences</label>
+                        <input type="text" placeholder="Ex: JavaScript, Design...">
                     </div>
                     <div class="filter-actions">
                         <button class="btn-secondary" id="resetFilters">Réinitialiser</button>
@@ -109,127 +120,99 @@
                 </div>
             </div>
 
-            <div class="wishlist-layout">
-                <div class="wishlist-list">
-                    <div class="wishlist-item" data-id="1">
-                        <div class="company-logo">
-                            Logo<br>Entreprise
+            <div class="search-results">
+                <h2>Profils correspondant à votre recherche</h2>
+
+                <div class="profile-list">
+                    <div class="profile-result-card">
+                        <div class="profile-result-avatar">
+                            Photo de<br>profil
                         </div>
-                        <div class="wishlist-item-info">
-                            <h3>Nom offre</h3>
-                            <p>Entreprise</p>
+                        <div class="profile-result-info">
+                            <h3>Nom<br>Prénom</h3>
                             <div class="info-lines">
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
                         </div>
-                        <button class="wishlist-heart active">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
                     </div>
 
-                    <div class="wishlist-item" data-id="2">
-                        <div class="company-logo">
-                            Logo<br>Entreprise
+                    <div class="profile-result-card">
+                        <div class="profile-result-avatar">
+                            Photo de<br>profil
                         </div>
-                        <div class="wishlist-item-info">
-                            <h3>Nom offre</h3>
-                            <p>Entreprise</p>
+                        <div class="profile-result-info">
+                            <h3>Nom<br>Prénom</h3>
                             <div class="info-lines">
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
                         </div>
-                        <button class="wishlist-heart active">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
                     </div>
 
-                    <div class="wishlist-item" data-id="3">
-                        <div class="company-logo">
-                            Logo<br>Entreprise
+                    <div class="profile-result-card">
+                        <div class="profile-result-avatar">
+                            Photo de<br>profil
                         </div>
-                        <div class="wishlist-item-info">
-                            <h3>Nom offre</h3>
-                            <p>Entreprise</p>
+                        <div class="profile-result-info">
+                            <h3>Nom<br>Prénom</h3>
                             <div class="info-lines">
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
                         </div>
-                        <button class="wishlist-heart active">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
                     </div>
 
-                    <div class="wishlist-item" data-id="4">
-                        <div class="company-logo">
-                            Logo<br>Entreprise
+                    <div class="profile-result-card">
+                        <div class="profile-result-avatar">
+                            Photo de<br>profil
                         </div>
-                        <div class="wishlist-item-info">
-                            <h3>Nom offre</h3>
-                            <p>Entreprise</p>
+                        <div class="profile-result-info">
+                            <h3>Nom<br>Prénom</h3>
                             <div class="info-lines">
                                 <div class="line"></div>
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
                         </div>
-                        <button class="wishlist-heart active">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
+                    </div>
+
+                    <div class="profile-result-card">
+                        <div class="profile-result-avatar">
+                            Photo de<br>profil
+                        </div>
+                        <div class="profile-result-info">
+                            <h3>Nom<br>Prénom</h3>
+                            <div class="info-lines">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="wishlist-detail" id="wishlistDetail">
-                    <div class="detail-placeholder">
-                        <i class="fa-solid fa-heart fa-3x"></i>
-                        <p>Sélectionnez une offre pour voir les détails</p>
-                    </div>
-
-                    <div class="detail-content hidden">
-                        <div class="detail-header">
-                            <div class="company-logo" id="detailLogo">
-                                Logo<br>Entreprise
-                            </div>
-                            <div class="detail-header-info">
-                                <h3 id="detailEntreprise">Entreprise</h3>
-                                <p id="detailOffre">Nom et détails de l'offre</p>
-                            </div>
-                        </div>
-                        <button class="btn-primary detail-action">Postuler</button>
-                        <div class="detail-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
+²                <div class="pagination">
+                    <button class="page-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn">10</button>
+                    <button class="page-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
                 </div>
-            </div>
-
-            <div class="pagination">
-                <button class="page-btn">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span class="page-dots">...</span>
-                <button class="page-btn">10</button>
-                <button class="page-btn">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </main>
 </div>
 
-<script src="script.js"></script>
+<script src="../assets/script.js"></script>
 </body>
 </html>

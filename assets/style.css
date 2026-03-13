@@ -1118,6 +1118,35 @@ body.landing-page {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.btn-rating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-rating:hover {
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+.btn-rating i {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .detail-title h2 {
@@ -1989,6 +2018,11 @@ body.landing-page {
     .detail-card-header {
         flex-direction: column;
         text-align: center;
+    }
+
+    .btn-rating {
+        position: static;
+        margin-top: 1rem;
     }
 
     .add-form {
