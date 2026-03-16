@@ -2,13 +2,13 @@
 
 namespace App\Core;
 
-use App\Controller\HomeController;
-use App\Controller\AuthController;
-use App\Controller\EntrepriseController;
-use App\Controller\OffreController;
-use App\Controller\UtilisateurController;
-use App\Controller\WishlistController;
-use App\Controller\StatistiqueController;
+use App\controller\HomeController;
+use App\controller\AuthController;
+use App\controller\EntrepriseController;
+use App\controller\OffreController;
+use App\controller\UtilisateurController;
+use App\controller\WishlistController;
+use App\controller\StatistiqueController;
 
 class Router
 {
@@ -16,11 +16,17 @@ class Router
     {
         $uri = parse_url($uri, PHP_URL_PATH);
 
+        $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+        if ($scriptDir !== '/' && str_starts_with($uri, $scriptDir)) {
+            $uri = substr($uri, strlen($scriptDir));
+        }
+
         $uri = str_replace('/index.php', '', $uri);
 
-        if ($uri === '') {
+        if ($uri === '' || $uri === '/') {
             $uri = '/';
         }
+
 
         switch ($uri) {
 

@@ -9,7 +9,7 @@ class View
 {
     public static function render($template, $data = [])
     {
-        $loader = new FilesystemLoader(__DIR__ . '/../../templates');
+        $loader = new FilesystemLoader(dirname(__DIR__, 2) . '/templates');
         $twig = new Environment($loader);
 
         echo $twig->render($template, $data);

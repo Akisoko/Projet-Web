@@ -1,0 +1,197 @@
+{% extends "base.twig" %}
+
+{% block title %}
+    Accueil - Kezan
+{% endblock %}
+
+{% block page_title %}
+    Accueil
+{% endblock %}
+
+{% block content %}
+
+    <div class="home-content">
+
+        <section class="section wishlist-section">
+            <h2>Votre Wishlist</h2>
+
+            <div class="carousel-container">
+
+                <button class="carousel-btn prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="wishlist-carousel">
+
+                    <div class="wishlist-card">
+
+                        <div class="card-header">
+                            <div class="card-avatar">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p>Aucune offre dans votre wishlist pour le moment.</p>
+                        </div>
+
+                        <button class="wishlist-heart">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button class="carousel-btn next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="section">
+            <h2>Entreprises recommandées</h2>
+
+            <div class="cards-grid">
+
+                <div class="company-card">
+
+                    <div class="company-header">
+
+                        <div class="company-logo">
+                            Logo entreprise
+                        </div>
+
+                        <div class="company-info">
+                            <h3>Nom de l'entreprise</h3>
+                            <p>Secteur d'activité</p>
+                        </div>
+
+                    </div>
+
+                    <div class="company-body">
+                        <p>Description de l'entreprise.</p>
+                    </div>
+
+                    <div class="company-footer">
+
+                    <span class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Ville</span>
+                    </span>
+
+                        <span class="status online">
+                        <i class="fa-solid fa-circle"></i>
+                    </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="company-card">
+
+                    <div class="company-header">
+
+                        <div class="company-logo">
+                            Logo entreprise
+                        </div>
+
+                        <div class="company-info">
+                            <h3>Nom de l'entreprise</h3>
+                            <p>Secteur d'activité</p>
+                        </div>
+
+                    </div>
+
+                    <div class="company-body">
+                        <p>Description de l'entreprise.</p>
+                    </div>
+
+                    <div class="company-footer">
+
+                    <span class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Ville</span>
+                    </span>
+
+                        <span class="status online">
+                        <i class="fa-solid fa-circle"></i>
+                    </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="section">
+
+            <h2>Offres recommandées</h2>
+
+            <div class="cards-grid">
+
+                <div class="offer-card">
+
+                    <div class="card-header">
+
+                        <div class="card-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div class="card-title">
+                            <h3>Titre de l'offre</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        <p>Description de l'offre.</p>
+                    </div>
+
+                    <button class="wishlist-heart">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="offer-card">
+
+                    <div class="card-header">
+
+                        <div class="card-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div class="card-title">
+                            <h3>Titre de l'offre</h3>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+                        <p>Description de l'offre.</p>
+                    </div>
+
+                    <button class="wishlist-heart">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+{% endblock %}
