@@ -31,6 +31,10 @@ class Router
         switch ($uri) {
 
             case '/':
+                (new AuthController())->premiereConnexion();
+                break;
+
+            case '/accueil':
                 (new HomeController())->accueil();
                 break;
 
@@ -40,10 +44,6 @@ class Router
 
             case '/inscription':
                 (new AuthController())->inscription();
-                break;
-
-            case '/premiere_connexion':
-                (new AuthController())->premiereConnexion();
                 break;
 
             case '/profil':

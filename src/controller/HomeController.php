@@ -20,4 +20,6 @@ class HomeController
     {
         View::render("recherche.twig");
     }
+
+
 }

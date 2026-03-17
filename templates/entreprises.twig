@@ -1,184 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste entreprise - Kezan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-    <div class="overlay" id="overlay"></div>
+{% extends "base.twig" %}
 
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
-            <span class="logo-text">Kezan</span>
+{% block title %}
+    Entreprises - Kezan
+{% endblock %}
+
+{% block page_title %}
+    Entreprises
+{% endblock %}
+
+{% block content %}
+
+    <div class="list-content">
+
+        <div class="list-header">
+            <input type="text" class="search-input" placeholder="Rechercher une entreprise...">
+            <a href="/ajouter_entreprise" class="btn-primary">
+                <i class="fa-solid fa-plus"></i>
+                Ajouter
+            </a>
         </div>
 
-        <nav class="nav-menu">
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-            <a href="recherche.twig" class="nav-item">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Recherche de Profil</span>
-            </a>
-            <a href="offres.twig" class="nav-item">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Offres</span>
-            </a>
-            <a href="entreprises.html" class="nav-item active">
-                <i class="fa-solid fa-building"></i>
-                <span>Entreprises</span>
-            </a>
-            <a href="statistiques.twig" class="nav-item">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Statistiques</span>
-            </a>
-        </nav>
+        <div class="cards-grid">
+            {% for entreprise in entreprises %}
+                <a href="/detail_entreprise?id={{ entreprise.id }}" class="company-card">
 
-        <div class="sidebar-bottom">
-            <a href="modifier_profil.twig" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span>Paramètres</span>
-            </a>
-            <a href="mentions.twig" class="nav-item">
-                <i class="fa-solid fa-file-contract"></i>
-                <span>Terms & Conditions</span>
-            </a>
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Deconnexion</span>
-            </a>
-        </div>
-    </aside>
+                    <div class="company-header">
+                        <div class="company-logo">
+                            Logo<br>Entreprise
+                        </div>
+                        <div class="company-info">
+                            <p class="company-name">{{ entreprise.nom }}</p>
+                            <p class="company-sector">{{ entreprise.secteur }}</p>
+                        </div>
+                    </div>
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <button class="burger-menu" id="burgerMenu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="back-button">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <h1>Listes des Entreprises</h1>
-            </div>
-            <div class="header-right">
-                <button class="menu-dots">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <a href="profil.twig" class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
+                    <div class="company-body">
+                        <p>{{ entreprise.description }}</p>
+                    </div>
+
+                    <div class="company-footer">
+                        <span class="location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            {{ entreprise.adresse }}
+                        </span>
+                    </div>
+
                 </a>
-            </div>
-        </header>
-
-        <div class="entity-content">
-            <div class="entity-search">
-                <div class="search-input-wrapper">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Recherchez par entreprise, mot-clé...">
-                </div>
-                <button class="filter-btn">
-                    <i class="fa-solid fa-sliders"></i>
-                </button>
-            </div>
-
-            <div class="entity-header">
-                <h2>Les entreprises à explorer</h2>
-                <button class="btn-add" onclick="window.location.href='ajouter_entreprise.html'">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </div>
-
-            <div class="entity-list">
-                <div class="entity-item" data-id="1" onclick="window.location.href='detail_entreprise.html'">
-                    <div class="company-logo">Logo<br>Entreprise</div>
-                    <div class="entity-item-info">
-                        <h3>Nom<br>Entreprise</h3>
-                        <div class="info-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <span class="status-badge online">
-                            <i class="fa-solid fa-circle"></i>
-                        </span>
-                </div>
-
-                <div class="entity-item" data-id="2" onclick="window.location.href='detail_entreprise.html'">
-                    <div class="company-logo">Logo<br>Entreprise</div>
-                    <div class="entity-item-info">
-                        <h3>Nom<br>Entreprise</h3>
-                        <div class="info-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <span class="status-badge warning">
-                            <i class="fa-solid fa-circle"></i>
-                        </span>
-                </div>
-
-                <div class="entity-item" data-id="3" onclick="window.location.href='detail_entreprise.html'">
-                    <div class="company-logo">Logo<br>Entreprise</div>
-                    <div class="entity-item-info">
-                        <h3>Nom<br>Entreprise</h3>
-                        <div class="info-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <span class="status-badge error">
-                            <i class="fa-solid fa-circle"></i>
-                        </span>
-                </div>
-
-                <div class="entity-item" data-id="4" onclick="window.location.href='detail_entreprise.html'">
-                    <div class="company-logo">Logo<br>Entreprise</div>
-                    <div class="entity-item-info">
-                        <h3>Nom<br>Entreprise</h3>
-                        <div class="info-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <span class="status-badge online">
-                            <i class="fa-solid fa-circle"></i>
-                        </span>
-                </div>
-
-                <div class="entity-item" data-id="5" onclick="window.location.href='detail_entreprise.html'">
-                    <div class="company-logo">Logo<br>Entreprise</div>
-                    <div class="entity-item-info">
-                        <h3>Nom<br>Entreprise</h3>
-                        <div class="info-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <span class="status-badge warning">
-                            <i class="fa-solid fa-circle"></i>
-                        </span>
-                </div>
-            </div>
-
-            <div class="pagination">
-                <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">...</button>
-                <button class="page-btn">10</button>
-                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
+            {% else %}
+                <p>Aucune entreprise trouvée.</p>
+            {% endfor %}
         </div>
-    </main>
-</div>
 
-<script src="../assets/script.js"></script>
-</body>
-</html>
+    </div>
+
+{% endblock %}

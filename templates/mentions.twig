@@ -1,141 +1,72 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions légales - Kezan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-    <div class="overlay" id="overlay"></div>
+{% extends "base.twig" %}
 
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
-            <span class="logo-text">Kezan</span>
+{% block title %}
+    Mentions légales - Kezan
+{% endblock %}
+
+{% block page_title %}
+    Mentions légales
+{% endblock %}
+
+{% block content %}
+
+    <div class="legal-content">
+
+        <div class="legal-section">
+            <h2>1. Éditeur du site</h2>
+            <p>Le site Kezan est édité par [Nom de l'entreprise], société [forme juridique] au capital de [montant] €, immatriculée au RCS de [ville] sous le numéro [numéro].</p>
+            <p><strong>Siège social :</strong> [Adresse complète]</p>
+            <p><strong>Directeur de publication :</strong> [Nom Prénom]</p>
+            <p><strong>Contact :</strong> contact@kezan.fr</p>
         </div>
 
-        <nav class="nav-menu">
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-            <a href="recherche.twig" class="nav-item">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Recherche de Profil</span>
-            </a>
-            <a href="offres.twig" class="nav-item">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Offres</span>
-            </a>
-            <a href="entreprises.twig" class="nav-item">
-                <i class="fa-solid fa-building"></i>
-                <span>Entreprises</span>
-            </a>
-            <a href="statistiques.twig" class="nav-item">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Statistiques</span>
-            </a>
-        </nav>
-
-        <div class="sidebar-bottom">
-            <a href="modifier_profil.twig" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span>Paramètres</span>
-            </a>
-            <a href="mentions.html" class="nav-item active">
-                <i class="fa-solid fa-file-contract"></i>
-                <span>Terms & Conditions</span>
-            </a>
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Deconnexion</span>
-            </a>
+        <div class="legal-section">
+            <h2>2. Hébergeur</h2>
+            <p>Le site est hébergé par [Nom de l'hébergeur]</p>
+            <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
+            <p><strong>Téléphone :</strong> [Numéro]</p>
         </div>
-    </aside>
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <button class="burger-menu" id="burgerMenu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="back-button">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <h1>Mentions légales</h1>
-            </div>
-            <div class="header-right">
-                <button class="menu-dots">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <a href="profil.twig" class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </div>
-        </header>
-
-        <div class="legal-content">
-            <div class="legal-section">
-                <h2>1. Éditeur du site</h2>
-                <p>Le site Kezan est édité par [Nom de l'entreprise], société [forme juridique] au capital de [montant] €, immatriculée au RCS de [ville] sous le numéro [numéro].</p>
-                <p><strong>Siège social :</strong> [Adresse complète]</p>
-                <p><strong>Directeur de publication :</strong> [Nom Prénom]</p>
-                <p><strong>Contact :</strong> contact@kezan.fr</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>2. Hébergeur</h2>
-                <p>Le site est hébergé par [Nom de l'hébergeur]</p>
-                <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
-                <p><strong>Téléphone :</strong> [Numéro]</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>3. Propriété intellectuelle</h2>
-                <p>L'ensemble du contenu de ce site (textes, images, vidéos, etc.) est protégé par le droit d'auteur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>4. Données personnelles</h2>
-                <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à : privacy@kezan.fr</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>5. Cookies</h2>
-                <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur le site, vous acceptez leur utilisation.</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>6. Conditions générales d'utilisation</h2>
-                <p>L'utilisation de ce site implique l'acceptation pleine et entière des conditions générales d'utilisation décrites ci-après.</p>
-                <p>Ces conditions d'utilisation sont susceptibles d'être modifiées ou complétées à tout moment.</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>7. Responsabilité</h2>
-                <p>Kezan ne saurait être tenu responsable des erreurs ou omissions dans le contenu du site, ni des dommages directs ou indirects résultant de l'utilisation du site.</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>8. Liens hypertextes</h2>
-                <p>Le site peut contenir des liens vers d'autres sites. Kezan n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
-            </div>
-
-            <div class="legal-section">
-                <h2>9. Droit applicable</h2>
-                <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
-            </div>
-
-            <div class="legal-footer">
-                <p><em>Dernière mise à jour : [Date]</em></p>
-            </div>
+        <div class="legal-section">
+            <h2>3. Propriété intellectuelle</h2>
+            <p>L'ensemble du contenu de ce site (textes, images, vidéos, etc.) est protégé par le droit d'auteur. Toute reproduction, même partielle, est interdite sans autorisation préalable.</p>
         </div>
-    </main>
-</div>
 
-<script src="../assets/script.js"></script>
-</body>
-</html>
+        <div class="legal-section">
+            <h2>4. Données personnelles</h2>
+            <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à : privacy@kezan.fr</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>5. Cookies</h2>
+            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur le site, vous acceptez leur utilisation.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>6. Conditions générales d'utilisation</h2>
+            <p>L'utilisation de ce site implique l'acceptation pleine et entière des conditions générales d'utilisation décrites ci-après.</p>
+            <p>Ces conditions d'utilisation sont susceptibles d'être modifiées ou complétées à tout moment.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>7. Responsabilité</h2>
+            <p>Kezan ne saurait être tenu responsable des erreurs ou omissions dans le contenu du site, ni des dommages directs ou indirects résultant de l'utilisation du site.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>8. Liens hypertextes</h2>
+            <p>Le site peut contenir des liens vers d'autres sites. Kezan n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>9. Droit applicable</h2>
+            <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+        </div>
+
+        <div class="legal-footer">
+            <p><em>Dernière mise à jour : [Date]</em></p>
+        </div>
+
+    </div>
+
+{% endblock %}

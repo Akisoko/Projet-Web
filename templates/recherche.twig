@@ -1,218 +1,46 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recherche de profil - Kezan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-    <div class="overlay" id="overlay"></div>
+{% extends "base.twig" %}
 
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
-            <span class="logo-text">Kezan</span>
-        </div>
+{% block title %}
+    Recherche - Kezan
+{% endblock %}
 
-        <nav class="nav-menu">
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-            <a href="recherche.html" class="nav-item active">
+{% block page_title %}
+    Recherche
+{% endblock %}
+
+{% block content %}
+
+    <div class="search-content">
+
+        <form class="search-form" method="get" action="/recherche">
+            <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Recherche de Profil</span>
-            </a>
-            <a href="offres.twig" class="nav-item">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Offres</span>
-            </a>
-            <a href="entreprises.twig" class="nav-item">
-                <i class="fa-solid fa-building"></i>
-                <span>Entreprises</span>
-            </a>
-            <a href="statistiques.twig" class="nav-item">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Statistiques</span>
-            </a>
-        </nav>
+                <input type="text" name="q" placeholder="Rechercher..." value="{{ query ?? '' }}">
+                <button type="submit" class="btn-primary">Rechercher</button>
+            </div>
 
-        <div class="sidebar-bottom">
-            <a href="modifier_profil.twig" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span>Paramètres</span>
-            </a>
-            <a href="mentions.twig" class="nav-item">
-                <i class="fa-solid fa-file-contract"></i>
-                <span>Terms & Conditions</span>
-            </a>
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Deconnexion</span>
-            </a>
+            <div class="search-filters">
+                <select name="type">
+                    <option value="">Tout</option>
+                    <option value="offre" {{ query_type == 'offre' ? 'selected' : '' }}>Offres</option>
+                    <option value="entreprise" {{ query_type == 'entreprise' ? 'selected' : '' }}>Entreprises</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="search-results">
+            {% if resultats is defined and resultats is not empty %}
+                {% for resultat in resultats %}
+                    <a href="{{ resultat.url }}" class="result-item">
+                        <h3>{{ resultat.titre }}</h3>
+                        <p>{{ resultat.description }}</p>
+                    </a>
+                {% endfor %}
+            {% elseif query is defined and query is not empty %}
+                <p>Aucun résultat pour "{{ query }}".</p>
+            {% endif %}
         </div>
-    </aside>
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <button class="burger-menu" id="burgerMenu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="back-button">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <h1>Recherche de profil</h1>
-            </div>
-            <div class="header-right">
-                <button class="menu-dots">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <a href="profil.twig" class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </div>
-        </header>
+    </div>
 
-        <div class="search-content">
-            <div class="search-bar-container">
-                <div class="search-input-wrapper">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Recherchez par nom, prénom, mot-clé...">
-                </div>
-                <button class="filter-btn" id="filterBtn">
-                    <i class="fa-solid fa-sliders"></i>
-                </button>
-            </div>
-
-            <div class="filter-panel" id="filterPanel">
-                <div class="filter-header">
-                    <h3>Filtres</h3>
-                    <button class="close-filter" id="closeFilter">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="filter-content">
-                    <div class="filter-group">
-                        <label>Localisation</label>
-                        <input type="text" placeholder="Ville, région...">
-                    </div>
-                    <div class="filter-group">
-                        <label>Expérience</label>
-                        <select>
-                            <option value="">Toutes</option>
-                            <option value="0-2">0-2 ans</option>
-                            <option value="2-5">2-5 ans</option>
-                            <option value="5+">5+ ans</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Compétences</label>
-                        <input type="text" placeholder="Ex: JavaScript, Design...">
-                    </div>
-                    <div class="filter-actions">
-                        <button class="btn-secondary" id="resetFilters">Réinitialiser</button>
-                        <button class="btn-primary" id="applyFilters">Appliquer</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="search-results">
-                <h2>Profils correspondant à votre recherche</h2>
-
-                <div class="profile-list">
-                    <div class="profile-result-card">
-                        <div class="profile-result-avatar">
-                            Photo de<br>profil
-                        </div>
-                        <div class="profile-result-info">
-                            <h3>Nom<br>Prénom</h3>
-                            <div class="info-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-result-card">
-                        <div class="profile-result-avatar">
-                            Photo de<br>profil
-                        </div>
-                        <div class="profile-result-info">
-                            <h3>Nom<br>Prénom</h3>
-                            <div class="info-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-result-card">
-                        <div class="profile-result-avatar">
-                            Photo de<br>profil
-                        </div>
-                        <div class="profile-result-info">
-                            <h3>Nom<br>Prénom</h3>
-                            <div class="info-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-result-card">
-                        <div class="profile-result-avatar">
-                            Photo de<br>profil
-                        </div>
-                        <div class="profile-result-info">
-                            <h3>Nom<br>Prénom</h3>
-                            <div class="info-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-result-card">
-                        <div class="profile-result-avatar">
-                            Photo de<br>profil
-                        </div>
-                        <div class="profile-result-info">
-                            <h3>Nom<br>Prénom</h3>
-                            <div class="info-lines">
-                                <div class="line"></div>
-                                <div class="line"></div>
-                                <div class="line"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-²                <div class="pagination">
-                    <button class="page-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <span class="page-dots">...</span>
-                    <button class="page-btn">10</button>
-                    <button class="page-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-
-<script src="../assets/script.js"></script>
-</body>
-</html>
+{% endblock %}

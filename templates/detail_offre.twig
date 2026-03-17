@@ -1,122 +1,48 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détail de l'offre - Kezan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-    <div class="overlay" id="overlay"></div>
+{% extends "base.twig" %}
 
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
-            <span class="logo-text">Kezan</span>
-        </div>
+{% block title %}
+    Détail offre - Kezan
+{% endblock %}
 
-        <nav class="nav-menu">
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-            <a href="recherche.twig" class="nav-item">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Recherche de Profil</span>
-            </a>
-            <a href="offres.twig" class="nav-item active">
+{% block page_title %}
+    Détail offre
+{% endblock %}
+
+{% block content %}
+
+    <div class="detail-content">
+
+        <div class="offer-detail-header">
+            <div class="card-avatar">
                 <i class="fa-solid fa-briefcase"></i>
-                <span>Offres</span>
-            </a>
-            <a href="entreprises.twig" class="nav-item">
-                <i class="fa-solid fa-building"></i>
-                <span>Entreprises</span>
-            </a>
-            <a href="statistiques.twig" class="nav-item">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Statistiques</span>
-            </a>
-        </nav>
-
-        <div class="sidebar-bottom">
-            <a href="modifier_profil.twig" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span>Paramètres</span>
-            </a>
-            <a href="mentions.twig" class="nav-item">
-                <i class="fa-solid fa-file-contract"></i>
-                <span>Terms & Conditions</span>
-            </a>
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Deconnexion</span>
-            </a>
+            </div>
+            <div class="offer-detail-info">
+                <h2>{{ offre.titre ?? 'Titre de l\'offre' }}</h2>
+                <p>{{ offre.entreprise ?? 'Entreprise' }}</p>
+            </div>
+            <button class="wishlist-heart">
+                <i class="fa-{{ offre.wishlist ? 'solid' : 'regular' }} fa-heart"></i>
+            </button>
         </div>
-    </aside>
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <button class="burger-menu" id="burgerMenu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="back-button" onclick="window.location.href='liste_offre.html'">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <h1>Detail de l'offre</h1>
+        <div class="offer-detail-body">
+
+            <div class="detail-section">
+                <h3>Description</h3>
+                <p>{{ offre.description ?? 'Description de l\'offre' }}</p>
             </div>
-            <div class="header-right">
-                <button class="menu-dots">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <a href="profil.twig" class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </a>
+
+            <div class="detail-section">
+                <h3>Informations</h3>
+                <p><i class="fa-solid fa-location-dot"></i> {{ offre.lieu ?? 'Lieu' }}</p>
+                <p><i class="fa-solid fa-clock"></i> {{ offre.duree ?? 'Durée' }}</p>
+                <p><i class="fa-solid fa-euro-sign"></i> {{ offre.remuneration ?? 'Rémunération' }}</p>
             </div>
-        </header>
 
-        <div class="detail-content">
-            <div class="detail-card">
-                <div class="detail-actions">
-                    <button class="detail-action-btn delete">
-                        <span>Supprimer l'offre</span>
-                    </button>
-                    <button class="detail-action-btn edit">
-                        <span>Modifier l'offre</span>
-                    </button>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Informations générales :</h3>
-                    <div class="detail-lines">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Détails :</h3>
-                    <div class="detail-lines">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-
-                <button class="btn-primary detail-submit" onclick="window.location.href='postuler_offre.twig'">Postuler</button>
-            </div>
         </div>
-    </main>
-</div>
 
-<script src="../assets/script.js"></script>
-</body>
-</html>
+        <a href="/postuler?id={{ offre.id ?? '' }}" class="btn-primary">Postuler</a>
+
+    </div>
+
+{% endblock %}

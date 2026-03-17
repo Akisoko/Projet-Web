@@ -1,124 +1,43 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails entreprise - Kezan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="container">
-    <div class="overlay" id="overlay"></div>
+{% extends "base.twig" %}
 
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="logo-img">
-            <span class="logo-text">Kezan</span>
-        </div>
+{% block title %}
+    Détail entreprise - Kezan
+{% endblock %}
 
-        <nav class="nav-menu">
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-house"></i>
-                <span>Accueil</span>
-            </a>
-            <a href="recherche.twig" class="nav-item">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Recherche de Profil</span>
-            </a>
-            <a href="offres.twig" class="nav-item">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Offres</span>
-            </a>
-            <a href="entreprises.twig" class="nav-item active">
-                <i class="fa-solid fa-building"></i>
-                <span>Entreprises</span>
-            </a>
-            <a href="statistiques.twig" class="nav-item">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Statistiques</span>
-            </a>
-        </nav>
+{% block page_title %}
+    Détail entreprise
+{% endblock %}
 
-        <div class="sidebar-bottom">
-            <a href="modifier_profil.twig" class="nav-item">
-                <i class="fa-solid fa-gear"></i>
-                <span>Paramètres</span>
-            </a>
-            <a href="mentions.twig" class="nav-item">
-                <i class="fa-solid fa-file-contract"></i>
-                <span>Terms & Conditions</span>
-            </a>
-            <a href="accueil.twig" class="nav-item">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Deconnexion</span>
-            </a>
-        </div>
-    </aside>
+{% block content %}
 
-    <main class="main-content">
-        <header class="header">
-            <div class="header-left">
-                <button class="burger-menu" id="burgerMenu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <button class="back-button" onclick="window.location.href='liste_entreprise.html'">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <h1>Detail de l'entreprise</h1>
+    <div class="detail-content">
+
+        <div class="company-detail-header">
+            <div class="company-logo-large">
+                Logo<br>Entreprise
             </div>
-            <div class="header-right">
-                <button class="menu-dots">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <a href="profil.twig" class="user-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </div>
-        </header>
-
-        <div class="detail-content">
-            <div class="detail-card">
-                <div class="detail-card-header">
-                    <div class="company-logo large">Logo<br>Entreprise</div>
-                    <div class="detail-title">
-                        <h2>Supprimer l'entreprise</h2>
-                        <p>Nom entreprise</p>
-                    </div>
-                    <button class="btn-rating" onclick="window.location.href='noter_entreprise.twig'" title="Noter cette entreprise">
-                        <i class="fa-solid fa-star"></i>
-                    </button>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Informations générales :</h3>
-                    <div class="detail-lines">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Détails :</h3>
-                    <div class="detail-lines">
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-
-                <button class="btn-primary detail-submit">Postuler</button>
+            <div class="company-detail-info">
+                <h2>{{ entreprise.nom ?? 'Nom entreprise' }}</h2>
+                <p>{{ entreprise.secteur ?? 'Secteur' }}</p>
             </div>
         </div>
-    </main>
-</div>
 
-<script src="../assets/script.js"></script>
-</body>
-</html>
+        <div class="company-detail-body">
+
+            <div class="detail-section">
+                <h3>À propos</h3>
+                <p>{{ entreprise.description ?? 'Description de l\'entreprise' }}</p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Informations</h3>
+                <p><i class="fa-solid fa-location-dot"></i> {{ entreprise.adresse ?? 'Adresse' }}</p>
+                <p><i class="fa-solid fa-phone"></i> {{ entreprise.telephone ?? 'Téléphone' }}</p>
+                <p><i class="fa-solid fa-envelope"></i> {{ entreprise.email ?? 'Email' }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

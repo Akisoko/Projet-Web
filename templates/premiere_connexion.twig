@@ -1,38 +1,32 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kezan - Bienvenue</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body class="landing-page">
-<div class="landing-screen" id="welcomeScreen">
-    <div class="landing-card">
-        <div class="logo-container">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
-        </div>
-        <h1 class="brand-name">Kezan</h1>
-        <button class="landing-btn" id="startBtn">Commencer</button>
-    </div>
-²</div>
+{% extends "base_connexion.twig" %}
 
-<div class="landing-screen hidden" id="loginScreen">
-    <div class="landing-card">
-        <div class="logo-container">
-            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
-        </div>
-        <h2 class="login-title">Sign up/Log in</h2>
+{% block title %}Kezan - Bienvenue{% endblock %}
 
-        <div class="login-form">
-            <button class="btn-outline" onclick="window.location.href='accueil.html'">Continuer en tant qu'invité</button>
-            <button class="btn-primary" onclick="window.location.href='inscription.html'">S'incrire</button>
-            <button class="btn-primary" onclick="window.location.href='connexion.html'">Se connecter</button>
+{% block content %}
+
+    <div class="landing-screen" id="welcomeScreen">
+        <div class="landing-card">
+            <div class="logo-container">
+                <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
+            </div>
+            <h1 class="brand-name">Kezan</h1>
+            <button class="landing-btn" id="startBtn">Commencer</button>
         </div>
     </div>
-</div>
 
-<script src="../assets/script.js"></script>
-</body>
-</html>
+    <div class="landing-screen hidden" id="loginScreen">
+        <div class="landing-card">
+            <div class="logo-container">
+                <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
+            </div>
+            <h2 class="login-title">Sign up/Log in</h2>
+
+            <div class="login-form">
+                <a href="accueil" class="btn-outline">Continuer en tant qu'invité</a>
+                <a href="inscription" class="btn-primary">S'inscrire</a>
+                <a href="connexion" class="btn-primary">Se connecter</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
