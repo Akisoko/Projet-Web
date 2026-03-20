@@ -1,31 +1,42 @@
-{% extends "base.twig" %}
+{% extends "base_connexion.twig" %}
 
-{% block title %}
-    Connexion - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Connexion
-{% endblock %}
+{% block title %}Connexion - Kezan{% endblock %}
 
 {% block content %}
 
-    <div class="auth-content">
-        <form class="auth-form" method="post" action="/connexion">
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required>
+    <div class="auth-container">
+        <div class="auth-logo-side">
+            <div class="logo-container">
+                <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" alt="Kezan Logo" class="landing-logo">
             </div>
+            <h1 class="brand-name">Kezan</h1>
+        </div>
 
-            <div class="form-group">
-                <label>Mot de passe</label>
-                <input type="password" name="mot_de_passe" required>
+        <div class="auth-form-side">
+            <div class="auth-form-card">
+                <h2>Connexion</h2>
+                <p class="auth-subtitle">Connectez vous pour commencer</p>
+
+                <form class="auth-form" method="POST" action="/connexion">
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" name="password" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary auth-submit">Se connecter</button>
+                </form>
+
+                <p class="auth-footer">
+                    Pas encore de compte ?
+                    <a href="/inscription">Créer un compte</a>
+                </p>
             </div>
-
-            <button type="submit" class="btn-primary">Se connecter</button>
-
-        </form>
+        </div>
     </div>
 
 {% endblock %}
