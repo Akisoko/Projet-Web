@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
 use App\Core\View;
-use App\Model\EntrepriseModel;
+use App\models\EntrepriseModel;
 
 class EntrepriseController
 {
@@ -57,7 +57,6 @@ class EntrepriseController
                 'Nombre_Stagiaires' => $_POST['nb_stagiaires'] ?? null
             ];
 
-            // Vérif
             foreach ($data as $value) {
                 if (!$value) {
                     View::render('ajouter_entreprise.twig', [

@@ -11,6 +11,11 @@
 {% block content %}
 
     <div class="add-content">
+
+        {% if erreur %}
+            <p style="color:red;">{{ erreur }}</p>
+        {% endif %}
+
         <form class="add-form" method="post" action="/ajouter_entreprise">
 
             <div class="form-group">
@@ -19,38 +24,42 @@
             </div>
 
             <div class="form-group">
-                <label>Numéro de siret</label>
-                <input type="text" name="siret" required>
+                <label>Site web</label>
+                <input type="text" name="site_web" required>
             </div>
 
             <div class="form-group">
-                <label>E-mail</label>
+                <label>Date de création</label>
+                <input type="date" name="date_creation" required>
+            </div>
+
+            <div class="form-group">
+                <label>Domaine</label>
+                <input type="text" name="domaine" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre d'employés</label>
+                <input type="number" name="nb_employes" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre de stagiaires</label>
+                <input type="number" name="nb_stagiaires" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
                 <input type="email" name="email" required>
             </div>
 
             <div class="form-group">
                 <label>Téléphone</label>
-                <input type="tel" name="telephone" required>
+                <input type="text" name="telephone" required>
             </div>
 
             <div class="form-group">
-                <label>Adresse</label>
-                <input type="text" name="adresse" required>
-            </div>
-
-            <div class="form-group">
-                <label>Logo</label>
-                <div class="file-upload-group">
-                    <input type="text" readonly placeholder="Aucun fichier sélectionné" id="logoFileName">
-                    <label for="logoUpload" class="file-upload-btn">
-                        <i class="fa-solid fa-upload"></i>
-                    </label>
-                    <input type="file" id="logoUpload" name="logo" accept="image/*" style="display: none;">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Description de l'entreprise</label>
+                <label>Description</label>
                 <textarea name="description" rows="5" required></textarea>
             </div>
 

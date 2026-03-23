@@ -8,7 +8,7 @@ use PDO;
 class Model {
     protected PDO $db;
     protected string $table;
-    protected string $primaryKey = "id"; // par défaut
+    protected string $primaryKey = "id";
 
     public function __construct() {
         $this->db = Database::getConnection();
