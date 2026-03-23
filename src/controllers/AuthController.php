@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\controllers;
 
 use App\Core\View;
+use App\models\UtilisateurModel;
 
 class AuthController
 {
@@ -12,13 +13,12 @@ class AuthController
             $email = $_POST['email'] ?? null;
             $motDePasse = $_POST['mot_de_passe'] ?? null;
 
-            // TODO : vérifier les identifiants en BDD
-            // $utilisateur = UtilisateurModel::findByEmail($email);
+            $utilisateur = UtilisateurModel::findByEmail($email);
 
-            // Simulation pour l'instant
-            if ($email && $motDePasse) {
+            // password_verify compare le mot de passe avec le hash en BDD
+            if ($utilisateur && password_verify($motDePasse, $utilisateur['mot_de_passe'])) {
                 session_start();
-                $_SESSION['utilisateur'] = ['email' => $email];
+                $_SESSION['utilisateur'] = $utilisateur; // toutes les infos dispo en session
                 header('Location: /');
                 exit;
             }
@@ -44,9 +44,13 @@ class AuthController
                 return;
             }
 
-            // TODO : créer l'utilisateur en BDD
-            // UtilisateurModel::create($prenom, $nom, $email, $motDePasse);
+            // Vérifier que l'email n'est pas déjà utilisé
+            if (UtilisateurModel::findByEmail($email)) {
+                View::render('inscription.twig', ['erreur' => 'Cet email est déjà utilisé.']);
+                return;
+            }
 
+            UtilisateurModel::create($prenom, $nom, $email, $motDePasse);
             header('Location: /connexion');
             exit;
         }
@@ -65,9 +69,8 @@ class AuthController
                 return;
             }
 
-            // TODO : mettre à jour le mot de passe en BDD
-            // UtilisateurModel::updatePassword($id, $motDePasse);
-
+            $id = $_SESSION['utilisateur']['id'];
+            UtilisateurModel::updatePassword($id, $motDePasse);
             header('Location: /');
             exit;
         }

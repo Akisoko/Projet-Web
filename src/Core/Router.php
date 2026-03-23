@@ -2,13 +2,13 @@
 
 namespace App\Core;
 
-use App\controller\HomeController;
-use App\controller\AuthController;
-use App\controller\EntrepriseController;
-use App\controller\OffreController;
-use App\controller\UtilisateurController;
-use App\controller\WishlistController;
-use App\controller\StatistiqueController;
+use App\controllers\HomeController;
+use App\controllers\AuthController;
+use App\controllers\EntrepriseController;
+use App\controllers\OffreController;
+use App\controllers\UtilisateurController;
+use App\controllers\WishlistController;
+use App\controllers\StatistiqueController;
 
 class Router
 {
