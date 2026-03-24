@@ -1,0 +1,76 @@
+{% extends "base.twig" %}
+
+{% block title %}
+    Modifier une entreprise - Kezan
+{% endblock %}
+
+{% block page_title %}
+    Modifier une entreprise
+{% endblock %}
+
+{% block content %}
+
+    <div class="add-content">
+
+        {% if erreur %}
+            <p style="color:red;">{{ erreur }}</p>
+        {% endif %}
+
+        <form class="add-form" method="post" action="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}">
+
+            <div class="form-group">
+                <label>Nom entreprise</label>
+                <input type="text" name="nom" value="{{ entreprise.Nom_Entreprise }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Site web</label>
+                <input type="text" name="site_web" value="{{ entreprise.Site_Web }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Date de création</label>
+                <input type="date" name="date_creation" value="{{ entreprise.Date_Creation }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Domaine</label>
+                <input type="text" name="domaine" value="{{ entreprise.Domaine_Entreprise }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre d'employés</label>
+                <input type="number" name="nb_employes" value="{{ entreprise.Nombre_Employes }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre de stagiaires</label>
+                <input type="number" name="nb_stagiaires" value="{{ entreprise.Nombre_Stagiaires }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ entreprise.Mail }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="text" name="telephone" value="{{ entreprise.Telephone }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" rows="5" required>{{ entreprise.Description_Entreprise }}</textarea>
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <a href="/detail_entreprise?id={{ entreprise.Id_Entreprise }}" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
+                    Annuler
+                </a>
+                <button type="submit" class="btn-primary add-submit">Enregistrer les modifications</button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

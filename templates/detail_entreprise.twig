@@ -11,33 +11,105 @@
 {% block content %}
 
     <div class="detail-content">
+        <div class="detail-card">
 
-        <div class="company-detail-header">
-            <div class="company-logo-large">
-                Logo<br>Entreprise
+            <div class="detail-card-header">
+                <div class="company-logo large">
+                    <i class="fa-solid fa-building" style="font-size: 2rem; color: #999;"></i>
+                </div>
+                <div class="detail-title">
+                    <h2>{{ entreprise.Nom_Entreprise }}</h2>
+                    <p>
+                    <span style="font-size: 0.8rem; background: #f0f0f0; color: #555; padding: 3px 12px; border-radius: 20px;">
+                        {{ entreprise.Domaine_Entreprise }}
+                    </span>
+                    </p>
+                </div>
             </div>
-            <div class="company-detail-info">
-                <h2>{{ entreprise.nom ?? 'Nom entreprise' }}</h2>
-                <p>{{ entreprise.secteur ?? 'Secteur' }}</p>
-            </div>
-        </div>
-
-        <div class="company-detail-body">
 
             <div class="detail-section">
                 <h3>À propos</h3>
-                <p>{{ entreprise.description ?? 'Description de l\'entreprise' }}</p>
+                <p style="color: #555; line-height: 1.7; font-size: 0.95rem;">{{ entreprise.Description_Entreprise }}</p>
             </div>
 
             <div class="detail-section">
                 <h3>Informations</h3>
-                <p><i class="fa-solid fa-location-dot"></i> {{ entreprise.adresse ?? 'Adresse' }}</p>
-                <p><i class="fa-solid fa-phone"></i> {{ entreprise.telephone ?? 'Téléphone' }}</p>
-                <p><i class="fa-solid fa-envelope"></i> {{ entreprise.email ?? 'Email' }}</p>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-globe" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Site web</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Site_Web }}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-phone" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Téléphone</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Telephone }}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-envelope" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Email</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Mail }}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fa-solid fa-users" style="color: #555; font-size: 0.9rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Employés</p>
+                                <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ entreprise.Nombre_Employes }}</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fa-solid fa-user-graduate" style="color: #555; font-size: 0.9rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Stagiaires</p>
+                                <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ entreprise.Nombre_Stagiaires }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-calendar" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Fondée le</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Date_Creation }}</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-
+            <div class="detail-actions">
+                <a href="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn edit">
+                    <i class="fa-solid fa-pen"></i> Modifier
+                </a>
+                <a href="/supprimer_entreprise?id={{ entreprise.Id_Entreprise }}"
+                   class="detail-action-btn delete"
+                   onclick="return confirm('Supprimer cette entreprise ?')">
+                    <i class="fa-solid fa-trash"></i> Supprimer
+                </a>
+            </div>
         </div>
-
     </div>
 
 {% endblock %}

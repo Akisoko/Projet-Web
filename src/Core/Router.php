@@ -106,6 +106,18 @@ class Router
                 (new HomeController())->recherche();
                 break;
 
+            case '/modifier_entreprise':
+                (new EntrepriseController())->modifier();
+                break;
+
+            case '/supprimer_entreprise':
+                (new EntrepriseController())->supprimer();
+                break;
+
+            case '/supprimer_offre':
+                (new OffreController())->supprimer();
+                break;
+
             default:
                 http_response_code(404);
                 echo "404 - Page non trouvée";

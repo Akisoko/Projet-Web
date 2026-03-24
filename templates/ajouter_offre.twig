@@ -1,41 +1,53 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Ajouter une offre - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Ajouter une offre
-{% endblock %}
-
+{% block title %}Ajouter une offre - Kezan{% endblock %}
+{% block page_title %}Ajouter une offre{% endblock %}
 {% block content %}
 
     <div class="add-content">
+        {% if erreur %}
+            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
+        {% endif %}
+
         <form class="add-form" method="post" action="/ajouter_offre">
 
             <div class="form-group">
-                <label>Titre de l'offre</label>
-                <input type="text" name="titre" required>
+                <label>Nom de l'offre</label>
+                <input type="text" name="nom" required>
             </div>
 
             <div class="form-group">
-                <label>Entreprise</label>
-                <input type="text" name="entreprise" required>
+                <label>Domaine</label>
+                <input type="text" name="domaine" required>
             </div>
 
             <div class="form-group">
-                <label>Lieu</label>
-                <input type="text" name="lieu" required>
-            </div>
-
-            <div class="form-group">
-                <label>Durée</label>
-                <input type="text" name="duree" required>
+                <label>Profil recherché</label>
+                <input type="text" name="profil" required>
             </div>
 
             <div class="form-group">
                 <label>Rémunération</label>
-                <input type="number" name="remuneration" required>
+                <input type="text" name="remuneration" required>
+            </div>
+
+            <div class="form-group">
+                <label>Date de l'offre</label>
+                <input type="date" name="date_offre" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre d'étudiants recherchés</label>
+                <input type="number" name="nb_etudiants" required>
+            </div>
+
+            <div class="form-group">
+                <label>Entreprise</label>
+                <select name="id_entreprise" required>
+                    <option value="">-- Sélectionner une entreprise --</option>
+                    {% for entreprise in entreprises %}
+                        <option value="{{ entreprise.Id_Entreprise }}">{{ entreprise.Nom_Entreprise }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-group">
@@ -47,5 +59,4 @@
 
         </form>
     </div>
-
 {% endblock %}

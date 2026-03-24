@@ -37,4 +37,20 @@ class Model {
 
         return $stmt->execute(array_values($data));
     }
+
+    public function update(int $id, array $data): bool {
+        $fields = implode(',', array_map(fn($col) => "$col = ?", array_keys($data)));
+        $stmt = $this->db->prepare(
+            "UPDATE {$this->table} SET $fields WHERE {$this->primaryKey} = ?"
+        );
+        return $stmt->execute([...array_values($data), $id]);
+    }
+
+    public function delete(int $id): bool {
+        $stmt = $this->db->prepare(
+            "DELETE FROM {$this->table} WHERE {$this->primaryKey} = ?"
+        );
+        return $stmt->execute([$id]);
+    }
 }
+
