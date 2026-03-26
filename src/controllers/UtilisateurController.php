@@ -3,93 +3,75 @@
 namespace App\controllers;
 
 use App\Core\View;
+use App\Core\Auth;
+use App\models\UtilisateurModel;
 
 class UtilisateurController
 {
     public function profil(): void
     {
-        // TODO : récupérer l'utilisateur connecté depuis la session
-        // session_start();
-        // $id = $_SESSION['utilisateur']['id'] ?? null;
-        // $utilisateur = UtilisateurModel::findById($id);
-        // $candidatures = CandidatureModel::findByUtilisateur($id);
+        Auth::requis();
+        $id = Auth::utilisateur()['Id_Utilisateur'];
 
-        // Simulation pour l'instant
-        $utilisateur = [
-            'id' => 1,
-            'prenom' => 'Nicolas',
-            'nom' => 'Schnell',
-            'email' => 'nicolas.schnell@viacesi.fr',
-            'telephone' => '06 12 34 56 78',
-            'role' => 'Etudiant',
-        ];
+        $model = new UtilisateurModel();
+        $utilisateur = $model->findById($id);
 
-        $candidatures = [
-            [
-                'offre_id' => 1,
-                'offre_titre' => 'Développeur PHP',
-                'entreprise' => 'Entreprise A',
-                'statut' => 'en_attente',
-            ],
-            [
-                'offre_id' => 2,
-                'offre_titre' => 'Développeur JS',
-                'entreprise' => 'Entreprise B',
-                'statut' => 'accepte',
-            ],
-        ];
+        if (!$utilisateur) {
+            header('Location: /connexion');
+            exit;
+        }
 
         View::render('profil.twig', [
             'utilisateur' => $utilisateur,
-            'candidatures' => $candidatures,
+            'candidatures' => [], // TODO : brancher CandidatureModel
         ]);
     }
 
     public function modifierProfil(): void
     {
-        // TODO : récupérer l'utilisateur connecté depuis la session
-        // session_start();
-        // $id = $_SESSION['utilisateur']['id'] ?? null;
+        Auth::requis();
+        $id = Auth::utilisateur()['Id_Utilisateur'];
+
+        $model = new UtilisateurModel();
+        $utilisateur = $model->findById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $prenom = $_POST['prenom'] ?? null;
-            $nom = $_POST['nom'] ?? null;
-            $email = $_POST['email'] ?? null;
-            $telephone = $_POST['telephone'] ?? null;
             $motDePasse = $_POST['mot_de_passe'] ?? null;
             $motDePasseConfirmation = $_POST['mot_de_passe_confirmation'] ?? null;
-
-            if (!$prenom || !$nom || !$email) {
-                View::render('modifier_profil.twig', [
-                    'erreur' => 'Les champs prénom, nom et email sont obligatoires.',
-                    'utilisateur' => $_POST,
-                ]);
-                return;
-            }
 
             if ($motDePasse && $motDePasse !== $motDePasseConfirmation) {
                 View::render('modifier_profil.twig', [
                     'erreur' => 'Les mots de passe ne correspondent pas.',
-                    'utilisateur' => $_POST,
+                    'utilisateur' => $utilisateur,
                 ]);
                 return;
             }
 
-            // TODO : mettre à jour l'utilisateur en BDD
-            // UtilisateurModel::update($id, $prenom, $nom, $email, $telephone, $motDePasse);
+            $data = [
+                'Nom_Utilisateur' => $_POST['nom'] ?? null,
+                'Prenom'          => $_POST['prenom'] ?? null,
+                'Email'           => $_POST['email'] ?? null,
+                'Telephone'       => $_POST['telephone'] ?? null,
+            ];
 
+            if ($motDePasse) {
+                $data['Mot_de_Passe'] = password_hash($motDePasse, PASSWORD_DEFAULT);
+            }
+
+            foreach ($data as $value) {
+                if (!$value) {
+                    View::render('modifier_profil.twig', [
+                        'erreur' => 'Les champs prénom, nom et email sont obligatoires.',
+                        'utilisateur' => $utilisateur,
+                    ]);
+                    return;
+                }
+            }
+
+            $model->update($id, $data);
             header('Location: /profil');
             exit;
         }
-
-        // Simulation pour l'instant
-        $utilisateur = [
-            'id' => 1,
-            'prenom' => 'Nicolas',
-            'nom' => 'Schnell',
-            'email' => 'nicolas.schnell@viacesi.fr',
-            'telephone' => '06 12 34 56 78',
-        ];
 
         View::render('modifier_profil.twig', ['utilisateur' => $utilisateur]);
     }

@@ -4,11 +4,14 @@ namespace App\controllers;
 
 use App\Core\View;
 use App\models\EntrepriseModel;
+use App\Core\Auth;
 
 class EntrepriseController
 {
     public function liste(): void
     {
+        Auth::requis();
+
         $model = new EntrepriseModel();
         $entreprises = $model->findAll();
 
@@ -19,6 +22,8 @@ class EntrepriseController
 
     public function detail(): void
     {
+        Auth::requis();
+
         $id = $_GET['id'] ?? null;
 
         if (!$id) {
@@ -41,20 +46,21 @@ class EntrepriseController
 
     public function ajouter(): void
     {
+        Auth::requisRole([1, 3]);
+
         $model = new EntrepriseModel();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $data = [
-                'Nom_Entreprise' => $_POST['nom'] ?? null,
-                'Site_Web' => $_POST['site_web'] ?? null,
-                'Date_Creation' => $_POST['date_creation'] ?? null,
-                'Domaine_Entreprise' => $_POST['domaine'] ?? null,
-                'Nombre_Employes' => $_POST['nb_employes'] ?? null,
+                'Nom_Entreprise'         => $_POST['nom'] ?? null,
+                'Site_Web'               => $_POST['site_web'] ?? null,
+                'Date_Creation'          => $_POST['date_creation'] ?? null,
+                'Domaine_Entreprise'     => $_POST['domaine'] ?? null,
+                'Nombre_Employes'        => $_POST['nb_employes'] ?? null,
                 'Description_Entreprise' => $_POST['description'] ?? null,
-                'Telephone' => $_POST['telephone'] ?? null,
-                'Mail' => $_POST['email'] ?? null,
-                'Nombre_Stagiaires' => $_POST['nb_stagiaires'] ?? null
+                'Telephone'              => $_POST['telephone'] ?? null,
+                'Mail'                   => $_POST['email'] ?? null,
+                'Nombre_Stagiaires'      => $_POST['nb_stagiaires'] ?? null
             ];
 
             foreach ($data as $value) {
@@ -67,7 +73,6 @@ class EntrepriseController
             }
 
             $model->createEntreprise($data);
-
             header('Location: /entreprises');
             exit;
         }
@@ -77,6 +82,8 @@ class EntrepriseController
 
     public function modifier(): void
     {
+        Auth::requisRole([1, 3]);
+
         $id = $_GET['id'] ?? null;
 
         if (!$id) {
@@ -94,15 +101,15 @@ class EntrepriseController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
-                'Nom_Entreprise'        => $_POST['nom'] ?? null,
-                'Site_Web'              => $_POST['site_web'] ?? null,
-                'Date_Creation'         => $_POST['date_creation'] ?? null,
-                'Domaine_Entreprise'    => $_POST['domaine'] ?? null,
-                'Nombre_Employes'       => $_POST['nb_employes'] ?? null,
-                'Description_Entreprise'=> $_POST['description'] ?? null,
-                'Telephone'             => $_POST['telephone'] ?? null,
-                'Mail'                  => $_POST['email'] ?? null,
-                'Nombre_Stagiaires'     => $_POST['nb_stagiaires'] ?? null
+                'Nom_Entreprise'         => $_POST['nom'] ?? null,
+                'Site_Web'               => $_POST['site_web'] ?? null,
+                'Date_Creation'          => $_POST['date_creation'] ?? null,
+                'Domaine_Entreprise'     => $_POST['domaine'] ?? null,
+                'Nombre_Employes'        => $_POST['nb_employes'] ?? null,
+                'Description_Entreprise' => $_POST['description'] ?? null,
+                'Telephone'              => $_POST['telephone'] ?? null,
+                'Mail'                   => $_POST['email'] ?? null,
+                'Nombre_Stagiaires'      => $_POST['nb_stagiaires'] ?? null
             ];
 
             foreach ($data as $value) {
@@ -125,6 +132,8 @@ class EntrepriseController
 
     public function supprimer(): void
     {
+        Auth::requisRole([1, 3]);
+
         $id = $_GET['id'] ?? null;
 
         if (!$id) {

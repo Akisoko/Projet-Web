@@ -3,13 +3,16 @@
 namespace App\controllers;
 
 use App\Core\View;
+use App\Core\Auth;
 use App\models\OffreModel;
 use App\models\EntrepriseModel;
+use App\models\WishlistModel;
 
 class OffreController
 {
     public function liste(): void
     {
+        Auth::requis();
         $model = new OffreModel();
         $offres = $model->findAllWithEntreprise();
         View::render('offres.twig', ['offres' => $offres]);
@@ -17,6 +20,7 @@ class OffreController
 
     public function detail(): void
     {
+        Auth::requis();
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 
@@ -24,11 +28,21 @@ class OffreController
         $offre = $model->findByIdWithEntreprise((int)$id);
         if (!$offre) { header('Location: /offres'); exit; }
 
-        View::render('detail_offre.twig', ['offre' => $offre]);
+        $enWishlist = false;
+        if (Auth::estEtudiant()) {
+            $wishlistModel = new WishlistModel();
+            $enWishlist = $wishlistModel->estDansWishlist((int)$id, Auth::utilisateur()['Id_Utilisateur']);
+        }
+
+        View::render('detail_offre.twig', [
+            'offre' => $offre,
+            'en_wishlist' => $enWishlist
+        ]);
     }
 
     public function ajouter(): void
     {
+        Auth::requisRole([1, 3]);
         $model = new OffreModel();
         $entreprises = (new EntrepriseModel())->findAll();
 
@@ -64,13 +78,13 @@ class OffreController
 
     public function modifier(): void
     {
+        Auth::requisRole([1, 3]);
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 
         $model = new OffreModel();
         $offre = $model->findById((int)$id);
         $entreprises = (new EntrepriseModel())->findAll();
-
         if (!$offre) { header('Location: /offres'); exit; }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -109,18 +123,19 @@ class OffreController
 
     public function supprimer(): void
     {
+        Auth::requisRole([1, 3]);
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 
         $model = new OffreModel();
         $model->delete((int)$id);
-
         header('Location: /offres');
         exit;
     }
 
     public function postuler(): void
     {
+        Auth::requisRole([2]);
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 

@@ -1,51 +1,37 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Modifier le profil - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Modifier le profil
-{% endblock %}
-
+{% block title %}Modifier le profil - Kezan{% endblock %}
+{% block page_title %}Modifier le profil{% endblock %}
 {% block content %}
 
     <div class="add-content">
-        <form class="add-form" method="post" action="/modifier_profil" enctype="multipart/form-data">
+        {% if erreur %}
+            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
+        {% endif %}
+
+        <form class="add-form" method="post" action="/modifier_profil">
 
             <div class="form-group">
                 <label>Prénom</label>
-                <input type="text" name="prenom" value="{{ utilisateur.prenom ?? '' }}" required>
+                <input type="text" name="prenom" value="{{ utilisateur.Prenom ?? '' }}" required>
             </div>
 
             <div class="form-group">
                 <label>Nom</label>
-                <input type="text" name="nom" value="{{ utilisateur.nom ?? '' }}" required>
+                <input type="text" name="nom" value="{{ utilisateur.Nom_Utilisateur ?? '' }}" required>
             </div>
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" value="{{ utilisateur.email ?? '' }}" required>
+                <input type="email" name="email" value="{{ utilisateur.Email ?? '' }}" required>
             </div>
 
             <div class="form-group">
                 <label>Téléphone</label>
-                <input type="tel" name="telephone" value="{{ utilisateur.telephone ?? '' }}">
+                <input type="tel" name="telephone" value="{{ utilisateur.Telephone ?? '' }}">
             </div>
 
             <div class="form-group">
-                <label>Photo de profil</label>
-                <div class="file-upload-group">
-                    <input type="text" readonly placeholder="Aucun fichier sélectionné" id="photoFileName">
-                    <label for="photoUpload" class="file-upload-btn">
-                        <i class="fa-solid fa-upload"></i>
-                    </label>
-                    <input type="file" id="photoUpload" name="photo" accept="image/*" style="display: none;">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Nouveau mot de passe</label>
+                <label>Nouveau mot de passe <span style="color:#999; font-size:0.8rem;">(laisser vide pour ne pas changer)</span></label>
                 <input type="password" name="mot_de_passe">
             </div>
 
@@ -54,7 +40,12 @@
                 <input type="password" name="mot_de_passe_confirmation">
             </div>
 
-            <button type="submit" class="btn-primary add-submit">Enregistrer</button>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/profil" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
+                    Annuler
+                </a>
+                <button type="submit" class="btn-primary add-submit">Enregistrer</button>
+            </div>
 
         </form>
     </div>

@@ -1,55 +1,92 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Profil - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Profil
-{% endblock %}
-
+{% block title %}Profil - Kezan{% endblock %}
+{% block page_title %}Profil{% endblock %}
 {% block content %}
 
-    <div class="profile-content">
+    <div class="detail-content">
+        <div class="detail-card">
 
-        <div class="profile-header">
-            <div class="profile-avatar">
-                <i class="fa-solid fa-user"></i>
+            <div class="detail-card-header">
+                <div class="company-logo large" style="display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                    <i class="fa-solid fa-user" style="font-size: 2rem; color: #999;"></i>
+                </div>
+                <div class="detail-title">
+                    <h2>{{ utilisateur.Prenom }} {{ utilisateur.Nom_Utilisateur }}</h2>
+                    <p>{{ utilisateur.Email }}</p>
+                </div>
+                <a href="/modifier_profil" class="btn-primary" style="text-decoration: none; margin-left: auto;">
+                    <i class="fa-solid fa-pen"></i> Modifier
+                </a>
             </div>
-            <div class="profile-info">
-                <h2>{{ utilisateur.prenom ?? '' }} {{ utilisateur.nom ?? '' }}</h2>
-                <p>{{ utilisateur.email ?? '' }}</p>
-                <p>{{ utilisateur.role ?? '' }}</p>
-            </div>
-            <a href="/modifier_profil" class="btn-primary">
-                <i class="fa-solid fa-pen"></i>
-                Modifier
-            </a>
-        </div>
-
-        <div class="profile-body">
 
             <div class="detail-section">
                 <h3>Informations personnelles</h3>
-                <p><i class="fa-solid fa-phone"></i> {{ utilisateur.telephone ?? 'Non renseigné' }}</p>
-                <p><i class="fa-solid fa-envelope"></i> {{ utilisateur.email ?? 'Non renseigné' }}</p>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-phone" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Téléphone</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Telephone ?: 'Non renseigné' }}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fa-solid fa-envelope" style="color: #555; font-size: 0.9rem;"></i>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Email</p>
+                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Email }}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fa-solid fa-venus-mars" style="color: #555; font-size: 0.9rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Genre</p>
+                                <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Genre }}</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
+                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fa-solid fa-cake-candles" style="color: #555; font-size: 0.9rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Date de naissance</p>
+                                <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Date_de_Naissance }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <div class="detail-section">
                 <h3>Mes candidatures</h3>
                 {% for candidature in candidatures %}
-                    <a href="/detail_offre?id={{ candidature.offre_id }}" class="candidature-item">
-                        <p>{{ candidature.offre_titre }}</p>
-                        <p>{{ candidature.entreprise }}</p>
-                        <span class="status {{ candidature.statut }}">{{ candidature.statut }}</span>
+                    <a href="/detail_offre?id={{ candidature.offre_id }}" style="display: flex; justify-content: space-between; align-items: center; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px; margin-bottom: 0.75rem; text-decoration: none; color: inherit;">
+                        <div>
+                            <p style="font-weight: 600; font-size: 0.9rem;">{{ candidature.offre_titre }}</p>
+                            <p style="font-size: 0.8rem; color: #666;">{{ candidature.entreprise }}</p>
+                        </div>
+                        <span style="font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;
+                                background: {{ candidature.statut == 'accepte' ? '#e8f5e9' : (candidature.statut == 'refuse' ? '#ffebee' : '#fff3e0') }};
+                                color: {{ candidature.statut == 'accepte' ? '#2e7d32' : (candidature.statut == 'refuse' ? '#c62828' : '#e65100') }};">
+                        {{ candidature.statut }}
+                    </span>
                     </a>
                 {% else %}
-                    <p>Aucune candidature pour le moment.</p>
+                    <p style="color: #999;">Aucune candidature pour le moment.</p>
                 {% endfor %}
             </div>
 
         </div>
-
     </div>
 
 {% endblock %}

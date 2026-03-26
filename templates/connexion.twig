@@ -1,7 +1,5 @@
 {% extends "base_connexion.twig" %}
-
 {% block title %}Connexion - Kezan{% endblock %}
-
 {% block content %}
 
     <div class="auth-container">
@@ -17,23 +15,24 @@
                 <h2>Connexion</h2>
                 <p class="auth-subtitle">Connectez vous pour commencer</p>
 
+                {% if erreur %}
+                    <p style="color: red; margin-bottom: 1rem;">{{ erreur }}</p>
+                {% endif %}
+
                 <form class="auth-form" method="POST" action="/connexion">
                     <div class="form-group">
                         <label>E-mail</label>
                         <input type="email" name="email" required>
                     </div>
-
                     <div class="form-group">
                         <label>Mot de passe</label>
-                        <input type="password" name="password" required>
+                        <input type="password" name="mot_de_passe" required>
                     </div>
-
                     <button type="submit" class="btn-primary auth-submit">Se connecter</button>
                 </form>
 
                 <p class="auth-footer">
-                    Pas encore de compte ?
-                    <a href="/inscription">Créer un compte</a>
+                    Pas encore de compte ? <a href="/inscription">Créer un compte</a>
                 </p>
             </div>
         </div>

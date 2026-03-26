@@ -94,6 +94,14 @@ class Router
                 (new WishlistController())->index();
                 break;
 
+            case '/wishlist_ajouter':
+                (new WishlistController())->ajouter();
+                break;
+
+            case '/wishlist_retirer':
+                (new WishlistController())->retirer();
+                break;
+
             case '/statistiques':
                 (new StatistiqueController())->index();
                 break;
@@ -116,6 +124,10 @@ class Router
 
             case '/supprimer_offre':
                 (new OffreController())->supprimer();
+                break;
+
+            case '/deconnexion':
+                (new AuthController())->deconnexion();
                 break;
 
             default:

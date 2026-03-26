@@ -38,6 +38,13 @@
                 <span>Offres</span>
             </a>
 
+            {% if auth_role == 2 %}
+                <a href="/wishlist" class="nav-item">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+            {% endif %}
+
             <a href="/entreprises" class="nav-item">
                 <i class="fa-solid fa-building"></i>
                 <span>Entreprises</span>
@@ -61,7 +68,7 @@
                 <span>Mentions légales</span>
             </a>
 
-            <a href="/logout" class="nav-item">
+            <a href="/deconnexion" class="nav-item">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Déconnexion</span>
             </a>

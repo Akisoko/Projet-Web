@@ -100,14 +100,16 @@
                 </div>
             </div>
             <div class="detail-actions">
-                <a href="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn edit">
-                    <i class="fa-solid fa-pen"></i> Modifier
-                </a>
-                <a href="/supprimer_entreprise?id={{ entreprise.Id_Entreprise }}"
-                   class="detail-action-btn delete"
-                   onclick="return confirm('Supprimer cette entreprise ?')">
-                    <i class="fa-solid fa-trash"></i> Supprimer
-                </a>
+                {% if auth_role == 1 or auth_role == 3 %}
+                    <a href="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn edit">
+                        <i class="fa-solid fa-pen"></i> Modifier
+                    </a>
+                    <a href="/supprimer_entreprise?id={{ entreprise.Id_Entreprise }}"
+                       class="detail-action-btn delete"
+                       onclick="return confirm('Supprimer cette entreprise ?')">
+                        <i class="fa-solid fa-trash"></i> Supprimer
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

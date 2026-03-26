@@ -3,38 +3,55 @@
 namespace App\controllers;
 
 use App\Core\View;
+use App\Core\Auth;
+use App\models\WishlistModel;
 
 class WishlistController
 {
     public function index(): void
     {
-        // TODO : récupérer l'utilisateur connecté depuis la session
-        // session_start();
-        // $id = $_SESSION['utilisateur']['id'] ?? null;
-        // $wishlist = WishlistModel::findByUtilisateur($id);
+        Auth::requisRole([2]); // Étudiant uniquement
 
-        // Simulation pour l'instant
-        $wishlist = [
-            [
-                'id' => 1,
-                'titre' => 'Développeur PHP',
-                'entreprise' => 'Entreprise A',
-                'description' => 'Description du poste',
-                'lieu' => 'Paris',
-                'duree' => '6 mois',
-                'remuneration' => 1200,
-            ],
-            [
-                'id' => 2,
-                'titre' => 'Développeur JS',
-                'entreprise' => 'Entreprise B',
-                'description' => 'Description du poste',
-                'lieu' => 'Lyon',
-                'duree' => '3 mois',
-                'remuneration' => 900,
-            ],
-        ];
+        $id = Auth::utilisateur()['Id_Utilisateur'];
+        $model = new WishlistModel();
+        $wishlist = $model->findByUtilisateur($id);
 
         View::render('wishlist.twig', ['wishlist' => $wishlist]);
+    }
+
+    public function ajouter(): void
+    {
+        Auth::requisRole([2]);
+
+        $idOffre = $_GET['id'] ?? null;
+        if (!$idOffre) {
+            header('Location: /offres');
+            exit;
+        }
+
+        $id = Auth::utilisateur()['Id_Utilisateur'];
+        $model = new WishlistModel();
+        $model->ajouter((int)$idOffre, $id);
+
+        header('Location: /detail_offre?id=' . $idOffre);
+        exit;
+    }
+
+    public function retirer(): void
+    {
+        Auth::requisRole([2]);
+
+        $idOffre = $_GET['id'] ?? null;
+        if (!$idOffre) {
+            header('Location: /wishlist');
+            exit;
+        }
+
+        $id = Auth::utilisateur()['Id_Utilisateur'];
+        $model = new WishlistModel();
+        $model->retirer((int)$idOffre, $id);
+
+        header('Location: /wishlist');
+        exit;
     }
 }
