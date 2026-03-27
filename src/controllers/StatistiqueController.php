@@ -3,39 +3,26 @@
 namespace App\controllers;
 
 use App\Core\View;
+use App\Core\Auth;
+use App\models\StatistiqueModel;
 
 class StatistiqueController
 {
     public function index(): void
     {
-        // TODO : récupérer les stats depuis la BDD
-        // $stats = [
-        //     'total_offres' => OffreModel::count(),
-        //     'total_entreprises' => EntrepriseModel::count(),
-        //     'total_utilisateurs' => UtilisateurModel::count(),
-        //     'total_candidatures' => CandidatureModel::count(),
-        //     'offres_par_ville' => OffreModel::countByVille(),
-        //     'offres_par_entreprise' => OffreModel::countByEntreprise(),
-        // ];
+        Auth::requis();
 
-        // Simulation pour l'instant
+        $model = new StatistiqueModel();
+
         $stats = [
-            'total_offres' => 24,
-            'total_entreprises' => 8,
-            'total_utilisateurs' => 42,
-            'total_candidatures' => 17,
-            'offres_par_ville' => [
-                'Paris' => 10,
-                'Lyon' => 7,
-                'Bordeaux' => 4,
-                'Marseille' => 3,
-            ],
-            'offres_par_entreprise' => [
-                'Entreprise A' => 8,
-                'Entreprise B' => 6,
-                'Entreprise C' => 5,
-                'Entreprise D' => 5,
-            ],
+            'total_offres'              => $model->countOffres(),
+            'total_entreprises'         => $model->countEntreprises(),
+            'total_utilisateurs'        => $model->countUtilisateurs(),
+            'total_candidatures'        => $model->countCandidatures(),
+            'moyenne_candidatures'      => $model->moyenneCandidaturesParOffre(),
+            'offres_par_domaine'        => $model->offresByDomaine(),
+            'top_wishlist'              => $model->topWishlist(),
+            'offres_par_entreprise'     => $model->offresByEntreprise(),
         ];
 
         View::render('statistiques.twig', ['stats' => $stats]);

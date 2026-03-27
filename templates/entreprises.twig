@@ -1,12 +1,7 @@
 {% extends "base.twig" %}
 
-{% block title %}
-    Entreprises - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Entreprises
-{% endblock %}
+{% block title %}Entreprises - Kezan{% endblock %}
+{% block page_title %}Entreprises{% endblock %}
 
 {% block content %}
 
@@ -55,6 +50,28 @@
                 <p style="color: #999; grid-column: 1/-1; text-align: center; padding: 3rem;">Aucune entreprise trouvée.</p>
             {% endfor %}
         </div>
+
+        {% if totalPages > 1 %}
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a href="/entreprises?page={{ page - 1 }}" class="page-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                {% endif %}
+
+                {% for p in 1..totalPages %}
+                    <a href="/entreprises?page={{ p }}" class="page-btn {{ p == page ? 'active' : '' }}">
+                        {{ p }}
+                    </a>
+                {% endfor %}
+
+                {% if page < totalPages %}
+                    <a href="/entreprises?page={{ page + 1 }}" class="page-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
 
     </div>
 

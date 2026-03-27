@@ -1,89 +1,102 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Statistiques - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Statistiques
-{% endblock %}
+{% block title %}Statistiques - Kezan{% endblock %}
+{% block page_title %}Statistiques{% endblock %}
 
 {% block content %}
-
     <div class="stats-content">
 
-        <div class="stats-grid">
-
+        <div class="stats-overview">
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
+                <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
                 <div class="stat-info">
-                    <h3>{{ stats.total_offres ?? 0 }}</h3>
+                    <h3>{{ stats.total_offres }}</h3>
                     <p>Offres disponibles</p>
                 </div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fa-solid fa-building"></i>
-                </div>
+                <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
                 <div class="stat-info">
-                    <h3>{{ stats.total_entreprises ?? 0 }}</h3>
+                    <h3>{{ stats.total_entreprises }}</h3>
                     <p>Entreprises</p>
                 </div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fa-solid fa-users"></i>
-                </div>
+                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
                 <div class="stat-info">
-                    <h3>{{ stats.total_utilisateurs ?? 0 }}</h3>
+                    <h3>{{ stats.total_utilisateurs }}</h3>
                     <p>Utilisateurs</p>
                 </div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fa-solid fa-file-alt"></i>
-                </div>
+                <div class="stat-icon"><i class="fa-solid fa-file-alt"></i></div>
                 <div class="stat-info">
-                    <h3>{{ stats.total_candidatures ?? 0 }}</h3>
+                    <h3>{{ stats.total_candidatures }}</h3>
                     <p>Candidatures</p>
                 </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="stat-info">
+                    <h3>{{ stats.moyenne_candidatures }}</h3>
+                    <p>Candidatures / offre en moyenne</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+
+            <div class="detail-card" style="padding: 1.5rem;">
+                <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem;">Offres par domaine</h3>
+                {% for row in stats.offres_par_domaine %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;">
+                            <span>{{ row.Domaine_Offre }}</span>
+                            <span style="font-weight: 600;">{{ row.nombre }}</span>
+                        </div>
+                        <div style="background: #f0f0f0; border-radius: 4px; height: 8px;">
+                            <div style="background: #2c2c2c; border-radius: 4px; height: 8px; width: {{ (row.nombre / stats.total_offres * 100)|round }}%;"></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="color: #999;">Aucune donnée.</p>
+                {% endfor %}
+            </div>
+
+            <div class="detail-card" style="padding: 1.5rem;">
+                <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem;">Offres par entreprise</h3>
+                {% for row in stats.offres_par_entreprise %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;">
+                            <span>{{ row.Nom_Entreprise }}</span>
+                            <span style="font-weight: 600;">{{ row.nombre }}</span>
+                        </div>
+                        <div style="background: #f0f0f0; border-radius: 4px; height: 8px;">
+                            <div style="background: #2c2c2c; border-radius: 4px; height: 8px; width: {{ (row.nombre / stats.total_offres * 100)|round }}%;"></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="color: #999;">Aucune donnée.</p>
+                {% endfor %}
+            </div>
+
+            <div class="detail-card" style="padding: 1.5rem;">
+                <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem;">Top 5 offres les plus wishlistées</h3>
+                {% for row in stats.top_wishlist %}
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f8f8f8; border-radius: 8px; margin-bottom: 0.5rem;">
+                        <div>
+                            <p style="font-size: 0.875rem; font-weight: 600;">{{ row.Nom_Offre }}</p>
+                            <p style="font-size: 0.75rem; color: #666;">{{ row.Nom_Entreprise }}</p>
+                        </div>
+                        <span style="background: #2c2c2c; color: #fff; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">
+                        <i class="fa-solid fa-heart" style="margin-right: 4px;"></i>{{ row.nombre }}
+                    </span>
+                    </div>
+                {% else %}
+                    <p style="color: #999;">Aucune donnée.</p>
+                {% endfor %}
             </div>
 
         </div>
 
-        {% if stats.offres_par_ville is defined and stats.offres_par_ville is not empty %}
-            <div class="detail-section">
-                <h3>Offres par ville</h3>
-                <div class="stats-list">
-                    {% for ville, nombre in stats.offres_par_ville %}
-                        <div class="stats-list-item">
-                            <span>{{ ville }}</span>
-                            <span class="badge">{{ nombre }}</span>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-
-        {% if stats.offres_par_entreprise is defined and stats.offres_par_entreprise is not empty %}
-            <div class="detail-section">
-                <h3>Offres par entreprise</h3>
-                <div class="stats-list">
-                    {% for entreprise, nombre in stats.offres_par_entreprise %}
-                        <div class="stats-list-item">
-                            <span>{{ entreprise }}</span>
-                            <span class="badge">{{ nombre }}</span>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-
     </div>
-
 {% endblock %}

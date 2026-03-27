@@ -17,4 +17,16 @@ class UtilisateurModel extends Model
         $stmt->execute([$email]);
         return $stmt->fetch();
     }
+
+    public function search(string $query, array $roles = []): array
+    {
+        $placeholders = implode(',', array_fill(0, count($roles), '?'));
+        $stmt = $this->db->prepare("
+        SELECT * FROM Utilisateur
+        WHERE (Nom_Utilisateur LIKE ? OR Prenom LIKE ? OR Email LIKE ?)
+        AND Id_Role IN ($placeholders)
+    ");
+        $stmt->execute(["%$query%", "%$query%", "%$query%", ...$roles]);
+        return $stmt->fetchAll();
+    }
 }

@@ -35,4 +35,31 @@ class OffreModel extends Model
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
+
+    public function findPaginatedWithEntreprise(int $page, int $parPage): array
+    {
+        $offset = ($page - 1) * $parPage;
+        $stmt = $this->db->prepare("
+        SELECT o.*, e.Nom_Entreprise
+        FROM Offre o
+        LEFT JOIN Entreprise e ON o.Id_Entreprise = e.Id_Entreprise
+        LIMIT ? OFFSET ?
+    ");
+        $stmt->execute([$parPage, $offset]);
+        return $stmt->fetchAll();
+    }
+
+    public function search(string $query, array $roles = []): array
+    {
+        $stmt = $this->db->prepare("
+        SELECT o.*, e.Nom_Entreprise
+        FROM Offre o
+        LEFT JOIN Entreprise e ON o.Id_Entreprise = e.Id_Entreprise
+        WHERE o.Nom_Offre LIKE ?
+        OR o.Domaine_Offre LIKE ?
+        OR o.Description_Offre LIKE ?
+    ");
+        $stmt->execute(["%$query%", "%$query%", "%$query%"]);
+        return $stmt->fetchAll();
+    }
 }

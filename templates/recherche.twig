@@ -24,8 +24,9 @@
                     <option value="">Tout</option>
                     <option value="offre" {{ query_type == 'offre' ? 'selected' : '' }}>Offres</option>
                     <option value="entreprise" {{ query_type == 'entreprise' ? 'selected' : '' }}>Entreprises</option>
-                    <option value="profil" {{ query_type == 'profil' ? 'selected' : '' }}>Profil</option>
-
+                    {% if auth_role == 1 or auth_role == 3 %}
+                        <option value="profil" {{ query_type == 'profil' ? 'selected' : '' }}>Profils</option>
+                    {% endif %}
                 </select>
             </div>
         </form>
@@ -33,13 +34,27 @@
         <div class="search-results">
             {% if resultats is defined and resultats is not empty %}
                 {% for resultat in resultats %}
-                    <a href="{{ resultat.url }}" class="result-item">
-                        <h3>{{ resultat.titre }}</h3>
-                        <p>{{ resultat.description }}</p>
+                    <a href="{{ resultat.url }}" class="entity-item" style="text-decoration: none; color: inherit;">
+                        <div style="width: 40px; height: 40px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            {% if resultat.type == 'offre' %}
+                                <i class="fa-solid fa-briefcase" style="color: #999;"></i>
+                            {% elseif resultat.type == 'entreprise' %}
+                                <i class="fa-solid fa-building" style="color: #999;"></i>
+                            {% else %}
+                                <i class="fa-solid fa-user" style="color: #999;"></i>
+                            {% endif %}
+                        </div>
+                        <div class="entity-item-info">
+                            <h3>{{ resultat.titre }}</h3>
+                            <p style="font-size: 0.875rem; color: #666;">{{ resultat.description }}</p>
+                        </div>
+                        <span style="font-size: 0.75rem; background: #f0f0f0; color: #555; padding: 3px 10px; border-radius: 20px;">
+                    {{ resultat.type }}
+                </span>
                     </a>
                 {% endfor %}
             {% elseif query is defined and query is not empty %}
-                <p>Aucun résultat pour "{{ query }}".</p>
+                <p style="color: #999; text-align: center; padding: 3rem;">Aucun résultat pour "{{ query }}".</p>
             {% endif %}
         </div>
 

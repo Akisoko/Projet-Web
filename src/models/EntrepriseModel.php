@@ -13,4 +13,16 @@ class EntrepriseModel extends Model
     {
         return $this->create($data);
     }
+
+    public function search(string $query, array $roles = []): array
+    {
+        $stmt = $this->db->prepare("
+        SELECT * FROM Entreprise
+        WHERE Nom_Entreprise LIKE ?
+        OR Domaine_Entreprise LIKE ?
+        OR Description_Entreprise LIKE ?
+    ");
+        $stmt->execute(["%$query%", "%$query%", "%$query%"]);
+        return $stmt->fetchAll();
+    }
 }

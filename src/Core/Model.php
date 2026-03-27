@@ -52,5 +52,24 @@ class Model {
         );
         return $stmt->execute([$id]);
     }
+
+    public function count(): int
+    {
+        return $this->db->query("SELECT COUNT(*) FROM {$this->table}")->fetchColumn();
+    }
+
+    public function findPaginated(int $page, int $parPage): array
+    {
+        $offset = ($page - 1) * $parPage;
+        $stmt = $this->db->prepare("SELECT * FROM {$this->table} LIMIT ? OFFSET ?");
+        $stmt->execute([$parPage, $offset]);
+        return $stmt->fetchAll();
+    }
+
+    public function search(string $query, array $roles = []): array
+    {
+        return [];
+    }
 }
+
 

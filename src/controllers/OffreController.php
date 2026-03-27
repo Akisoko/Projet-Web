@@ -13,9 +13,20 @@ class OffreController
     public function liste(): void
     {
         Auth::requis();
+
+        $parPage = 9;
+        $page = max(1, (int)($_GET['page'] ?? 1));
+
         $model = new OffreModel();
-        $offres = $model->findAllWithEntreprise();
-        View::render('offres.twig', ['offres' => $offres]);
+        $total = $model->count();
+        $totalPages = ceil($total / $parPage);
+        $offres = $model->findPaginatedWithEntreprise($page, $parPage);
+
+        View::render('offres.twig', [
+            'offres'      => $offres,
+            'page'        => $page,
+            'totalPages'  => $totalPages,
+        ]);
     }
 
     public function detail(): void

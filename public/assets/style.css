@@ -541,6 +541,12 @@ body.landing-page {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none,;
+    color: #1a1a1a;
+    line-height: 1;
 }
 
 .page-btn:hover {

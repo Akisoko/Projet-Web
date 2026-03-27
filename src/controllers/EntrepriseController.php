@@ -12,11 +12,18 @@ class EntrepriseController
     {
         Auth::requis();
 
+        $parPage = 9;
+        $page = max(1, (int)($_GET['page'] ?? 1));
+
         $model = new EntrepriseModel();
-        $entreprises = $model->findAll();
+        $total = $model->count();
+        $totalPages = ceil($total / $parPage);
+        $entreprises = $model->findPaginated($page, $parPage);
 
         View::render('entreprises.twig', [
-            'entreprises' => $entreprises
+            'entreprises' => $entreprises,
+            'page'        => $page,
+            'totalPages'  => $totalPages,
         ]);
     }
 

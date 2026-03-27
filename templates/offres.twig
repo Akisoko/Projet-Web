@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 {% block title %}Offres - Kezan{% endblock %}
 {% block page_title %}Offres{% endblock %}
+
 {% block content %}
 
     <div class="entity-content" style="max-width: 1200px;">
@@ -50,5 +51,28 @@
             {% endfor %}
         </div>
 
+        {% if totalPages > 1 %}
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a href="/offres?page={{ page - 1 }}" class="page-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                {% endif %}
+
+                {% for p in 1..totalPages %}
+                    <a href="/offres?page={{ p }}" class="page-btn {{ p == page ? 'active' : '' }}">
+                        {{ p }}
+                    </a>
+                {% endfor %}
+
+                {% if page < totalPages %}
+                    <a href="/offres?page={{ page + 1 }}" class="page-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+
     </div>
+
 {% endblock %}
