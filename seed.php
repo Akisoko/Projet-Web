@@ -16,6 +16,6 @@ $pdo = new PDO(
 $hash = password_hash('motdepasse123', PASSWORD_DEFAULT);
 
 $stmt = $pdo->prepare("INSERT INTO Utilisateur (Nom_Utilisateur, Prenom, Email, Mot_de_Passe, Genre, Telephone, Date_de_Naissance, Id_Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->execute(['Schnell', 'Nicolas', 'nicolas@test.fr', $hash, 'Homme', '0612345678', '2000-01-01', 2]);
+$stmt->execute(['Schnell', 'Nicolas', 'admin@test.fr', $hash, 'Homme', '0612345678', '2000-01-01', 1]);
 
 echo "Utilisateur créé !";

@@ -8,8 +8,6 @@
 
         <div class="entity-search" style="justify-content: space-between; align-items: center; margin-bottom: 2rem;">
             <div class="search-input-wrapper" style="flex: 1; max-width: 400px; position: relative;">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" class="search-input" placeholder="Rechercher une offre...">
             </div>
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_offre" class="btn-primary" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; white-space: nowrap;">
