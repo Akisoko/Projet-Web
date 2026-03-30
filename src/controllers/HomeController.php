@@ -7,15 +7,40 @@ use App\Core\Auth;
 use App\models\UtilisateurModel;
 use App\models\OffreModel;
 use App\models\EntrepriseModel;
+use App\models\WishlistModel;
+use App\models\StatistiqueModel;
 
 class HomeController
 {
     public function accueil(): void
     {
-        Auth::requis();
-        View::render("accueil.twig");
-    }
+        Auth::session();
+        $data = [];
 
+        // Dernières offres pour tout le monde
+        $offreModel = new OffreModel();
+        $data['dernieres_offres'] = $offreModel->findDernieres(6);
+
+        // Wishlist pour les étudiants
+        if (Auth::estEtudiant()) {
+            $wishlistModel = new WishlistModel();
+            $data['wishlist'] = $wishlistModel->findByUtilisateur(Auth::utilisateur()['Id_Utilisateur']);
+        }
+
+        // Stats pour admin et pilote
+        if (Auth::estAdmin() || Auth::estPilote()) {
+            $statsModel = new StatistiqueModel();
+            $data['stats'] = [
+                'total_offres'         => $statsModel->countOffres(),
+                'total_entreprises'    => $statsModel->countEntreprises(),
+                'total_candidatures'   => $statsModel->countCandidatures(),
+                'moyenne_candidatures' => $statsModel->moyenneCandidaturesParOffre(),
+                'top_wishlist'         => $statsModel->topWishlist(),
+            ];
+        }
+
+        View::render("accueil.twig", $data);
+    }
     public function mentions(): void
     {
         View::render("mentions.twig");
@@ -65,20 +90,24 @@ class HomeController
                     $utilisateurs = $utilisateurModel->search($query, [2, 3]); // étudiants + pilotes
                     foreach ($utilisateurs as $u) {
                         $resultats[] = [
-                            'url'         => '/profil?id=' . $u['Id_Utilisateur'],
+                            'url'         => '/detail_utilisateur?id=' . $u['Id_Utilisateur'],
                             'titre'       => $u['Prenom'] . ' ' . $u['Nom_Utilisateur'],
                             'description' => $u['Email'],
                             'type'        => 'profil',
+                            'id'          => $u['Id_Utilisateur'],
+                            'id_role'     => $u['Id_Role'],
                         ];
                     }
                 } elseif (Auth::estPilote()) {
                     $utilisateurs = $utilisateurModel->search($query, [2]); // étudiants seulement
                     foreach ($utilisateurs as $u) {
                         $resultats[] = [
-                            'url'         => '/profil?id=' . $u['Id_Utilisateur'],
+                            'url'         => '/detail_utilisateur?id=' . $u['Id_Utilisateur'],
                             'titre'       => $u['Prenom'] . ' ' . $u['Nom_Utilisateur'],
                             'description' => $u['Email'],
                             'type'        => 'profil',
+                            'id'          => $u['Id_Utilisateur'],
+                            'id_role'     => $u['Id_Role'],
                         ];
                     }
                 }

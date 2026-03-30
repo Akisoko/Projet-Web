@@ -10,8 +10,6 @@ class EntrepriseController
 {
     public function liste(): void
     {
-        Auth::requis();
-
         $parPage = 9;
         $page = max(1, (int)($_GET['page'] ?? 1));
 
@@ -29,8 +27,6 @@ class EntrepriseController
 
     public function detail(): void
     {
-        Auth::requis();
-
         $id = $_GET['id'] ?? null;
 
         if (!$id) {

@@ -54,6 +54,10 @@ class Router
                 (new UtilisateurController())->modifierProfil();
                 break;
 
+            case '/supprimer_profil':
+                (new UtilisateurController())->supprimerProfil();
+                break;
+
             case '/entreprises':
                 (new EntrepriseController())->liste();
                 break;
@@ -128,6 +132,18 @@ class Router
 
             case '/deconnexion':
                 (new AuthController())->deconnexion();
+                break;
+
+            case '/detail_utilisateur':
+                (new UtilisateurController())->detailAdmin();
+                break;
+
+            case '/modifier_utilisateur':
+                (new UtilisateurController())->modifierAdmin();
+                break;
+
+            case '/supprimer_utilisateur':
+                (new UtilisateurController())->supprimerAdmin();
                 break;
 
             default:

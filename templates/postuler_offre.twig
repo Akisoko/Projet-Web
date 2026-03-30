@@ -1,32 +1,30 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Postuler - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Postuler
-{% endblock %}
+{% block title %}Postuler - Kezan{% endblock %}
+{% block page_title %}Postuler{% endblock %}
 
 {% block content %}
-
     <div class="add-content">
-        <form class="add-form" method="post" action="/postuler" enctype="multipart/form-data">
 
-            <input type="hidden" name="offre_id" value="{{ offre.id ?? '' }}">
+        {% if erreur %}
+            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
+        {% endif %}
+
+        <form class="add-form" method="post" action="/postuler?id={{ offre.Id_Offre }}" enctype="multipart/form-data">
+
+            <input type="hidden" name="offre_id" value="{{ offre.Id_Offre ?? '' }}">
 
             <div class="form-group">
                 <label>Offre</label>
-                <input type="text" value="{{ offre.titre ?? '' }}" readonly>
+                <input type="text" value="{{ offre.Nom_Offre ?? '' }}" readonly>
             </div>
 
             <div class="form-group">
                 <label>Entreprise</label>
-                <input type="text" value="{{ offre.entreprise ?? '' }}" readonly>
+                <input type="text" value="{{ offre.Nom_Entreprise ?? '' }}" readonly>
             </div>
 
             <div class="form-group">
-                <label>CV</label>
+                <label>CV <span style="color: #999; font-size: 0.8rem;">(PDF uniquement)</span></label>
                 <div class="file-upload-group">
                     <input type="text" readonly placeholder="Aucun fichier sélectionné" id="cvFileName">
                     <label for="cvUpload" class="file-upload-btn">
@@ -37,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                <label>Lettre de motivation</label>
+                <label>Lettre de motivation <span style="color: #999; font-size: 0.8rem;">(PDF uniquement, facultative)</span></label>
                 <div class="file-upload-group">
                     <input type="text" readonly placeholder="Aucun fichier sélectionné" id="lmFileName">
                     <label for="lmUpload" class="file-upload-btn">
@@ -47,9 +45,13 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-primary add-submit">Envoyer ma candidature</button>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/detail_offre?id={{ offre.Id_Offre }}" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
+                    Annuler
+                </a>
+                <button type="submit" class="btn-primary add-submit">Envoyer ma candidature</button>
+            </div>
 
         </form>
     </div>
-
 {% endblock %}

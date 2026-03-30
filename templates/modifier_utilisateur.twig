@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+{% block title %}Modifier un utilisateur - Kezan{% endblock %}
+{% block page_title %}Modifier un utilisateur{% endblock %}
+{% block content %}
+
+    <div class="add-content">
+        {% if erreur %}
+            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
+        {% endif %}
+
+        <form class="add-form" method="post" action="/modifier_utilisateur?id={{ utilisateur.Id_Utilisateur }}">
+
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" name="prenom" value="{{ utilisateur.Prenom ?? '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" name="nom" value="{{ utilisateur.Nom_Utilisateur ?? '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ utilisateur.Email ?? '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" name="telephone" value="{{ utilisateur.Telephone ?? '' }}">
+            </div>
+
+            {% if auth_role == 1 %}
+                <div class="form-group">
+                    <label>Rôle</label>
+                    <select name="id_role">
+                        <option value="1" {{ utilisateur.Id_Role == 1 ? 'selected' : '' }}>Admin</option>
+                        <option value="2" {{ utilisateur.Id_Role == 2 ? 'selected' : '' }}>Étudiant</option>
+                        <option value="3" {{ utilisateur.Id_Role == 3 ? 'selected' : '' }}>Pilote</option>
+                    </select>
+                </div>
+            {% endif %}
+
+            <div style="display: flex; gap: 1rem;">
+                <a href="/detail_utilisateur?id={{ utilisateur.Id_Utilisateur }}" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
+                    Annuler
+                </a>
+                <button type="submit" class="btn-primary add-submit">Enregistrer</button>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}

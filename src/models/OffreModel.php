@@ -62,4 +62,17 @@ class OffreModel extends Model
         $stmt->execute(["%$query%", "%$query%", "%$query%"]);
         return $stmt->fetchAll();
     }
+
+    public function findDernieres(int $limite = 6): array
+    {
+        $stmt = $this->db->prepare("
+        SELECT o.*, e.Nom_Entreprise
+        FROM Offre o
+        LEFT JOIN Entreprise e ON o.Id_Entreprise = e.Id_Entreprise
+        ORDER BY o.Date_Offre DESC
+        LIMIT ?
+    ");
+        $stmt->execute([$limite]);
+        return $stmt->fetchAll();
+    }
 }

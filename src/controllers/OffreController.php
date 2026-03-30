@@ -7,13 +7,12 @@ use App\Core\Auth;
 use App\models\OffreModel;
 use App\models\EntrepriseModel;
 use App\models\WishlistModel;
+use App\models\PostulerModel;
 
 class OffreController
 {
     public function liste(): void
     {
-        Auth::requis();
-
         $parPage = 9;
         $page = max(1, (int)($_GET['page'] ?? 1));
 
@@ -31,7 +30,6 @@ class OffreController
 
     public function detail(): void
     {
-        Auth::requis();
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 
@@ -147,6 +145,7 @@ class OffreController
     public function postuler(): void
     {
         Auth::requisRole([2]);
+
         $id = $_GET['id'] ?? null;
         if (!$id) { header('Location: /offres'); exit; }
 
@@ -155,10 +154,20 @@ class OffreController
         if (!$offre) { header('Location: /offres'); exit; }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idUtilisateur = Auth::utilisateur()['Id_Utilisateur'];
             $offreId = $_POST['offre_id'] ?? null;
-            $cv = $_FILES['cv'] ?? null;
 
-            if (!$offreId || !$cv || $cv['error'] !== UPLOAD_ERR_OK) {
+            $postulerModel = new PostulerModel();
+            if ($postulerModel->aDejaPostule((int)$offreId, $idUtilisateur)) {
+                View::render('postuler_offre.twig', [
+                    'offre' => $offre,
+                    'erreur' => 'Vous avez déjà postulé à cette offre.'
+                ]);
+                return;
+            }
+
+            $cv = $_FILES['cv'] ?? null;
+            if (!$cv || $cv['error'] !== UPLOAD_ERR_OK) {
                 View::render('postuler_offre.twig', [
                     'offre' => $offre,
                     'erreur' => 'Le CV est obligatoire.'
@@ -166,7 +175,38 @@ class OffreController
                 return;
             }
 
-            // TODO : enregistrer la candidature en BDD
+            $extensionCv = strtolower(pathinfo($cv['name'], PATHINFO_EXTENSION));
+            if ($extensionCv !== 'pdf') {
+                View::render('postuler_offre.twig', [
+                    'offre' => $offre,
+                    'erreur' => 'Le CV doit être au format PDF.'
+                ]);
+                return;
+            }
+
+            $nomCv = 'cv_' . $idUtilisateur . '_' . $offreId . '_' . time() . '.pdf';
+            $cheminCv = 'uploads/cv/' . $nomCv;
+            move_uploaded_file($cv['tmp_name'], __DIR__ . '/../../public/' . $cheminCv);
+
+            $cheminLettre = null;
+            $lettre = $_FILES['lettre_motivation'] ?? null;
+            if ($lettre && $lettre['error'] === UPLOAD_ERR_OK) {
+                $extensionLm = strtolower(pathinfo($lettre['name'], PATHINFO_EXTENSION));
+                if ($extensionLm === 'pdf') {
+                    $nomLettre = 'lm_' . $idUtilisateur . '_' . $offreId . '_' . time() . '.pdf';
+                    $cheminLettre = 'uploads/lettres/' . $nomLettre;
+                    move_uploaded_file($lettre['tmp_name'], __DIR__ . '/../../public/' . $cheminLettre);
+                }
+            }
+
+            $postulerModel->postuler(
+                (int)$offreId,
+                $idUtilisateur,
+                $cheminCv,
+                $cheminLettre ?? '',
+                date('Y-m-d')
+            );
+
             header('Location: /offres');
             exit;
         }

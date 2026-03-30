@@ -30,4 +30,14 @@ class PostulerModel extends Model
         ");
         return $stmt->execute([$idOffre, $idUtilisateur, $date, $lettre, $cv]);
     }
+
+    public function aDejaPostule(int $idOffre, int $idUtilisateur): bool
+    {
+        $stmt = $this->db->prepare("
+        SELECT COUNT(*) FROM Postuler 
+        WHERE Id_Offre = ? AND Id_Utilisateur = ?
+    ");
+        $stmt->execute([$idOffre, $idUtilisateur]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

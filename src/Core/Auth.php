@@ -25,7 +25,8 @@ class Auth
 
     public static function estConnecte(): bool
     {
-        return self::utilisateur() !== null;
+        self::session();
+        return isset($_SESSION['utilisateur']);
     }
 
     public static function estAdmin(): bool
