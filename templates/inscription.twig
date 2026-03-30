@@ -20,6 +20,20 @@
 
             <form class="auth-form signup-form" method="POST" action="/inscription">
 
+                {% if auth_role == 1 or auth_role == 3 %}
+                    <div class="form-row">
+                        <div class="form-group" style="width: 100%;">
+                            <label>Rôle pour ce nouveau compte</label>
+                            <select name="role_cree" class="select-field" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem; margin-bottom: 1rem;">
+                                <option value="2">Étudiant</option>
+                                {% if auth_role == 1 %}
+                                    <option value="3">Pilote</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="form-row">
                     <div class="form-group">
                         <label>Civilité</label>
@@ -96,7 +110,11 @@
             </form>
 
             <p class="auth-footer">
-                Déjà un compte ? <a href="/connexion">Se connecter</a>
+                {% if not auth_role %}
+                    Déjà un compte ? <a href="/connexion">Se connecter</a>
+                {% else %}
+                    <a href="/accueil">Retour à l'accueil</a>
+                {% endif %}
             </p>
         </div>
     </div>

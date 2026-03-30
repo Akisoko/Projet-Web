@@ -22,6 +22,20 @@ class PostulerModel extends Model
         return $stmt->fetchAll();
     }
 
+    public function findAllCandidatures(): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT p.*, o.Nom_Offre, e.Nom_Entreprise, u.Nom_Utilisateur, u.Prenom
+            FROM Postuler p
+            JOIN Offre o ON p.Id_Offre = o.Id_Offre
+            JOIN Entreprise e ON o.Id_Entreprise = e.Id_Entreprise
+            JOIN Utilisateur u ON p.Id_Utilisateur = u.Id_Utilisateur
+            ORDER BY p.Date_Candid DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function postuler(int $idOffre, int $idUtilisateur, string $cv, string $lettre, string $date): bool
     {
         $stmt = $this->db->prepare("

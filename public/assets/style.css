@@ -544,7 +544,7 @@ body.landing-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none,;
+    text-decoration: none;
     color: #1a1a1a;
     line-height: 1;
 }
@@ -1799,6 +1799,449 @@ body.landing-page {
 
 .contact-item span {
     color: #666;
+}
+
+/* ============================================================
+   ADDITIONS — classes extraites des styles inline des Twig
+   À ajouter à la FIN du style.css existant, avant les @media
+   ============================================================ */
+
+/* --- Page content padding --- */
+.page-content {
+    padding: 2rem;
+}
+
+/* --- Section headers (accueil, etc.) --- */
+.section-header {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.section-block {
+    margin-bottom: 2rem;
+}
+
+/* --- Card icon (offres, entreprises, wishlist) --- */
+.card-icon {
+    width: 56px;
+    height: 56px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #999;
+    font-size: 1.25rem;
+}
+
+/* --- Card link (company-card utilisé comme lien) --- */
+a.company-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* --- Card header row --- */
+.card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Card name / title --- */
+.card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.card-subtitle {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+}
+
+/* --- Badge / pill --- */
+.badge {
+    font-size: 0.8rem;
+    background: #f0f0f0;
+    color: #555;
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.badge-dark {
+    background: #2c2c2c;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* --- Card body text --- */
+.card-description {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+/* --- Card footer row --- */
+.card-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 0.75rem;
+    margin-top: auto;
+}
+
+.card-footer-row span i {
+    margin-right: 4px;
+}
+
+/* --- Info row (detail pages) --- */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.info-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.info-icon {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 1px;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+}
+
+.info-value-bold {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* --- Detail text (descriptions) --- */
+.detail-text {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* --- Company logo circle (profil, utilisateur) --- */
+.company-logo.large.circle {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Entity content wide (offres, entreprises) --- */
+.entity-content-wide {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- Entity search bar --- */
+.entity-search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.entity-search-bar .search-input-wrapper {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+/* --- Btn add (link version) --- */
+a.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* --- Empty state --- */
+.empty-state {
+    color: #999;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+/* --- Form btn row (annuler + valider) --- */
+.form-btn-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-btn-row .btn-secondary,
+.form-btn-row .btn-primary {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* --- Form error message --- */
+.form-error {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* --- Form label hint --- */
+.form-label-hint {
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* --- Candidature item (profil) --- */
+.candidature-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.candidature-item p {
+    font-size: 0.9rem;
+}
+
+/* --- Wishlist heart button (absolute) --- */
+.wishlist-remove-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+/* --- Stats chart card --- */
+.chart-stat-card {
+    padding: 1.5rem;
+}
+
+.chart-stat-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+/* --- Progress bar (stats) --- */
+.progress-row {
+    margin-bottom: 0.75rem;
+}
+
+.progress-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+}
+
+.progress-label-row span:last-child {
+    font-weight: 600;
+}
+
+.progress-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+    height: 8px;
+}
+
+.progress-fill {
+    background: #2c2c2c;
+    border-radius: 4px;
+    height: 8px;
+}
+
+/* --- Wishlist stat item --- */
+.wishlist-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.wishlist-stat-item-info p:first-child {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.wishlist-stat-item-info p:last-child {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* --- Accueil top wishlist card --- */
+.top-wishlist-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-wishlist-card p:first-child {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.top-wishlist-card p:last-child {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* --- Search results --- */
+.search-form {
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-filters select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.result-type-badge {
+    font-size: 0.75rem;
+    background: #f0f0f0;
+    color: #555;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.result-icon {
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #999;
+}
+
+.result-description {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* --- Detail action btn link --- */
+a.detail-action-btn {
+    text-align: center;
+    text-decoration: none;
+}
+
+/* --- Profil modifier btn --- */
+a.btn-primary.ml-auto {
+    margin-left: auto;
+    text-decoration: none;
+}
+
+/* --- Home content sections --- */
+.home-content section {
+    margin-bottom: 2rem;
+}
+
+/* --- Wishlist heart color --- */
+.heart-red {
+    color: #e74c3c;
 }
 
 /* Responsive */

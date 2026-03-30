@@ -48,7 +48,7 @@ class HomeController
 
     public function recherche(): void
     {
-        Auth::requis();
+        Auth::session();
 
         $query = $_GET['q'] ?? '';
         $type = $_GET['type'] ?? '';

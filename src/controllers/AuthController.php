@@ -39,7 +39,9 @@ class AuthController
 
     public function inscription(): void
     {
-        session_start();
+        Auth::session();
+        $isConnecte = Auth::estConnecte();
+        $userRole = Auth::role();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $prenom = $_POST['prenom'] ?? null;
@@ -53,6 +55,16 @@ class AuthController
             $mois = $_POST['mois'] ?? null;
             $annee = $_POST['annee'] ?? null;
             $dateNaissance = $annee . '-' . $mois . '-' . $jour;
+
+            $roleCree = 2; // Default
+            if ($isConnecte && isset($_POST['role_cree'])) {
+                $postedRole = (int) $_POST['role_cree'];
+                if ($userRole === 1 && in_array($postedRole, [2, 3])) {
+                    $roleCree = $postedRole;
+                } elseif ($userRole === 3 && $postedRole === 2) {
+                    $roleCree = 2;
+                }
+            }
 
             if ($motDePasse !== $motDePasseConfirmation) {
                 View::render('inscription.twig', ['erreur' => 'Les mots de passe ne correspondent pas.']);
@@ -74,10 +86,14 @@ class AuthController
                 'Genre'             => $genre,
                 'Mot_de_Passe'      => password_hash($motDePasse, PASSWORD_DEFAULT),
                 'Date_de_Naissance' => $dateNaissance,
-                'Id_Role'           => 2,
+                'Id_Role'           => $roleCree,
             ]);
 
-            header('Location: /connexion');
+            if ($isConnecte) {
+                header('Location: /accueil');
+            } else {
+                header('Location: /connexion');
+            }
             exit;
         }
 

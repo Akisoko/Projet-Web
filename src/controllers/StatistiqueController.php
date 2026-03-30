@@ -10,7 +10,7 @@ class StatistiqueController
 {
     public function index(): void
     {
-        Auth::requis();
+        Auth::session();
 
         $model = new StatistiqueModel();
 

@@ -67,16 +67,32 @@
                 </div>
             </div>
 
-            <div class="detail-section">
-                <h3>Mes candidatures</h3>
-                {% for candidature in candidatures %}
-                    <a href="/detail_offre?id={{ candidature.Id_Offre }}" style="display: flex; justify-content: space-between; align-items: center; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px; margin-bottom: 0.75rem; text-decoration: none; color: inherit;">
-                        <p style="font-size: 0.9rem;">{{ candidature.Nom_Offre }}</p>
-                    </a>
-                {% else %}
-                    <p style="color: #999;">Aucune candidature pour le moment.</p>
-                {% endfor %}
-            </div>
+
+
+            {% if utilisateur.Id_Role == 2 or utilisateur.Id_Role == 3 %}
+                <div class="detail-section">
+                    {% if utilisateur.Id_Role == 2 %}
+                        <h3>Mes candidatures</h3>
+                    {% else %}
+                        <h3>Candidatures des étudiants</h3>
+                    {% endif %}
+
+                    {% for candidature in candidatures %}
+                        <a href="/detail_offre?id={{ candidature.Id_Offre }}" style="display: flex; flex-direction: column; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px; margin-bottom: 0.75rem; text-decoration: none; color: inherit;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                <p style="font-size: 0.9rem; font-weight: 600;">{{ candidature.Nom_Offre }}</p>
+                                <span style="font-size: 0.75rem; color: #666; background: #e5e5e5; padding: 2px 8px; border-radius: 12px;">{{ candidature.Date_Candid|default('') }}</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: #555;">{{ candidature.Nom_Entreprise }}</p>
+                            {% if utilisateur.Id_Role == 3 and candidature.Nom_Utilisateur is defined %}
+                                <p style="font-size: 0.8rem; color: #2c3e50; margin-top: 0.25rem;"><i class="fa-solid fa-user" style="margin-right: 4px;"></i> Candidat : {{ candidature.Prenom }} {{ candidature.Nom_Utilisateur }}</p>
+                            {% endif %}
+                        </a>
+                    {% else %}
+                        <p style="color: #999;">Aucune candidature trouvée.</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
         </div>
     </div>

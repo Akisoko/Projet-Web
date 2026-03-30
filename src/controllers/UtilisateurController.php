@@ -32,11 +32,19 @@ class UtilisateurController
             exit;
         }
 
+        $candidatures = [];
+        $postulerModel = new \App\models\PostulerModel();
+        if ($utilisateur['Id_Role'] == 2) {
+            $candidatures = $postulerModel->findByUtilisateur($id);
+        } elseif ($utilisateur['Id_Role'] == 3) {
+            $candidatures = $postulerModel->findAllCandidatures();
+        }
+
         View::render('profil.twig', [
             'utilisateur' => $utilisateur, // profil affiché
             'auth_user'   => $authUser,    // utilisateur connecté
             'auth_role'   => $authUser['Id_Role'] ?? null,
-            'candidatures' => [], // TODO : brancher CandidatureModel
+            'candidatures' => $candidatures,
         ]);
     }
 
