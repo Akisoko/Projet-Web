@@ -1511,19 +1511,40 @@ body.landing-page {
 
 .star-rating {
     display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     gap: 0.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
-.star-rating i {
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
     cursor: pointer;
     color: #ddd;
-    transition: color 0.2s;
+    transition: all 0.2s;
 }
 
-.star-rating i:hover,
-.star-rating i.active {
+.star-rating label i {
+    font-weight: 400; /* Etoile creuse par defaut */
+    transition: transform 0.2s ease-in-out, font-weight 0.2s;
+    display: inline-block;
+}
+
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
     color: #ffc107;
+}
+
+.star-rating input[type="radio"]:checked ~ label i,
+.star-rating label:hover i,
+.star-rating label:hover ~ label i {
+    color: #ffc107;
+    font-weight: 900; /* Etoile pleine selectionnee */
+    transform: scale(1.15); /* Leger zoom pour le style */
 }
 
 .checkbox-label {

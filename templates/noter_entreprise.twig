@@ -13,11 +13,11 @@
     <div class="add-content">
         <form class="add-form" method="post" action="/noter_entreprise">
 
-            <input type="hidden" name="entreprise_id" value="{{ entreprise.id ?? '' }}">
+            <input type="hidden" name="entreprise_id" value="{{ entreprise.Id_Entreprise ?? '' }}">
 
             <div class="form-group">
                 <label>Entreprise</label>
-                <input type="text" value="{{ entreprise.nom ?? '' }}" readonly>
+                <input type="text" value="{{ entreprise.Nom_Entreprise ?? '' }}" readonly>
             </div>
 
             <div class="form-group">

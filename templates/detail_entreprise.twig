@@ -79,6 +79,9 @@
 
             <div class="detail-actions">
                 {% if auth_role == 1 or auth_role == 3 %}
+                    <a href="/noter_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn note" style="background-color: #f39c12; color: #fff;">
+                        <i class="fa-solid fa-star"></i> Noter
+                    </a>
                     <a href="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn edit">
                         <i class="fa-solid fa-pen"></i> Modifier
                     </a>

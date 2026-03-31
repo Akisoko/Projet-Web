@@ -4,6 +4,7 @@ namespace App\controllers;
 
 use App\Core\View;
 use App\models\EntrepriseModel;
+use App\models\NoterModel;
 use App\Core\Auth;
 
 class EntrepriseController
@@ -149,5 +150,52 @@ class EntrepriseController
 
         header('Location: /entreprises');
         exit;
+    }
+
+    public function noter(): void
+    {
+        Auth::requisRole([1, 3]);
+
+        $id = $_GET['id'] ?? null;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['entreprise_id'] ?? null;
+        }
+
+        if (!$id) {
+            header('Location: /entreprises');
+            exit;
+        }
+
+        $model = new EntrepriseModel();
+        $entreprise = $model->findById((int)$id);
+
+        if (!$entreprise) {
+            header('Location: /entreprises');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $note = $_POST['note'] ?? null;
+            $commentaire = $_POST['commentaire'] ?? null;
+
+            if ($note === null || $note < 1 || $note > 5) {
+                View::render('noter_entreprise.twig', [
+                    'entreprise' => $entreprise,
+                    'erreur' => 'Veuillez sélectionner une note valide.'
+                ]);
+                return;
+            }
+
+            $user = Auth::utilisateur();
+            $idUser = $user['Id_Utilisateur'];
+
+            $noterModel = new NoterModel();
+            $noterModel->sauvegarderNote((int)$id, (int)$idUser, (int)$note, $commentaire);
+
+            header('Location: /detail_entreprise?id=' . $id);
+            exit;
+        }
+
+        View::render('noter_entreprise.twig', ['entreprise' => $entreprise]);
     }
 }
