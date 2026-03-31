@@ -94,6 +94,10 @@ class Router
                 (new OffreController())->postuler();
                 break;
 
+            case '/detail_candidature':
+                (new OffreController())->detailCandidature();
+                break;
+
             case '/wishlist':
                 (new WishlistController())->index();
                 break;

@@ -45,6 +45,21 @@ class PostulerModel extends Model
         return $stmt->execute([$idOffre, $idUtilisateur, $date, $lettre, $cv]);
     }
 
+    public function findOneCandidature(int $idOffre, int $idUtilisateur): array|false
+    {
+        $stmt = $this->db->prepare("
+            SELECT p.*, o.Nom_Offre, e.Nom_Entreprise, e.Id_Entreprise,
+                   u.Nom_Utilisateur, u.Prenom, u.Email
+            FROM Postuler p
+            JOIN Offre o ON p.Id_Offre = o.Id_Offre
+            JOIN Entreprise e ON o.Id_Entreprise = e.Id_Entreprise
+            JOIN Utilisateur u ON p.Id_Utilisateur = u.Id_Utilisateur
+            WHERE p.Id_Offre = ? AND p.Id_Utilisateur = ?
+        ");
+        $stmt->execute([$idOffre, $idUtilisateur]);
+        return $stmt->fetch();
+    }
+
     public function aDejaPostule(int $idOffre, int $idUtilisateur): bool
     {
         $stmt = $this->db->prepare("

@@ -213,4 +213,44 @@ class OffreController
 
         View::render('postuler_offre.twig', ['offre' => $offre]);
     }
+
+    public function detailCandidature(): void
+    {
+        Auth::requis();
+
+        $idOffre = $_GET['offre'] ?? null;
+        $idUtilisateur = $_GET['utilisateur'] ?? null;
+
+        if (!$idOffre || !$idUtilisateur) {
+            header('Location: /profil');
+            exit;
+        }
+
+        $authUser = Auth::utilisateur();
+        $authRole = (int)($authUser['Id_Role'] ?? 0);
+        $authId   = (int)$authUser['Id_Utilisateur'];
+
+        // Seul l'étudiant concerné, un pilote ou un admin peut voir la candidature
+        if ($authRole === 2 && $authId !== (int)$idUtilisateur) {
+            header('Location: /profil');
+            exit;
+        }
+        if (!in_array($authRole, [1, 2, 3])) {
+            header('Location: /profil');
+            exit;
+        }
+
+        $postulerModel = new PostulerModel();
+        $candidature = $postulerModel->findOneCandidature((int)$idOffre, (int)$idUtilisateur);
+
+        if (!$candidature) {
+            header('Location: /profil');
+            exit;
+        }
+
+        View::render('detail_candidature.twig', [
+            'candidature' => $candidature,
+            'auth_role'   => $authRole,
+        ]);
+    }
 }

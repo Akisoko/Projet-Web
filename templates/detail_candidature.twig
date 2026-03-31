@@ -1,0 +1,119 @@
+{% extends "base.twig" %}
+{% block title %}Détail candidature - Kezan{% endblock %}
+{% block page_title %}Détail candidature{% endblock %}
+
+{% block content %}
+    <div class="detail-content">
+        <div class="detail-card">
+
+            <div class="detail-card-header">
+                <div class="company-logo large">
+                    <i class="fa-solid fa-file-lines" style="font-size: 2rem; color: #999;"></i>
+                </div>
+                <div class="detail-title">
+                    <h2>{{ candidature.Nom_Offre }}</h2>
+                    <p><span class="badge">{{ candidature.Nom_Entreprise }}</span></p>
+                </div>
+            </div>
+
+            {% if auth_role == 1 or auth_role == 3 %}
+                <div class="detail-section">
+                    <h3>Candidat</h3>
+                    <div class="info-list">
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <p class="info-label">Nom complet</p>
+                                <p class="info-value">{{ candidature.Prenom }} {{ candidature.Nom_Utilisateur }}</p>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <p class="info-label">Email</p>
+                                <p class="info-value">{{ candidature.Email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="detail-section">
+                <h3>Informations de la candidature</h3>
+                <div class="info-list">
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-calendar"></i></div>
+                        <div>
+                            <p class="info-label">Date de candidature</p>
+                            <p class="info-value">{{ candidature.Date_Candid }}</p>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-building"></i></div>
+                        <div>
+                            <p class="info-label">Entreprise</p>
+                            <p class="info-value">
+                                <a href="/detail_entreprise?id={{ candidature.Id_Entreprise }}" style="color: inherit;">
+                                    {{ candidature.Nom_Entreprise }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>Documents</h3>
+                <div class="candidature-documents">
+
+                    {% if candidature.CV %}
+                        <a href="/{{ candidature.CV }}" class="document-download-btn" download>
+                            <div class="document-icon">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <div class="document-info">
+                                <p class="document-name">Curriculum Vitae</p>
+                                <p class="document-hint">Cliquer pour télécharger</p>
+                            </div>
+                            <i class="fa-solid fa-download document-arrow"></i>
+                        </a>
+                    {% else %}
+                        <div class="document-missing">
+                            <i class="fa-solid fa-file-circle-xmark"></i>
+                            <span>Aucun CV fourni</span>
+                        </div>
+                    {% endif %}
+
+                    {% if candidature.Lettre_Motivation %}
+                        <a href="/{{ candidature.Lettre_Motivation }}" class="document-download-btn" download>
+                            <div class="document-icon">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <div class="document-info">
+                                <p class="document-name">Lettre de motivation</p>
+                                <p class="document-hint">Cliquer pour télécharger</p>
+                            </div>
+                            <i class="fa-solid fa-download document-arrow"></i>
+                        </a>
+                    {% else %}
+                        <div class="document-missing">
+                            <i class="fa-solid fa-file-circle-xmark"></i>
+                            <span>Aucune lettre de motivation fournie</span>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="detail-actions">
+                <a href="/profil" class="detail-action-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Retour au profil
+                </a>
+                <a href="/detail_offre?id={{ candidature.Id_Offre }}" class="detail-action-btn edit">
+                    <i class="fa-solid fa-briefcase"></i> Voir l'offre
+                </a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

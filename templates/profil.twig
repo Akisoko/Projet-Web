@@ -64,7 +64,7 @@
                     <h3>{% if utilisateur.Id_Role == 2 %}Mes candidatures{% else %}Candidatures des étudiants{% endif %}</h3>
 
                     {% for candidature in candidatures %}
-                        <a href="/detail_offre?id={{ candidature.Id_Offre }}" class="candidature-item">
+                        <a href="/detail_candidature?offre={{ candidature.Id_Offre }}&utilisateur={{ candidature.Id_Utilisateur }}" class="candidature-item">
                             <div>
                                 <p class="info-value-bold">{{ candidature.Nom_Offre }}</p>
                                 <p class="info-label" style="margin-top: 2px;">{{ candidature.Nom_Entreprise }}</p>
