@@ -1,15 +1,8 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Recherche - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Recherche
-{% endblock %}
+{% block title %}Recherche - Kezan{% endblock %}
+{% block page_title %}Recherche{% endblock %}
 
 {% block content %}
-
     <div class="search-content">
 
         <form class="search-form" method="get" action="/recherche">
@@ -18,7 +11,6 @@
                 <input type="text" name="q" placeholder="Rechercher..." value="{{ query ?? '' }}">
                 <button type="submit" class="btn-primary">Rechercher</button>
             </div>
-
             <div class="search-filters">
                 <select name="type">
                     <option value="">Tout</option>
@@ -34,30 +26,27 @@
         <div class="search-results">
             {% if resultats is defined and resultats is not empty %}
                 {% for resultat in resultats %}
-                    <a href="{{ resultat.url }}" class="entity-item" style="text-decoration: none; color: inherit;">
-                        <div style="width: 40px; height: 40px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <a href="{{ resultat.url }}" class="entity-item">
+                        <div class="result-icon">
                             {% if resultat.type == 'offre' %}
-                                <i class="fa-solid fa-briefcase" style="color: #999;"></i>
+                                <i class="fa-solid fa-briefcase"></i>
                             {% elseif resultat.type == 'entreprise' %}
-                                <i class="fa-solid fa-building" style="color: #999;"></i>
+                                <i class="fa-solid fa-building"></i>
                             {% else %}
-                                <i class="fa-solid fa-user" style="color: #999;"></i>
+                                <i class="fa-solid fa-user"></i>
                             {% endif %}
                         </div>
                         <div class="entity-item-info">
                             <h3>{{ resultat.titre }}</h3>
-                            <p style="font-size: 0.875rem; color: #666;">{{ resultat.description }}</p>
+                            <p class="result-description">{{ resultat.description }}</p>
                         </div>
-                        <span style="font-size: 0.75rem; background: #f0f0f0; color: #555; padding: 3px 10px; border-radius: 20px;">
-                    {{ resultat.type }}
-                </span>
+                        <span class="result-type-badge">{{ resultat.type }}</span>
                     </a>
                 {% endfor %}
             {% elseif query is defined and query is not empty %}
-                <p style="color: #999; text-align: center; padding: 3rem;">Aucun résultat pour "{{ query }}".</p>
+                <p class="empty-state">Aucun résultat pour "{{ query }}".</p>
             {% endif %}
         </div>
 
     </div>
-
 {% endblock %}

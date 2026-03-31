@@ -1,65 +1,57 @@
 {% extends "base.twig" %}
 {% block title %}Profil - Kezan{% endblock %}
 {% block page_title %}Mon profil{% endblock %}
-{% block content %}
 
+{% block content %}
     <div class="detail-content">
         <div class="detail-card">
 
             <div class="detail-card-header">
-                <div class="company-logo large" style="display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                <div class="company-logo large circle">
                     <i class="fa-solid fa-user" style="font-size: 2rem; color: #999;"></i>
                 </div>
                 <div class="detail-title">
                     <h2>{{ utilisateur.Prenom }} {{ utilisateur.Nom_Utilisateur }}</h2>
                     <p>{{ utilisateur.Email }}</p>
                 </div>
-                <a href="/modifier_profil" class="btn-primary" style="text-decoration: none; margin-left: auto;">
+                <a href="/modifier_profil" class="btn-primary ml-auto">
                     <i class="fa-solid fa-pen"></i> Modifier
                 </a>
             </div>
 
             <div class="detail-section">
                 <h3>Informations personnelles</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div class="info-list">
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-phone" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Téléphone</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Telephone ?: 'Non renseigné' }}</p>
+                            <p class="info-label">Téléphone</p>
+                            <p class="info-value">{{ utilisateur.Telephone ?: 'Non renseigné' }}</p>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-envelope" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Email</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Email }}</p>
+                            <p class="info-label">Email</p>
+                            <p class="info-value">{{ utilisateur.Email }}</p>
                         </div>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fa-solid fa-venus-mars" style="color: #555; font-size: 0.9rem;"></i>
-                            </div>
+                    <div class="info-row-grid">
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-venus-mars"></i></div>
                             <div>
-                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Genre</p>
-                                <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Genre }}</p>
+                                <p class="info-label">Genre</p>
+                                <p class="info-value">{{ utilisateur.Genre }}</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fa-solid fa-cake-candles" style="color: #555; font-size: 0.9rem;"></i>
-                            </div>
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-cake-candles"></i></div>
                             <div>
-                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Date de naissance</p>
-                                <p style="font-size: 0.9rem; color: #1a1a1a;">{{ utilisateur.Date_de_Naissance }}</p>
+                                <p class="info-label">Date de naissance</p>
+                                <p class="info-value">{{ utilisateur.Date_de_Naissance }}</p>
                             </div>
                         </div>
                     </div>
@@ -67,26 +59,23 @@
                 </div>
             </div>
 
-
-
             {% if utilisateur.Id_Role == 2 or utilisateur.Id_Role == 3 %}
                 <div class="detail-section">
-                    {% if utilisateur.Id_Role == 2 %}
-                        <h3>Mes candidatures</h3>
-                    {% else %}
-                        <h3>Candidatures des étudiants</h3>
-                    {% endif %}
+                    <h3>{% if utilisateur.Id_Role == 2 %}Mes candidatures{% else %}Candidatures des étudiants{% endif %}</h3>
 
                     {% for candidature in candidatures %}
-                        <a href="/detail_offre?id={{ candidature.Id_Offre }}" style="display: flex; flex-direction: column; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px; margin-bottom: 0.75rem; text-decoration: none; color: inherit;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                                <p style="font-size: 0.9rem; font-weight: 600;">{{ candidature.Nom_Offre }}</p>
-                                <span style="font-size: 0.75rem; color: #666; background: #e5e5e5; padding: 2px 8px; border-radius: 12px;">{{ candidature.Date_Candid|default('') }}</span>
+                        <a href="/detail_offre?id={{ candidature.Id_Offre }}" class="candidature-item">
+                            <div>
+                                <p class="info-value-bold">{{ candidature.Nom_Offre }}</p>
+                                <p class="info-label" style="margin-top: 2px;">{{ candidature.Nom_Entreprise }}</p>
+                                {% if utilisateur.Id_Role == 3 and candidature.Nom_Utilisateur is defined %}
+                                    <p class="info-label" style="margin-top: 2px;">
+                                        <i class="fa-solid fa-user"></i>
+                                        {{ candidature.Prenom }} {{ candidature.Nom_Utilisateur }}
+                                    </p>
+                                {% endif %}
                             </div>
-                            <p style="font-size: 0.8rem; color: #555;">{{ candidature.Nom_Entreprise }}</p>
-                            {% if utilisateur.Id_Role == 3 and candidature.Nom_Utilisateur is defined %}
-                                <p style="font-size: 0.8rem; color: #2c3e50; margin-top: 0.25rem;"><i class="fa-solid fa-user" style="margin-right: 4px;"></i> Candidat : {{ candidature.Prenom }} {{ candidature.Nom_Utilisateur }}</p>
-                            {% endif %}
+                            <span class="badge">{{ candidature.Date_Candid|default('') }}</span>
                         </a>
                     {% else %}
                         <p style="color: #999;">Aucune candidature trouvée.</p>
@@ -96,5 +85,4 @@
 
         </div>
     </div>
-
 {% endblock %}

@@ -1,15 +1,8 @@
 {% extends "base.twig" %}
-
-{% block title %}
-    Détail entreprise - Kezan
-{% endblock %}
-
-{% block page_title %}
-    Détail entreprise
-{% endblock %}
+{% block title %}Détail entreprise - Kezan{% endblock %}
+{% block page_title %}Détail entreprise{% endblock %}
 
 {% block content %}
-
     <div class="detail-content">
         <div class="detail-card">
 
@@ -19,86 +12,71 @@
                 </div>
                 <div class="detail-title">
                     <h2>{{ entreprise.Nom_Entreprise }}</h2>
-                    <p>
-                    <span style="font-size: 0.8rem; background: #f0f0f0; color: #555; padding: 3px 12px; border-radius: 20px;">
-                        {{ entreprise.Domaine_Entreprise }}
-                    </span>
-                    </p>
+                    <p><span class="badge">{{ entreprise.Domaine_Entreprise }}</span></p>
                 </div>
             </div>
 
             <div class="detail-section">
                 <h3>À propos</h3>
-                <p style="color: #555; line-height: 1.7; font-size: 0.95rem;">{{ entreprise.Description_Entreprise }}</p>
+                <p class="detail-text">{{ entreprise.Description_Entreprise }}</p>
             </div>
 
             <div class="detail-section">
                 <h3>Informations</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div class="info-list">
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-globe" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Site web</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Site_Web }}</p>
+                            <p class="info-label">Site web</p>
+                            <p class="info-value">{{ entreprise.Site_Web }}</p>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-phone" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Téléphone</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Telephone }}</p>
+                            <p class="info-label">Téléphone</p>
+                            <p class="info-value">{{ entreprise.Telephone }}</p>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-envelope" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Email</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Mail }}</p>
+                            <p class="info-label">Email</p>
+                            <p class="info-value">{{ entreprise.Mail }}</p>
                         </div>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fa-solid fa-users" style="color: #555; font-size: 0.9rem;"></i>
-                            </div>
+                    <div class="info-row-grid">
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-users"></i></div>
                             <div>
-                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Employés</p>
-                                <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ entreprise.Nombre_Employes }}</p>
+                                <p class="info-label">Employés</p>
+                                <p class="info-value-bold">{{ entreprise.Nombre_Employes }}</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fa-solid fa-user-graduate" style="color: #555; font-size: 0.9rem;"></i>
-                            </div>
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-user-graduate"></i></div>
                             <div>
-                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Stagiaires</p>
-                                <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ entreprise.Nombre_Stagiaires }}</p>
+                                <p class="info-label">Stagiaires</p>
+                                <p class="info-value-bold">{{ entreprise.Nombre_Stagiaires }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-calendar" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-calendar"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Fondée le</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ entreprise.Date_Creation }}</p>
+                            <p class="info-label">Fondée le</p>
+                            <p class="info-value">{{ entreprise.Date_Creation }}</p>
                         </div>
                     </div>
 
                 </div>
             </div>
+
             <div class="detail-actions">
                 {% if auth_role == 1 or auth_role == 3 %}
                     <a href="/modifier_entreprise?id={{ entreprise.Id_Entreprise }}" class="detail-action-btn edit">
@@ -111,7 +89,7 @@
                     </a>
                 {% endif %}
             </div>
+
         </div>
     </div>
-
 {% endblock %}

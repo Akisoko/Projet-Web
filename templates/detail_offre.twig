@@ -1,78 +1,64 @@
 {% extends "base.twig" %}
 {% block title %}Détail offre - Kezan{% endblock %}
 {% block page_title %}Détail offre{% endblock %}
-{% block content %}
 
+{% block content %}
     <div class="detail-content">
         <div class="detail-card">
 
             <div class="detail-card-header">
-                <div class="company-logo large" style="display: flex; align-items: center; justify-content: center;">
+                <div class="company-logo large">
                     <i class="fa-solid fa-briefcase" style="font-size: 2rem; color: #999;"></i>
                 </div>
                 <div class="detail-title">
                     <h2>{{ offre.Nom_Offre }}</h2>
-                    <p>
-                    <span style="font-size: 0.8rem; background: #f0f0f0; color: #555; padding: 3px 12px; border-radius: 20px;">
-                        {{ offre.Domaine_Offre }}
-                    </span>
-                    </p>
+                    <p><span class="badge">{{ offre.Domaine_Offre }}</span></p>
                 </div>
             </div>
 
             <div class="detail-section">
                 <h3>Description</h3>
-                <p style="color: #555; line-height: 1.7; font-size: 0.95rem;">{{ offre.Description_Offre }}</p>
+                <p class="detail-text">{{ offre.Description_Offre }}</p>
             </div>
 
             <div class="detail-section">
                 <h3>Profil recherché</h3>
-                <p style="color: #555; line-height: 1.7; font-size: 0.95rem;">{{ offre.Profil_Recherche }}</p>
+                <p class="detail-text">{{ offre.Profil_Recherche }}</p>
             </div>
 
             <div class="detail-section">
                 <h3>Informations</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div class="info-list">
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-euro-sign" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-euro-sign"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Rémunération</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ offre.Remuneration }}</p>
+                            <p class="info-label">Rémunération</p>
+                            <p class="info-value">{{ offre.Remuneration }}</p>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                        <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fa-solid fa-calendar" style="color: #555; font-size: 0.9rem;"></i>
-                        </div>
+                    <div class="info-row">
+                        <div class="info-icon"><i class="fa-solid fa-calendar"></i></div>
                         <div>
-                            <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Date de l'offre</p>
-                            <p style="font-size: 0.9rem; color: #1a1a1a;">{{ offre.Date_Offre }}</p>
+                            <p class="info-label">Date de l'offre</p>
+                            <p class="info-value">{{ offre.Date_Offre }}</p>
                         </div>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fa-solid fa-user-graduate" style="color: #555; font-size: 0.9rem;"></i>
-                            </div>
+                    <div class="info-row-grid">
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-user-graduate"></i></div>
                             <div>
-                                <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Étudiants recherchés</p>
-                                <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ offre.Nombre_Etudiants }}</p>
+                                <p class="info-label">Étudiants recherchés</p>
+                                <p class="info-value-bold">{{ offre.Nombre_Etudiants }}</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.875rem 1rem; background: #f8f8f8; border-radius: 8px;">
-                                <div style="width: 36px; height: 36px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <i class="fa-solid fa-building" style="color: #555; font-size: 0.9rem;"></i>
-                                </div>
-                                <div>
-                                    <p style="font-size: 0.75rem; color: #999; margin-bottom: 1px;">Entreprise</p>
-                                    <p style="font-size: 0.9rem; font-weight: 600; color: #1a1a1a;">{{ offre.Nom_Entreprise }}</p>
-                                </div>
+                        <div class="info-row">
+                            <div class="info-icon"><i class="fa-solid fa-building"></i></div>
+                            <div>
+                                <p class="info-label">Entreprise</p>
+                                <p class="info-value-bold">{{ offre.Nom_Entreprise }}</p>
                             </div>
                         </div>
                     </div>
@@ -82,24 +68,24 @@
 
             <div class="detail-actions">
                 {% if auth_role == 2 %}
-                    <a href="/postuler?id={{ offre.Id_Offre }}" class="detail-action-btn" style="text-align: center; text-decoration: none;">
+                    <a href="/postuler?id={{ offre.Id_Offre }}" class="detail-action-btn">
                         <i class="fa-solid fa-paper-plane"></i> Postuler
                     </a>
                     {% if en_wishlist %}
-                        <a href="/wishlist_retirer?id={{ offre.Id_Offre }}" class="detail-action-btn delete" style="text-align: center; text-decoration: none;">
+                        <a href="/wishlist_retirer?id={{ offre.Id_Offre }}" class="detail-action-btn delete">
                             <i class="fa-solid fa-heart-crack"></i> Retirer de la wishlist
                         </a>
                     {% else %}
-                        <a href="/wishlist_ajouter?id={{ offre.Id_Offre }}" class="detail-action-btn" style="text-align: center; text-decoration: none;">
+                        <a href="/wishlist_ajouter?id={{ offre.Id_Offre }}" class="detail-action-btn">
                             <i class="fa-regular fa-heart"></i> Ajouter à la wishlist
                         </a>
                     {% endif %}
                 {% endif %}
                 {% if auth_role == 1 or auth_role == 3 %}
-                    <a href="/modifier_offre?id={{ offre.Id_Offre }}" class="detail-action-btn edit" style="text-align: center; text-decoration: none;">
+                    <a href="/modifier_offre?id={{ offre.Id_Offre }}" class="detail-action-btn edit">
                         <i class="fa-solid fa-pen"></i> Modifier
                     </a>
-                    <a href="/supprimer_offre?id={{ offre.Id_Offre }}" class="detail-action-btn delete" style="text-align: center; text-decoration: none;"
+                    <a href="/supprimer_offre?id={{ offre.Id_Offre }}" class="detail-action-btn delete"
                        onclick="return confirm('Supprimer cette offre ?')">
                         <i class="fa-solid fa-trash"></i> Supprimer
                     </a>

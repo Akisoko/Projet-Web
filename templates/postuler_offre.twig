@@ -4,10 +4,7 @@
 
 {% block content %}
     <div class="add-content">
-
-        {% if erreur %}
-            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
-        {% endif %}
+        {% if erreur %}<p class="form-error">{{ erreur }}</p>{% endif %}
 
         <form class="add-form" method="post" action="/postuler?id={{ offre.Id_Offre }}" enctype="multipart/form-data">
 
@@ -17,14 +14,12 @@
                 <label>Offre</label>
                 <input type="text" value="{{ offre.Nom_Offre ?? '' }}" readonly>
             </div>
-
             <div class="form-group">
                 <label>Entreprise</label>
                 <input type="text" value="{{ offre.Nom_Entreprise ?? '' }}" readonly>
             </div>
-
             <div class="form-group">
-                <label>CV <span style="color: #999; font-size: 0.8rem;">(PDF uniquement)</span></label>
+                <label>CV <span class="form-label-hint">(PDF uniquement)</span></label>
                 <div class="file-upload-group">
                     <input type="text" readonly placeholder="Aucun fichier sélectionné" id="cvFileName">
                     <label for="cvUpload" class="file-upload-btn">
@@ -33,9 +28,8 @@
                     <input type="file" id="cvUpload" name="cv" accept=".pdf" style="display: none;">
                 </div>
             </div>
-
             <div class="form-group">
-                <label>Lettre de motivation <span style="color: #999; font-size: 0.8rem;">(PDF uniquement, facultative)</span></label>
+                <label>Lettre de motivation <span class="form-label-hint">(PDF uniquement, facultative)</span></label>
                 <div class="file-upload-group">
                     <input type="text" readonly placeholder="Aucun fichier sélectionné" id="lmFileName">
                     <label for="lmUpload" class="file-upload-btn">
@@ -45,11 +39,9 @@
                 </div>
             </div>
 
-            <div style="display: flex; gap: 1rem;">
-                <a href="/detail_offre?id={{ offre.Id_Offre }}" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
-                    Annuler
-                </a>
-                <button type="submit" class="btn-primary add-submit">Envoyer ma candidature</button>
+            <div class="form-btn-row">
+                <a href="/detail_offre?id={{ offre.Id_Offre }}" class="btn-secondary">Annuler</a>
+                <button type="submit" class="btn-primary">Envoyer ma candidature</button>
             </div>
 
         </form>

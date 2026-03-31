@@ -1,12 +1,10 @@
 {% extends "base.twig" %}
 {% block title %}Modifier une offre - Kezan{% endblock %}
 {% block page_title %}Modifier une offre{% endblock %}
-{% block content %}
 
+{% block content %}
     <div class="add-content">
-        {% if erreur %}
-            <p style="color:red; margin-bottom: 1rem;">{{ erreur }}</p>
-        {% endif %}
+        {% if erreur %}<p class="form-error">{{ erreur }}</p>{% endif %}
 
         <form class="add-form" method="post" action="/modifier_offre?id={{ offre.Id_Offre }}">
 
@@ -14,32 +12,26 @@
                 <label>Nom de l'offre</label>
                 <input type="text" name="nom" value="{{ offre.Nom_Offre }}" required>
             </div>
-
             <div class="form-group">
                 <label>Domaine</label>
                 <input type="text" name="domaine" value="{{ offre.Domaine_Offre }}" required>
             </div>
-
             <div class="form-group">
                 <label>Profil recherché</label>
                 <input type="text" name="profil" value="{{ offre.Profil_Recherche }}" required>
             </div>
-
             <div class="form-group">
                 <label>Rémunération</label>
                 <input type="text" name="remuneration" value="{{ offre.Remuneration }}" required>
             </div>
-
             <div class="form-group">
                 <label>Date de l'offre</label>
                 <input type="date" name="date_offre" value="{{ offre.Date_Offre }}" required>
             </div>
-
             <div class="form-group">
                 <label>Nombre d'étudiants recherchés</label>
                 <input type="number" name="nb_etudiants" value="{{ offre.Nombre_Etudiants }}" required>
             </div>
-
             <div class="form-group">
                 <label>Entreprise</label>
                 <select name="id_entreprise" required>
@@ -51,17 +43,14 @@
                     {% endfor %}
                 </select>
             </div>
-
             <div class="form-group">
                 <label>Description</label>
                 <textarea name="description" rows="5" required>{{ offre.Description_Offre }}</textarea>
             </div>
 
-            <div style="display: flex; gap: 1rem;">
-                <a href="/detail_offre?id={{ offre.Id_Offre }}" class="btn-secondary add-submit" style="text-align: center; text-decoration: none;">
-                    Annuler
-                </a>
-                <button type="submit" class="btn-primary add-submit">Enregistrer les modifications</button>
+            <div class="form-btn-row">
+                <a href="/detail_offre?id={{ offre.Id_Offre }}" class="btn-secondary">Annuler</a>
+                <button type="submit" class="btn-primary">Enregistrer les modifications</button>
             </div>
 
         </form>
