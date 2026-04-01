@@ -11,7 +11,7 @@ use App\models\WishlistModel;
 use App\models\StatistiqueModel;
 
 /**
- * Contrôleur principal de la page d'accueil et de la recherche globale.
+ * Contrôleur principal de la page d'accueil et de la recherche globale
  *
  * Gère l'affichage de la page d'accueil, des mentions légales
  * et de la recherche transversale sur les offres, entreprises et profils.
