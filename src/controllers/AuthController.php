@@ -10,7 +10,7 @@ use App\models\UtilisateurModel;
  * Contrôleur responsable de l'authentification des utilisateurs.
  *
  * Gère la connexion, l'inscription, la première connexion
- * et la déconnexion.
+ * et la déconnexion
  */
 class AuthController
 {
