@@ -8,7 +8,7 @@ use App\models\NoterModel;
 use App\Core\Auth;
 
 /**
- * Contrôleur chargé de la gestion des entreprises.
+ * Contrôleur chargé de la gestion des entreprises
  *
  * Gère l'affichage de la liste, le détail, l'ajout,
  * la modification, la suppression et la notation.
