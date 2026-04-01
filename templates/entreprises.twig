@@ -1,57 +1,101 @@
 {% extends "base.twig" %}
+
+{# Titre de l'onglet du navigateur #}
 {% block title %}Entreprises - Kezan{% endblock %}
+
+{# Titre principal affiché dans la page #}
 {% block page_title %}Entreprises{% endblock %}
 
 {% block content %}
     <div class="entity-content-wide">
 
+<<<<<<< HEAD
 
+=======
+        {# Barre supérieure avec champ de recherche et bouton d'ajout #}
+        <div class="entity-search-bar">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+
+                {# Champ de recherche des entreprises #}
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Rechercher une entreprise..."
+                    aria-label="Rechercher une entreprise"
+                >
+            </div>
+
+            {# Bouton visible uniquement pour les admins et pilotes #}
+>>>>>>> b8ea831 (comm + hotfix)
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_entreprise" class="btn-primary">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
                     Ajouter une entreprise
                 </a>
             {% endif %}
         </div>
 
+        {# Liste des entreprises sous forme de cartes #}
         <div class="cards-grid">
             {% for entreprise in entreprises %}
                 <a href="/detail_entreprise?id={{ entreprise.Id_Entreprise }}" class="company-card">
                     <div class="card-header-row">
                         <div class="card-icon">
-                            <i class="fa-solid fa-building"></i>
+                            <i class="fa-solid fa-building" aria-hidden="true"></i>
                         </div>
+
                         <div>
                             <p class="card-title">{{ entreprise.Nom_Entreprise }}</p>
                             <span class="badge">{{ entreprise.Domaine_Entreprise }}</span>
                         </div>
                     </div>
+
                     <p class="card-description">{{ entreprise.Description_Entreprise }}</p>
+
                     <div class="card-footer-row">
-                        <span><i class="fa-solid fa-users"></i>{{ entreprise.Nombre_Employes }} employés</span>
-                        <span><i class="fa-solid fa-user-graduate"></i>{{ entreprise.Nombre_Stagiaires }} stagiaires</span>
+                        <span>
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            {{ entreprise.Nombre_Employes }} employés
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-user-graduate" aria-hidden="true"></i>
+                            {{ entreprise.Nombre_Stagiaires }} stagiaires
+                        </span>
                     </div>
                 </a>
             {% else %}
+                {# Message affiché si aucune entreprise n'est disponible #}
                 <p class="empty-state">Aucune entreprise trouvée.</p>
             {% endfor %}
         </div>
 
+        {# Pagination affichée seulement si plusieurs pages existent #}
         {% if totalPages > 1 %}
             <div class="pagination">
+
+                {# Lien vers la page précédente #}
                 {% if page > 1 %}
-                    <a href="/entreprises?page={{ page - 1 }}" class="page-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
+                    <a href="/entreprises?page={{ page - 1 }}" class="page-btn" aria-label="Page précédente">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                     </a>
                 {% endif %}
+
+                {# Génère tous les boutons de page de 1 à totalPages #}
                 {% for p in 1..totalPages %}
-                    <a href="/entreprises?page={{ p }}" class="page-btn {{ p == page ? 'active' : '' }}">{{ p }}</a>
+                    <a href="/entreprises?page={{ p }}" class="page-btn {{ p == page ? 'active' : '' }}">
+                        {{ p }}
+                    </a>
                 {% endfor %}
+
+                {# Lien vers la page suivante #}
                 {% if page < totalPages %}
-                    <a href="/entreprises?page={{ page + 1 }}" class="page-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
+                    <a href="/entreprises?page={{ page + 1 }}" class="page-btn" aria-label="Page suivante">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                     </a>
                 {% endif %}
+
             </div>
         {% endif %}
 

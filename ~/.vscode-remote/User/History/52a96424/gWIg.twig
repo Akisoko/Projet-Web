@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {# Encodage UTF-8 pour gérer correctement les caractères spéciaux #}
+    <meta charset="UTF-8">
+
+    {# Assure un affichage responsive sur mobile et tablette #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# Titre dynamique de la page, redéfini dans les vues enfants #}
+    <title>{% block title %}Kezan{% endblock %}</title>
+
+    {# Bibliothèque d'icônes Font Awesome #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    {# Feuille de style principale de l'application #}
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    {# Overlay affiché sur mobile lorsque la sidebar est ouverte #}
+    <div class="overlay" id="overlay"></div>
+
+    {# Barre latérale principale de navigation #}
+    <aside class="sidebar" id="sidebar">
+
+        {# Logo de l'application #}
+        <div class="logo">
+            <img src="https://img.icons8.com/color/512/world-of-warcraft-horde.png" class="logo-img" alt="Logo Kezan">
+            <span class="logo-text">Kezan</span>
+        </div>
+
+        {# Navigation principale #}
+        <nav class="nav-menu">
+            <a href="/accueil" class="nav-item">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+                <span>Accueil</span>
+            </a>
+
+            <a href="/recherche" class="nav-item">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <span>Recherche</span>
+            </a>
+
+            <a href="/offres" class="nav-item">
+                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                <span>Offres</span>
+            </a>
+
+            {# La wishlist n'est visible que pour les étudiants #}
+            {% if auth_role == 2 %}
+                <a href="/wishlist" class="nav-item">
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                    <span>Wishlist</span>
+                </a>
+            {% endif %}
+
+            <a href="/entreprises" class="nav-item">
+                <i class="fa-solid fa-building" aria-hidden="true"></i>
+                <span>Entreprises</span>
+            </a>
+
+            <a href="/statistiques" class="nav-item">
+                <i class="fa-solid fa-chart-bar" aria-hidden="true"></i>
+                <span>Statistiques</span>
+            </a>
+
+            {# L'inscription d'un nouveau compte est réservée aux admins/pilotes #}
+            {% if auth_role == 1 or auth_role == 3 %}
+                <a href="/inscription" class="nav-item">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    <span>Créer un compte</span>
+                </a>
+            {% endif %}
+        </nav>
+
+        {# Liens secondaires affichés en bas de la sidebar #}
+        <div class="sidebar-bottom">
+
+            <a href="/modifier_profil" class="nav-item">
+                <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                <span>Paramètres</span>
+            </a>
+
+            <a href="/mentions" class="nav-item">
+                <i class="fa-solid fa-file-contract" aria-hidden="true"></i>
+                <span>Mentions légales</span>
+            </a>
+
+            <a href="/deconnexion" class="nav-item">
+                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+                <span>Déconnexion</span>
+            </a>
+
+        </div>
+    </aside>
+
+    {# Zone principale de contenu #}
+    <main class="main-content">
+
+        {# En-tête supérieur de la page #}
+        <header class="header">
+
+            <div class="header-left">
+                {# Bouton burger pour ouvrir/fermer la sidebar sur mobile #}
+                <button class="burger-menu" id="burgerMenu" aria-label="Ouvrir le menu">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+
+                {# Bouton de retour visuel, probablement géré en JavaScript #}
+                <button class="back-button" aria-label="Revenir à la page précédente">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+
+                {# Titre dynamique propre à chaque page #}
+                <h1>{% block page_title %}{% endblock %}</h1>
+            </div>
+
+            <div class="header-right">
+                {# Accès rapide au profil utilisateur #}
+                <a href="/profil" class="user-avatar" aria-label="Accéder au profil">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </header>
+
+        {# Conteneur du contenu spécifique à chaque vue #}
+        <div class="page-content">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </main>
+</div>
+
+{# Script JavaScript principal du projet #}
+<script src="/assets/script.js" defer></script>
+
+</body>
+</html>

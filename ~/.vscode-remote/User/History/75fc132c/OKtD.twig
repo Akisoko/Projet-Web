@@ -1,0 +1,119 @@
+{% extends "base.twig" %}
+
+{# Titre affiché dans l'onglet du navigateur #}
+{% block title %}
+    Mentions légales - Kezan
+{% endblock %}
+
+{# Titre principal affiché dans la page #}
+{% block page_title %}
+    Mentions légales
+{% endblock %}
+
+{% block content %}
+    <div class="legal-content">
+
+        {# 1. Informations sur l'éditeur légal du site #}
+        <div class="legal-section">
+            <h2>1. Éditeur du site</h2>
+            <p>
+                Le site Kezan est édité par 
+                <strong>[Nom de l'entreprise]</strong>, 
+                société <strong>[forme juridique]</strong> 
+                au capital de <strong>[montant] €</strong>, 
+                immatriculée au RCS de <strong>[ville]</strong> 
+                sous le numéro <strong>[numéro]</strong>.
+            </p>
+
+            <p><strong>Siège social :</strong> [Adresse complète]</p>
+            <p><strong>Directeur de publication :</strong> [Nom Prénom]</p>
+            <p><strong>Contact :</strong> <a href="mailto:contact@kezan.fr">contact@kezan.fr</a></p>
+        </div>
+
+        {# 2. Informations sur l'hébergement technique #}
+        <div class="legal-section">
+            <h2>2. Hébergeur</h2>
+            <p>Le site est hébergé par <strong>[Nom de l'hébergeur]</strong></p>
+            <p><strong>Adresse :</strong> [Adresse de l'hébergeur]</p>
+            <p><strong>Téléphone :</strong> [Numéro]</p>
+        </div>
+
+        {# 3. Protection du contenu par droit d'auteur #}
+        <div class="legal-section">
+            <h2>3. Propriété intellectuelle</h2>
+            <p>
+                L'ensemble du contenu de ce site (textes, images, vidéos, etc.) 
+                est protégé par le droit d'auteur. Toute reproduction, même partielle, 
+                est interdite sans autorisation préalable.
+            </p>
+        </div>
+
+        {# 4. Conformité RGPD et droits des utilisateurs #}
+        <div class="legal-section">
+            <h2>4. Données personnelles</h2>
+            <p>
+                Conformément au RGPD, vous disposez d'un droit d'accès, de rectification 
+                et de suppression de vos données personnelles. 
+                Pour exercer ce droit, contactez-nous à : 
+                <a href="mailto:privacy@kezan.fr">privacy@kezan.fr</a>
+            </p>
+        </div>
+
+        {# 5. Information sur l'usage des cookies #}
+        <div class="legal-section">
+            <h2>5. Cookies</h2>
+            <p>
+                Ce site utilise des cookies pour améliorer l'expérience utilisateur. 
+                En naviguant sur le site, vous acceptez leur utilisation.
+            </p>
+        </div>
+
+        {# 6. Acceptation des conditions d'utilisation #}
+        <div class="legal-section">
+            <h2>6. Conditions générales d'utilisation</h2>
+            <p>
+                L'utilisation de ce site implique l'acceptation pleine et entière 
+                des conditions générales d'utilisation décrites ci-après.
+            </p>
+            <p>
+                Ces conditions d'utilisation sont susceptibles d'être modifiées 
+                ou complétées à tout moment.
+            </p>
+        </div>
+
+        {# 7. Limitation de responsabilité #}
+        <div class="legal-section">
+            <h2>7. Responsabilité</h2>
+            <p>
+                Kezan ne saurait être tenu responsable des erreurs ou omissions 
+                dans le contenu du site, ni des dommages directs ou indirects 
+                résultant de l'utilisation du site.
+            </p>
+        </div>
+
+        {# 8. Responsabilité concernant les liens externes #}
+        <div class="legal-section">
+            <h2>8. Liens hypertextes</h2>
+            <p>
+                Le site peut contenir des liens vers d'autres sites. 
+                Kezan n'exerce aucun contrôle sur ces sites et décline toute 
+                responsabilité quant à leur contenu.
+            </p>
+        </div>
+
+        {# 9. Droit applicable en cas de litige #}
+        <div class="legal-section">
+            <h2>9. Droit applicable</h2>
+            <p>
+                Les présentes mentions légales sont régies par le droit français. 
+                En cas de litige, les tribunaux français seront seuls compétents.
+            </p>
+        </div>
+
+        {# Pied de page avec date de dernière mise à jour #}
+        <div class="legal-footer">
+            <p><em>Dernière mise à jour : [Date]</em></p>
+        </div>
+
+    </div>
+{% endblock %}

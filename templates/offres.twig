@@ -1,56 +1,105 @@
 {% extends "base.twig" %}
+
+{# Titre affiché dans l'onglet du navigateur #}
 {% block title %}Offres - Kezan{% endblock %}
+
+{# Titre principal affiché dans la page #}
 {% block page_title %}Offres{% endblock %}
 
 {% block content %}
     <div class="entity-content-wide">
 
+<<<<<<< HEAD
 
+=======
+        {# Barre supérieure : recherche + ajout d'une offre #}
+        <div class="entity-search-bar">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+
+                {# Champ de recherche des offres #}
+                <input
+                    type="search"
+                    class="search-input"
+                    placeholder="Rechercher une offre..."
+                    aria-label="Rechercher une offre"
+                >
+            </div>
+
+            {# Bouton réservé aux admins et pilotes #}
+>>>>>>> b8ea831 (comm + hotfix)
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_offre" class="btn-primary">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
                     Ajouter une offre
                 </a>
             {% endif %}
         </div>
 
+        {# Liste des offres sous forme de cartes #}
         <div class="cards-grid">
             {% for offre in offres %}
                 <a href="/detail_offre?id={{ offre.Id_Offre }}" class="company-card">
                     <div class="card-header-row">
                         <div class="card-icon">
-                            <i class="fa-solid fa-briefcase"></i>
+                            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                         </div>
+
                         <div>
                             <p class="card-title">{{ offre.Nom_Offre }}</p>
                             <span class="badge">{{ offre.Domaine_Offre }}</span>
                         </div>
                     </div>
+
                     <p class="card-description">{{ offre.Description_Offre }}</p>
+
                     <div class="card-footer-row">
-                        <span><i class="fa-solid fa-euro-sign"></i>{{ offre.Remuneration }}</span>
-                        <span><i class="fa-solid fa-calendar"></i>{{ offre.Date_Offre }}</span>
-                        <span><i class="fa-solid fa-user-graduate"></i>{{ offre.Nombre_Etudiants }} étudiant(s)</span>
+                        <span>
+                            <i class="fa-solid fa-euro-sign" aria-hidden="true"></i>
+                            {{ offre.Remuneration }}
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+                            {{ offre.Date_Offre }}
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-user-graduate" aria-hidden="true"></i>
+                            {{ offre.Nombre_Etudiants }} étudiant(s)
+                        </span>
                     </div>
                 </a>
             {% else %}
+                {# Message affiché si aucune offre n'est disponible #}
                 <p class="empty-state">Aucune offre trouvée.</p>
             {% endfor %}
         </div>
 
+        {# Pagination affichée uniquement s'il y a plusieurs pages #}
         {% if totalPages > 1 %}
             <div class="pagination">
+
+                {# Lien vers la page précédente #}
                 {% if page > 1 %}
-                    <a href="/offres?page={{ page - 1 }}" class="page-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
+                    <a href="/offres?page={{ page - 1 }}" class="page-btn" aria-label="Page précédente">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                     </a>
                 {% endif %}
+
+                {# Génération des liens vers chaque page #}
                 {% for p in 1..totalPages %}
-                    <a href="/offres?page={{ p }}" class="page-btn {{ p == page ? 'active' : '' }}">{{ p }}</a>
+                    <a href="/offres?page={{ p }}"
+                       class="page-btn {{ p == page ? 'active' : '' }}"
+                       {% if p == page %}aria-current="page"{% endif %}>
+                        {{ p }}
+                    </a>
                 {% endfor %}
+
+                {# Lien vers la page suivante #}
                 {% if page < totalPages %}
-                    <a href="/offres?page={{ page + 1 }}" class="page-btn">
-                        <i class="fa-solid fa-chevron-right"></i>
+                    <a href="/offres?page={{ page + 1 }}" class="page-btn" aria-label="Page suivante">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                     </a>
                 {% endif %}
             </div>

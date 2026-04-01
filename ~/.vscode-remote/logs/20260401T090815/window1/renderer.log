@@ -1,0 +1,17 @@
+2026-04-01 09:08:18.981 [info] Started local extension host with pid 176.
+2026-04-01 09:08:20.687 [info] MCP Registry configured: https://api.mcp.github.com
+2026-04-01 09:08:21.246 [info] Settings Sync: Account status changed from uninitialized to unavailable
+2026-04-01 09:08:24.759 [info] [perf] Render performance baseline is 42ms
+2026-04-01 09:39:03.665 [error] Cancelled: Canceled: Canceled
+    at cYe.getLatestRawGalleryExtension (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:51794)
+    at async cYe.getLatestRawGalleryExtensionWithFallback (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:50362)
+    at async cYe.getLatestGalleryExtension (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:38879)
+    at async vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:38136
+    at async Promise.all (index 0)
+    at async cYe.getExtensionsUsingResourceApi (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:38090)
+    at async cYe.getExtensions (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:1746:36552)
+    at async T8.getExtensions (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3388:21087)
+    at async mKt.getInstallableRecommendations (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3384:20954)
+    at async mKt.getAllRecommendationsModel (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3384:24595)
+    at async mKt.queryGallery (vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3384:16676)
+    at async vscode-file://vscode-app/app/extra/vscode/resources/app/out/vs/workbench/workbench.desktop.main.js:3384:5955

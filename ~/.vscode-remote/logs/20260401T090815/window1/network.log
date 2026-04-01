@@ -1,0 +1,11 @@
+2026-04-01 09:39:03.646 [error] #10: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/github/copilot/latest - error GET Canceled
+2026-04-01 09:39:03.647 [error] #11: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/ms-edgedevtools/vscode-edge-devtools/latest - error GET Canceled
+2026-04-01 09:39:03.648 [error] #12: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/ms-azuretools/vscode-containers/latest - error GET Canceled
+2026-04-01 09:39:03.649 [error] #13: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/firefox-devtools/vscode-firefox-debug/latest - error GET Canceled
+2026-04-01 09:39:03.649 [error] #14: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/dbaeumer/vscode-eslint/latest - error GET Canceled
+2026-04-01 09:39:03.650 [error] #15: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/bmewburn/vscode-intelephense-client/latest - error GET Canceled
+2026-04-01 09:39:03.652 [error] #16: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/xdebug/php-debug/latest - error GET Canceled
+2026-04-01 09:39:03.654 [error] #17: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/github/vscode-pull-request-github/latest - error GET Canceled
+2026-04-01 09:39:03.657 [error] #18: https://marketplace.visualstudio.com/_apis/public/gallery/vscode/eamodio/gitlens/latest - error GET Canceled
+2026-04-01 09:39:03.659 [error] #9: https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery - error POST Canceled
+2026-04-01 09:39:04.381 [error] #19: https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery - error POST Canceled

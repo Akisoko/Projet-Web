@@ -1,0 +1,6 @@
+2026-04-01 09:39:11.341 [info] Getting Manifest... mblode.twig-language-2
+2026-04-01 09:39:14.501 [info] Installing extension: mblode.twig-language-2 {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/djolafrite/.var/app/com.visualstudio.code/data/vscode/extensions/extensions.json","path":"/home/djolafrite/.var/app/com.visualstudio.code/data/vscode/extensions/extensions.json","scheme":"vscode-userdata"},"isApplicationScoped":false,"productVersion":{"version":"1.110.1","date":"2026-03-06T23:03:27.520Z"}}
+2026-04-01 09:39:23.150 [info] Extension signature verification result for mblode.twig-language-2: Success. Internal Code: 0. Executed: true. Duration: 3126ms.
+2026-04-01 09:39:32.198 [info] Extracted extension to file:///home/djolafrite/.var/app/com.visualstudio.code/data/vscode/extensions/mblode.twig-language-2-0.9.4: mblode.twig-language-2
+2026-04-01 09:39:32.515 [info] Renamed to /home/djolafrite/.var/app/com.visualstudio.code/data/vscode/extensions/mblode.twig-language-2-0.9.4
+2026-04-01 09:39:32.549 [info] Extension installed successfully: mblode.twig-language-2 vscode-userdata:/home/djolafrite/.var/app/com.visualstudio.code/data/vscode/extensions/extensions.json

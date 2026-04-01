@@ -1,0 +1,26 @@
+2026-04-01 09:08:20.178 [info] Extension host with pid 176 started
+2026-04-01 09:08:20.178 [info] Skipping acquiring lock for /home/djolafrite/cesi/weba2/Projet-Web/~/.vscode-remote/User/workspaceStorage/607147615ee3983721aa115419686167.
+2026-04-01 09:08:20.275 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-04-01 09:08:20.340 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-04-01 09:08:20.508 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+2026-04-01 09:08:20.527 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-04-01 09:08:20.689 [info] Eager extensions activated
+2026-04-01 09:08:20.705 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-04-01 09:08:20.711 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-04-01 09:08:24.665 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+2026-04-01 09:08:28.299 [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+2026-04-01 09:11:21.729 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:javascript'
+2026-04-01 09:11:31.819 [info] ExtensionService#_doActivateExtension vscode.css-language-features, startup: false, activationEvent: 'onLanguage:css'
+2026-04-01 09:35:37.239 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:json'
+2026-04-01 09:35:37.261 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+2026-04-01 09:35:37.293 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:json'
+2026-04-01 09:35:37.437 [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onLanguage:json'
+2026-04-01 09:39:43.391 [info] ExtensionService#_doActivateExtension mblode.twig-language-2, startup: false, activationEvent: 'onLanguage:twig'
+2026-04-01 09:59:28.453 [warning] [Decorations] CAPPING events from decorations provider vscode.git 252
+2026-04-01 10:00:15.899 [warning] [Decorations] CAPPING events from decorations provider vscode.git 252
+2026-04-01 10:00:21.018 [warning] [Decorations] CAPPING events from decorations provider vscode.git 254
+2026-04-01 10:01:00.146 [warning] [Decorations] CAPPING events from decorations provider vscode.git 254
+2026-04-01 10:01:51.155 [warning] [Decorations] CAPPING events from decorations provider vscode.git 256
+2026-04-01 10:01:56.293 [warning] [Decorations] CAPPING events from decorations provider vscode.git 258
+2026-04-01 10:02:01.417 [warning] [Decorations] CAPPING events from decorations provider vscode.git 258
+2026-04-01 10:02:06.546 [warning] [Decorations] CAPPING events from decorations provider vscode.git 258
