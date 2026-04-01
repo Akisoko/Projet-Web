@@ -5,11 +5,7 @@
 {% block content %}
     <div class="entity-content-wide">
 
-        <div class="entity-search-bar">
-            <div class="search-input-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" class="search-input" placeholder="Rechercher une entreprise...">
-            </div>
+
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_entreprise" class="btn-primary">
                     <i class="fa-solid fa-plus"></i>
