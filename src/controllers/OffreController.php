@@ -10,7 +10,7 @@ use App\models\WishlistModel;
 use App\models\PostulerModel;
 
 /**
- * Contrôleur chargé de la gestion des offres.
+ * Contrôleur chargé de la gestion des offres
  *
  * Gère l'affichage de la liste, le détail, l'ajout, la modification,
  * la suppression, la candidature et la consultation des candidatures.
