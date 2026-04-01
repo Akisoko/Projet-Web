@@ -16,43 +16,7 @@ if (overlay) {
     overlay.addEventListener('click', toggleMenu);
 }
 
-const filterBtn = document.getElementById('filterBtn');
-const filterPanel = document.getElementById('filterPanel');
-const closeFilter = document.getElementById('closeFilter');
-const resetFilters = document.getElementById('resetFilters');
-const applyFilters = document.getElementById('applyFilters');
 
-if (filterBtn) {
-    filterBtn.addEventListener('click', () => {
-        filterPanel.classList.toggle('active');
-    });
-}
-
-if (closeFilter) {
-    closeFilter.addEventListener('click', () => {
-        filterPanel.classList.remove('active');
-    });
-}
-
-if (resetFilters) {
-    resetFilters.addEventListener('click', () => {
-        const inputs = filterPanel.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                input.selectedIndex = 0;
-            } else {
-                input.value = '';
-            }
-        });
-    });
-}
-
-if (applyFilters) {
-    applyFilters.addEventListener('click', () => {
-        filterPanel.classList.remove('active');
-        console.log('Filtres appliqués');
-    });
-}
 
 const welcomeScreen = document.getElementById('welcomeScreen');
 const loginScreen = document.getElementById('loginScreen');
@@ -97,67 +61,7 @@ wishlistItems.forEach(item => {
     });
 });
 
-const fileUpload = document.getElementById('fileUpload');
-const fileName = document.getElementById('fileName');
-const downloadBtn = document.getElementById('downloadBtn');
-const previewBtn = document.getElementById('previewBtn');
-const previewZone = document.getElementById('previewZone');
-const closePreview = document.getElementById('closePreview');
 
-if (fileUpload) {
-    fileUpload.addEventListener('change', function(e) {
-        if (this.files && this.files[0]) {
-            const file = this.files[0];
-            if (fileName) {
-                fileName.textContent = `Fichier sélectionné : ${file.name}`;
-                fileName.classList.add('show');
-            }
-            console.log('Fichier uploadé:', file.name);
-            // Ici tu enverras le fichier au backend
-        }
-    });
-}
-
-if (downloadBtn) {
-    downloadBtn.addEventListener('click', function() {
-        console.log('Téléchargement du document...');
-        // Ici tu déclencheras le téléchargement depuis le backend
-        alert('Téléchargement de la lettre de motivation...');
-    });
-}
-
-if (previewBtn) {
-    previewBtn.addEventListener('click', function() {
-        if (previewZone) {
-            previewZone.classList.remove('hidden');
-            console.log('Affichage de l\'aperçu');
-            // Ici tu chargeras le document depuis le backend pour l'afficher
-        }
-    });
-}
-
-if (closePreview) {
-    closePreview.addEventListener('click', function() {
-        if (previewZone) {
-            previewZone.classList.add('hidden');
-        }
-    });
-}
-
-const logoUpload = document.getElementById('logoUpload');
-const logoFileName = document.getElementById('logoFileName');
-
-if (logoUpload) {
-    logoUpload.addEventListener('change', function(e) {
-        if (this.files && this.files[0]) {
-            const file = this.files[0];
-            if (logoFileName) {
-                logoFileName.value = file.name;
-            }
-            console.log('Logo uploadé:', file.name);
-        }
-    });
-}
 
 const cvUpload = document.getElementById('cvUpload');
 const cvFileName = document.getElementById('cvFileName');
@@ -433,7 +337,7 @@ if (formModifierUtilisateur) {
         if (!valid) e.preventDefault();
     });
 }
-/*
+
 // --- Formulaire postuler ---
 const formPostuler = document.querySelector('form[action="/postuler"]');
 if (formPostuler) {
@@ -451,4 +355,3 @@ if (formPostuler) {
         if (!valid) e.preventDefault();
     });
 }
- */
