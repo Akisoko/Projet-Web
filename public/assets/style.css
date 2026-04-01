@@ -43,7 +43,7 @@ body.landing-page {
 }
 
 body.landing-page {
-    background: linear-gradient(135deg, #312E81 0%, #4C1D95 50%, #7C3AED 100%);
+    background-color: #ffffff;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -224,6 +224,7 @@ body.landing-page {
     border-radius: var(--radius-lg);
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
+    position: relative;
 }
 
 .company-card,
@@ -455,14 +456,14 @@ body.landing-page {
 .logo-container {
     width: 120px;
     height: 120px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--primary-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--border);
 }
 
 .landing-logo {
@@ -474,6 +475,7 @@ body.landing-page {
 .brand-name {
     font-size: 2.5rem;
     font-weight: 700;
+    color: var(--text-primary);
 }
 
 .login-title {
@@ -510,7 +512,7 @@ body.landing-page {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted);
     font-size: 0.875rem;
 }
 

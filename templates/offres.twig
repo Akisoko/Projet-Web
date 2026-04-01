@@ -8,26 +8,7 @@
 
 {% block content %}
     <div class="entity-content-wide">
-
-<<<<<<< HEAD
-
-=======
-        {# Barre supérieure : recherche + ajout d'une offre #}
-        <div class="entity-search-bar">
-            <div class="search-input-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-
-                {# Champ de recherche des offres #}
-                <input
-                    type="search"
-                    class="search-input"
-                    placeholder="Rechercher une offre..."
-                    aria-label="Rechercher une offre"
-                >
-            </div>
-
             {# Bouton réservé aux admins et pilotes #}
->>>>>>> b8ea831 (comm + hotfix)
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_offre" class="btn-primary">
                     <i class="fa-solid fa-plus" aria-hidden="true"></i>

@@ -15,6 +15,21 @@ use App\models\StatistiqueModel;
 class StatistiqueController
 {
     /**
+     * @var StatistiqueModel|null
+     */
+    private ?StatistiqueModel $model;
+
+    /**
+     * Constructeur avec injection de dépendance.
+     *
+     * @param StatistiqueModel|null $model Si null, instancie le modèle par défaut.
+     */
+    public function __construct(?StatistiqueModel $model = null)
+    {
+        $this->model = $model ?? new StatistiqueModel();
+    }
+
+    /**
      * Affiche le tableau de bord des statistiques globales.
      *
      * La méthode récupère les métriques essentielles :
@@ -29,8 +44,8 @@ class StatistiqueController
         // Initialise ou reprend la session utilisateur.
         Auth::session();
 
-        // Instancie le modèle spécialisé dans les calculs statistiques.
-        $model = new StatistiqueModel();
+        // Utilise le modèle injecté.
+        $model = $this->model;
 
         // Prépare l'ensemble des métriques agrégées à envoyer à la vue.
         $stats = [

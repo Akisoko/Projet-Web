@@ -8,26 +8,7 @@
 
 {% block content %}
     <div class="entity-content-wide">
-
-<<<<<<< HEAD
-
-=======
-        {# Barre supérieure avec champ de recherche et bouton d'ajout #}
-        <div class="entity-search-bar">
-            <div class="search-input-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-
-                {# Champ de recherche des entreprises #}
-                <input
-                    type="text"
-                    class="search-input"
-                    placeholder="Rechercher une entreprise..."
-                    aria-label="Rechercher une entreprise"
-                >
-            </div>
-
             {# Bouton visible uniquement pour les admins et pilotes #}
->>>>>>> b8ea831 (comm + hotfix)
             {% if auth_role == 1 or auth_role == 3 %}
                 <a href="/ajouter_entreprise" class="btn-primary">
                     <i class="fa-solid fa-plus" aria-hidden="true"></i>

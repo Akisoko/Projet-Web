@@ -15,13 +15,19 @@ use Twig\Environment;
 class View
 {
     /**
+     * Mode de test pour désactiver le rendu réel et capturer les données.
+     * @var bool
+     */
+    public static bool $testMode = false;
+
+    /**
+     * Stocke les dernières données envoyées à la vue en mode test.
+     * @var array
+     */
+    public static array $lastRenderedData = [];
+
+    /**
      * Affiche un template Twig avec les données fournies.
-     *
-     * La méthode :
-     * - configure le chargeur Twig ;
-     * - instancie l'environnement Twig ;
-     * - ajoute les données d'authentification communes ;
-     * - affiche le rendu final.
      *
      * @param string $template Nom du fichier Twig à afficher.
      * @param array $data Données transmises à la vue.
@@ -29,6 +35,12 @@ class View
      */
     public static function render($template, $data = [])
     {
+        // En mode test, on capture les données et on s'arrête là.
+        if (self::$testMode) {
+            self::$lastRenderedData = $data;
+            return;
+        }
+
         // Définit le dossier racine contenant les templates Twig.
         $loader = new FilesystemLoader(dirname(__DIR__, 2) . '/templates');
 
